@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>		
+	     <!-- #### FORM VIEW #### -->    
+	     
+	     <record model='ir.ui.view' id='fleet_vehicle_gear_form'>
+			<field name="name">fleet.vehicle.gear.form</field>
+			<field name="model">fleet.vehicle.gear</field>
+			<field name="arch" type="xml">
+				<form string="Vehicle gear" version="7.0">
+					<sheet>
+						<group>
+							<field name="name" />
+							<field name="note" />
+							<field name="months"/>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		
+		<!-- #### TREE VIEW #### -->
+		
+		<record model='ir.ui.view' id='fleet_vehicle_gear_tree'>
+			<field name="name">fleet.vehicle.gear.tree</field>
+			<field name="model">fleet.vehicle.gear</field>
+			<field name="arch" type="xml">
+				<tree string="Vehicle gear" >
+					<field name="name" />
+					<field name="note" />
+					<field name="months"/>
+				</tree>
+			</field>
+		</record>
+		
+		<!-- #### ACTION #### -->
+		
+		<record model='ir.actions.act_window' id='fleet_vehicle_gear_act'>
+            <field name="name">Vehicle Gear</field>
+            <field name="res_model">fleet.vehicle.gear</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a vehicle gear.
+              </p>
+              <p>
+               	Here you can create gear for your vehicles... 
+              </p>
+            </field>
+        </record>        
+		
+		<!-- #### MENUITEM #### -->
+        <menuitem action="fleet_vehicle_gear_act" parent="fleet.fleet_configuration" id="fleet_vehicle_gear_menu" groups="fleet.group_fleet_manager"/>
+
+	</data>
+</openerp>

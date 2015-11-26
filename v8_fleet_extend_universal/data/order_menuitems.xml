@@ -1,0 +1,48 @@
+<openerp>
+<data>
+
+	<record id="v7_fleet_extend_universal.fleet_vehicle_order_menu" model="ir.ui.menu">
+          <field name="sequence" eval="20" />
+    </record>
+        
+    <record id="fleet.fleet_vehicle_odometer_menu" model="ir.ui.menu">
+          <field name="sequence" eval="40" />
+    </record>
+    
+    
+    <menuitem name="Costs and Incomes" parent="fleet.menu_root" id="fleet_costs" sequence="10" 
+    	groups="fleet.group_fleet_user"/>
+    
+    <record id="fleet.fleet_vehicle_log_contract_menu" model="ir.ui.menu">
+          <field name="sequence" eval="30" />
+          <field name="parent_id" ref="fleet_costs"/>
+    </record>
+    
+    <record id="fleet.fleet_vehicle_log_fuel_menu" model="ir.ui.menu">
+          <field name="sequence" eval="50" />
+          <field name="parent_id" ref="fleet_costs"/>
+    </record>
+    
+    <record id="fleet.fleet_vehicle_log_fuel_menu" model="ir.ui.menu">
+          <field name="sequence" eval="60" />
+          <field name="parent_id" ref="fleet_costs"/>
+    </record>
+    
+    <record id="fleet.fleet_vehicle_log_services_menu" model="ir.ui.menu">
+          <field name="sequence" eval="70" />
+          <field name="parent_id" ref="fleet_costs"/>
+    </record>
+    
+	<!-- OVDJE IDE VEHICLE OTHER COSTS -->
+    
+    <record id="fleet.fleet_vehicle_costs_menu" model="ir.ui.menu">
+		<field name="sequence" eval="90"/>
+		<field name="parent_id" ref="fleet_costs"/>
+	</record>
+    
+    <record id="fleet.fleet_configuration" model="ir.ui.menu">
+		<field name="sequence" eval="100"/>
+	</record>    
+
+</data>
+</openerp>

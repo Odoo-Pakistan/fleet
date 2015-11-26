@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>		
+	     <!-- #### FORM VIEW #### -->	     	     
+		
+		<record model='ir.ui.view' id='fleet_vehicle_tyre_form'>
+			<field name="name">fleet.vehicle.tyre.form</field>
+			<field name="model">fleet.vehicle.tyre</field>
+			<field name="arch" type="xml">
+				<form string="Vehicle tires" version="7.0">
+					<sheet>
+						<group>
+							<field name="name" />
+							<field name="type" />
+							<field name="note" />
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		
+		 <!-- #### TREE VIEW #### -->	
+		
+		<record model='ir.ui.view' id='fleet_vehicle_tyre_tree'>
+			<field name="name">fleet.vehicle.tyre.tree</field>
+			<field name="model">fleet.vehicle.tyre</field>
+			<field name="arch" type="xml">
+				<tree string="Vehicle tires" >
+					<field name="name" />
+					<field name="type" />
+					<field name="note" />
+				</tree>
+			</field>
+		</record>
+		
+		<!-- #### ACTION #### -->
+		
+		<record model='ir.actions.act_window' id='fleet_vehicle_tyre_act'>
+            <field name="name">Vehicle Tires</field>
+            <field name="res_model">fleet.vehicle.tyre</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a vehicle tires.
+              </p>
+              <p>
+               	Here you can create tires for your vehicles... 
+              </p>
+            </field>
+        </record>
+        
+        <!-- #### MENUITEM #### -->        
+        <menuitem action="fleet_vehicle_tyre_act" parent="fleet.fleet_configuration" id="fleet_vehicle_tyre_menu" groups="fleet.group_fleet_manager"/>
+        
+        
+	</data>
+</openerp>

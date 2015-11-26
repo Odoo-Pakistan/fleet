@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+    
+
+		<record id="fleet_vehicle_gear_1" model="fleet.vehicle.gear">
+	        <field name="name">Protivpožarni aparat</field>
+	        <field name="note"></field>
+      	</record>
+      	
+      	<record id="fleet_vehicle_gear_2" model="fleet.vehicle.gear">
+	        <field name="name">Prva pomoć</field>
+	        <field name="note"></field>
+      	</record>
+      	
+      	<record id="fleet_vehicle_gear_3" model="fleet.vehicle.gear">
+	        <field name="name">Trokut</field>
+	        <field name="note"></field>
+      	</record>
+      	
+      	<record id="fleet_vehicle_gear_4" model="fleet.vehicle.gear">
+	        <field name="name">Dizalica</field>
+	        <field name="note"></field>
+      	</record>
+     
+     </data>
+</openerp>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+    
+
+<!-- 		<record id="type_service_amortization" model="fleet.service.type"> -->
+<!-- 	        <field name="name">Amortization</field> -->
+<!-- 	        <field name="category">both</field> -->
+<!--       	</record> -->
+     
+     </data>
+</openerp>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>		
+	     <!-- #### FORM VIEW #### -->
+	     
+	     <record model='ir.ui.view' id='fleet_vehicle_type_form'>
+			<field name="name">fleet.vehicle.type.form</field>
+			<field name="model">fleet.vehicle.type</field>
+			<field name="arch" type="xml">
+				<form string="Vehicle types" version="7.0">
+					<sheet>
+						<group>
+							<field name="name" />
+							<field name="reg_required" />
+							<field name="measure" />
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+	
+	</data>
+</openerp>

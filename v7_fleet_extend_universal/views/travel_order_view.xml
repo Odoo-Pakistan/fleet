@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+		
+		<!-- #### FORM VIEW #### -->
+		
+		<record model="ir.ui.view" id="fleet_vehicle_travel_order_form">
+            <field name="name">fleet.vehicle.travel.order.form</field>
+            <field name="model">fleet.vehicle.travel.order</field>
+            <field name="arch" type="xml">
+                <form string="Travel Orders" version="7.0">
+                    <sheet>
+                         
+                        <div class="oe_title" string="Vehicle">
+                            
+                            <label for="vehicle_id" class="oe_edit_only"/>
+                            <h1>
+                                 
+                                <field name="vehicle_id" class="oe_inline" on_change="onchange_vehicle(vehicle_id)" />
+                                 
+                            </h1>
+                            <label for="num" class="oe_edit_only"/>
+                            <h1>
+                                    <field name="num" />
+                            </h1>
+                            <label for="series" class="oe_edit_only"/>
+                            <h1>
+                                    <field name="series" />
+                            </h1>
+                            <label for="additional_vehicle_id" class="oe_edit_only" attrs="{'invisible':[('type','=','passenger')]}"/>
+                            <h2>
+                                <field name="additional_vehicle_id" class="oe_inline" attrs="{'invisible':[('type','=','passenger')]}"/>
+                            </h2>
+                             
+                        </div>
+                         <div class="oe_right oe_button_box">
+                             <button name="return_action_to_open_view" 
+                             		 type="object" 
+                             		 class="oe_stat_button"
+                             		 icon="fa-flask"
+                             		 context="{'xml_id':'fleet_vehicle_log_fuel_act','default_vehicle_id':vehicle_id}"  
+                             		 help="show the fuel logs for this vehicle" >                             		 
+                             		<field name="fuel_log_count" widget="statinfo"/>
+                             </button>
+                         </div>
+                     
+                         
+                        <group col="2">
+                            <group string="Travel Order">
+                                <field name="place"/>
+                                <field name="date"/>
+                                <field name="type"/>             
+                            </group>                                 
+                        </group>
+                        <group col="2">
+                            <group string="Drivers">
+                                <field name="driver1_id"/>
+                                <field name="driver2_id"/>
+                            </group>
+                            <group string="Co-Drivers" attrs="{'invisible':[('type','=','passenger')]}">
+                                <field name="codriver1_id"/>
+                                <field name="codriver2_id"/>
+                                <field name="codriver3_id"/>
+                                <field name="codriver4_id"/>
+                            </group>                 
+                        </group>
+                        <group col="2">
+	                        <group string="Cargo Workers" colspan="1" attrs="{'invisible':[('type','=','passenger')]}">
+	                                <field name="cargo_worker1_id"/>
+	                                <field name="cargo_worker2_id"/>
+	                                <field name="cargo_worker3_id"/>
+	                                <field name="cargo_worker4_id"/>
+	                        </group>
+                        </group>
+                        <group string="Distance">
+                              <field name="distance"/>
+                        </group>
+                        <notebook>
+                            <page string="Travel Order Line">
+                                <field name="travel_order_line_ids">
+                                    <tree >
+                                        <field name="date"/>
+                                        <field name="distance" />
+                                        <field name="start_odometer" />
+                                        <field name="stop_odometer" />                                   
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+         
+         
+         
+         
+        <!-- #### TREE VIEW #### --> 
+        
+        <record model="ir.ui.view" id="fleet_vehicle_travel_order_tree">
+            <field name="name">fleet.vehicle.travel.order.tree</field>
+            <field name="model">fleet.vehicle.travel.order</field>
+            <field name="arch" type="xml">
+                <tree string="Travel Orders">
+                    <field name="num"/>
+                    <field name="date"/>
+                    <field name="vehicle_id"/>
+                </tree>
+            </field>         
+        </record>
+        
+        <!-- #### SEARCH VIEW #### -->
+        
+        <record model="ir.ui.view" id="view_vehicle_travel_order_search">
+			<field name="name">view.vehicle.travel.order.search</field>
+			<field name="model">fleet.vehicle.travel.order</field>
+			<field name="arch" type="xml">
+				<search>
+					<field name="vehicle_id"/>
+					<field name="place"/>
+					<field name="num"/>
+					<field name="date"/>
+					<group expand ="1" string="Travel order type:">
+					<filter string="Passenger" icon="terp-project" domain = "[('type','=','passenger')]"/>
+					<filter string="Cargo" icon="terp-project" domain = "[('type','=','cargo')]"/>
+					</group>
+					<group expand="1" string="Group by...">
+						<filter string="Date" name="group_date" domain="" context="{'group_by':'date'}"/>
+						<filter string="Vehicle"  domain="" context="{'group_by':'vehicle_id'}"/>
+						<filter string="Place"  domain="" context="{'group_by':'place'}"/>
+					</group>   					
+				</search>
+			</field>		
+		</record>
+        
+         
+        <!-- #### ACTION #### -->
+        
+        <record model='ir.actions.act_window' id='fleet_vehicle_order_act'>
+            <field name="name">Travel Order</field>
+            <field name="res_model">fleet.vehicle.travel.order</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_group_date':1}</field>
+            <field name="search_view_id" ref="view_vehicle_travel_order_search" />
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a vehicle travel order.
+              </p>
+              <p>
+                Here you can create travel orders for your vehicles...
+              </p>
+            </field>
+        </record>
+         
+         
+        <!-- #### MENU ITEM #### -->
+        <menuitem action="fleet_vehicle_order_act" parent="fleet.fleet_vehicles" id="fleet_vehicle_order_menu" sequence="30" groups="fleet.group_fleet_manager"/>
+		
+	
+	
+	
+	
+	</data>
+</openerp>

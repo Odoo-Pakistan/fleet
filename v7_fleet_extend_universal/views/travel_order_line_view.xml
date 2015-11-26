@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>	
+
+    	<!-- #### FORM VIEW #### -->
+    	
+        <record model="ir.ui.view" id="fleet_vehicle_travel_order_line_form">
+            <field name="name">fleet.vehicle.travel.order.line.form</field>
+            <field name="model">fleet.vehicle.travel.order.line</field>
+            <field name="arch" type="xml">
+                <form string="Records of engine" version="7.0">
+                        <group col="2">
+                            <group>
+                                <field name="date" />
+                                <field name="travel_order_id" invisible="1" />
+                                <field name="start_odometer" />
+                                <field name="stop_odometer" />
+                            </group>
+                            <group string="Distance">
+                                <field name="distance"/>
+                            </group>                             
+                        </group>                 
+                </form>          
+            </field> 
+        </record>
+        
+        	
+	
+    </data>
+ </openerp>

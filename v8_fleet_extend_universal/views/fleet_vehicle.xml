@@ -1,0 +1,24 @@
+<openerp>
+<data>
+
+	<record model="ir.ui.view" id="fleet_vehicle_form_inherit_dimensions">
+		<field name="name">v8fleet.vehicle.form.inherit</field>
+		<field name="model">fleet.vehicle</field>
+		<field name="inherit_id" ref="v7_fleet_extend_universal.fleet_vehicle_form_inherit" />
+		<field name="arch" type="xml">
+			<data>
+				<xpath expr="//field[@name='entire_mass']" position="after">
+					
+					<field name="height" />
+					<field name="width" />
+					<field name="length" />
+					<field name="volume" />
+
+				</xpath>
+			</data>
+		</field>
+	</record>
+
+
+</data>
+</openerp>

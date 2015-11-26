@@ -1,0 +1,13 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+fleet_vehicle_tyre_access_right,fleet.vehicle.tyre.category.manager,model_fleet_vehicle_tyre,fleet.group_fleet_manager,1,1,1,1
+fleet_vehicle_gear_access_right,fleet.vehicle.gear.category.manager,model_fleet_vehicle_gear,fleet.group_fleet_manager,1,1,1,1
+fleet_vehicle_type_access_right,fleet.vehicle.type.category.manager,model_fleet_vehicle_type,fleet.group_fleet_manager,1,1,1,1
+fleet_vehicle_tyre_access_right_user,fleet.vehicle.tyre.category.user,model_fleet_vehicle_tyre,fleet.group_fleet_user,1,1,1,0
+fleet_vehicle_gear_access_right_user,fleet.vehicle.gear.category.user,model_fleet_vehicle_gear,fleet.group_fleet_user,1,1,1,0
+fleet_vehicle_type_access_right_user,fleet.vehicle.type.category.user,model_fleet_vehicle_type,fleet.group_fleet_user,1,1,1,0
+fleet_vehicle_travel_order_access_right,fleet.vehicle.travel.order.category.manager,model_fleet_vehicle_travel_order,fleet.group_fleet_manager,1,1,1,1
+fleet_vehicle_travel_order_line_access_right,fleet.vehicle.travel.order.line.category.manager,model_fleet_vehicle_travel_order_line,fleet.group_fleet_manager,1,1,1,1
+fleet_vehicle_travel_order_access_right_user,fleet.vehicle.travel.order.category.user,model_fleet_vehicle_travel_order,fleet.group_fleet_user,1,1,1,0
+fleet_vehicle_travel_order_line_access_right_user,fleet.vehicle.travel.order.line.category.user,model_fleet_vehicle_travel_order_line,fleet.group_fleet_user,1,1,1,0
+fleet_vehicle_amortization_access_right,fleet.vehicle.amortization.category.manager,model_fleet_vehicle_amortization,fleet.group_fleet_manager,1,1,1,1
+fleet_vehicle_amortization_access_right_user,fleet.vehicle.amortization.category.user,model_fleet_vehicle_amortization,fleet.group_fleet_user,1,0,0,0

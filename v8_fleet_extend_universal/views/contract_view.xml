@@ -1,0 +1,18 @@
+<openerp>
+	<data>
+	
+	<record model="ir.ui.view" id="fleet_vehicle_log_contract_form_inherit">
+	    <field name="name">fleet.vehicle.log.contract.form.inherit</field>
+	    <field name="model">fleet.vehicle.log.contract</field>
+	    <field name="inherit_id" ref="fleet.fleet_vehicle_log_contract_form"/>
+	    <field name="arch" type="xml">
+	    	<data>
+	    		<xpath expr="//notebook" position="replace">
+	    			
+	    		</xpath>
+	    	</data>
+	    </field>
+	</record>
+	
+	</data>
+</openerp>

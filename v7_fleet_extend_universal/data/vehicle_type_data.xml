@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+    
+
+	 <record model="fleet.vehicle.type" id="fleet_vehicle_type_5">
+           <field name="name">Putničko</field>
+           <field name="reg_required" eval="True" />
+           <field name="measure">km</field>
+        </record>
+	
+	 <record model="fleet.vehicle.type" id="fleet_vehicle_type_6">
+           <field name="name">Teretno</field>
+           <field name="reg_required" eval="True" />
+           <field name="measure">km</field>
+        </record>
+
+	 <record model="fleet.vehicle.type" id="fleet_vehicle_type_7">
+           <field name="name">Teretno dostavno</field>
+           <field name="reg_required" eval="True" />
+           <field name="measure">km</field>
+        </record>
+
+	 <record model="fleet.vehicle.type" id="fleet_vehicle_type_8">
+           <field name="name">Viljuškar</field>
+           <field name="reg_required" eval="False" />
+           <field name="measure">hour</field>
+        </record>
+
+	 <record model="fleet.vehicle.type" id="fleet_vehicle_type_9">
+           <field name="name">Kamion pikap</field>
+           <field name="reg_required" eval="True" />
+           <field name="measure">km</field>
+        </record>
+	
+	 <record model="fleet.vehicle.type" id="fleet_vehicle_type_10">
+           <field name="name">Prikolica</field>
+           <field name="reg_required" eval="True" />
+           <field name="measure">km</field>
+        </record>
+
+	 <record model="fleet.vehicle.type" id="fleet_vehicle_type_11">
+           <field name="name">Traktor</field>
+           <field name="reg_required" eval="True" />
+           <field name="measure">km</field>
+        </record>
+
+	 <record model="fleet.vehicle.type" id="fleet_vehicle_type_12">
+           <field name="name">Bager</field>
+           <field name="reg_required" eval="True" />
+           <field name="measure">hour</field>
+        </record>
+
+	 <record model="fleet.vehicle.type" id="fleet_vehicle_type_13">
+           <field name="name">Mašina</field>
+           <field name="reg_required" eval="False" />
+           <field name="measure">hour</field>
+        </record>
+
+	
+
+    
+    </data>
+</openerp>

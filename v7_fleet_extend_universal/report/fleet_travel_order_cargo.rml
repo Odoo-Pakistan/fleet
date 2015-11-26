@@ -1,0 +1,794 @@
+<?xml version="1.0"?>
+<document filename="Book.pdf">
+
+  <template pageSize="(210mm,297mm)" title="IRA" author="plusPMO" allowSplitting="20" showBoundary="1	" rotation="270">
+    
+    <pageTemplate id="first" pageSize="(210mm,148mm)" >
+   	  
+      <frame id="first" x1="160mm" y1="10mm" width="130mm" height="170mm" />
+      <frame id="second" x1="10mm" y1="10mm" width="130mm" height="170mm"/>
+      
+       
+      <pageGraphics>
+      		
+            <place x="160mm" y="180mm" height="20mm" width="50mm">          	                         
+               	<blockTable style="Block_Table_1" colWidths="45mm">
+               		<tr>
+               			<td>
+               				<para style="terp_tblheader_General_Centre" fontSize="8.0">
+               					Obrazac putnog naloga
+               						 za teretno i 
+               					kombinovano vozilo
+               				</para>
+               				
+               			</td>
+               		</tr>
+               	</blockTable>            
+            </place>
+            <place x="210mm" y="180mm" height="20mm" width="50mm">
+            	<blockTable style="Block_Table_1" colWidths="45mm">
+               		<tr>
+               			<td>
+               				<para style="terp_tblheader_General_Centre" >
+               					PREVOZ STVARI
+               					 (javni ili za 
+               					vlastite potrebe)
+               				</para>
+               				
+               			</td>
+               		</tr>
+               	</blockTable>  
+            </place>
+            <place x="260mm" y="180mm" height="20mm" width="30mm">
+            	<blockTable style="Block_Table_1" colWidths="20mm" rowHeigths="50mm">
+               		<tr>
+               			<td>
+               				<para style="terp_tblheader_General_Centre">
+               					
+               					PN-3
+               					
+               				</para>
+               				
+               			</td>
+               		</tr>
+               	</blockTable>  
+            </place>
+            <place x="50mm" y="180mm" height="12mm" width="70mm">
+            	<para style="terp_tblheader_General_Centre" fontSize="9.0" fontName="Helvetica">
+            		EVIDENCIJA UTROŠKA GORIVA I MAZIVA
+            	</para>            
+            </place>            
+      	</pageGraphics>
+      	
+    </pageTemplate>
+    
+    <pageTemplate id="second" pageSize="(210mm,148mm)" rotation="0">  
+    	 <frame id="second_first" x1="10mm" y1="20mm" width="260mm" height="170mm"/>  	
+      	 <pageGraphics>
+          	<image file="slika-nalog1.jpg" x1="10mm" y1="20mm" width="260mm" height="210mm"/>           
+   		 </pageGraphics>
+    </pageTemplate>
+    
+  </template>
+  
+  <stylesheet>
+    <blockTableStyle id="Standard_Outline">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+    </blockTableStyle>
+        
+    <initialize>
+      <paraStyle name="all" alignment="justify"/>
+    </initialize>
+    <paraStyle name="Standard" fontName="Helvetica"/>
+    <paraStyle name="Heading" fontName="Helvetica" fontSize="14.0" leading="17" spaceBefore="12.0" spaceAfter="6.0"/>
+    <blockTableStyle id="Block_Table_1">
+    	<lineStyle kind="GRID" thickness="1" colorName="black"/>
+    	<blockValign value="TOP"/>
+    	<blockAlignment value="CENTER"/>
+    </blockTableStyle>
+     <blockTableStyle id="Block_Table_2">
+      	<blockValign value="TOP"/>
+    	<blockAlignment value="CENTER"/>
+    </blockTableStyle>
+ 	 <blockTableStyle id="Standard_Outline">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+    </blockTableStyle>
+    <blockTableStyle id="Table_Address_detail">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="BOTTOM"/>
+    </blockTableStyle>
+    <blockTableStyle id="Table_Title_String">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+    </blockTableStyle>
+    <blockTableStyle id="Header_Order_Reference_Tbl">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+      <lineStyle kind="LINEBEFORE" colorName="#e6e6e6" start="0,0" stop="0,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#e6e6e6" start="0,0" stop="0,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="0,-1" stop="0,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#e6e6e6" start="1,0" stop="1,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#e6e6e6" start="1,0" stop="1,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="1,-1" stop="1,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#e6e6e6" start="2,0" stop="2,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#e6e6e6" start="2,0" stop="2,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="2,-1" stop="2,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#e6e6e6" start="3,0" stop="3,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#e6e6e6" start="3,0" stop="3,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="3,-1" stop="3,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#e6e6e6" start="4,0" stop="4,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#e6e6e6" start="4,0" stop="4,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#e6e6e6" start="4,0" stop="4,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="4,-1" stop="4,-1"/>
+    </blockTableStyle>
+    <blockTableStyle id="Content_Order_Reference_Table">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+      <lineStyle kind="LINEBEFORE" colorName="#e6e6e6" start="0,0" stop="0,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#e6e6e6" start="0,0" stop="0,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="0,-1" stop="0,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#e6e6e6" start="1,0" stop="1,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#e6e6e6" start="1,0" stop="1,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="1,-1" stop="1,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#e6e6e6" start="2,0" stop="2,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#e6e6e6" start="2,0" stop="2,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="2,-1" stop="2,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#e6e6e6" start="3,0" stop="3,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#e6e6e6" start="3,0" stop="3,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="3,-1" stop="3,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#e6e6e6" start="4,0" stop="4,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#e6e6e6" start="4,0" stop="4,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#e6e6e6" start="4,0" stop="4,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="4,-1" stop="4,-1"/>
+    </blockTableStyle>
+    <blockTableStyle id="Move_Line_Header">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="0,-1" stop="0,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="1,-1" stop="1,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="2,-1" stop="2,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="3,-1" stop="3,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="4,-1" stop="4,-1"/>
+    </blockTableStyle>
+    <blockTableStyle id="Move_Line_Contect_Assign_State">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="0,-1" stop="0,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="1,-1" stop="1,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="2,-1" stop="2,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="3,-1" stop="3,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="4,-1" stop="4,-1"/>
+    </blockTableStyle>
+    <blockTableStyle id="Table1">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="0,-1" stop="0,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="1,-1" stop="1,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="2,-1" stop="2,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="3,-1" stop="3,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="4,-1" stop="4,-1"/>
+    </blockTableStyle>
+    <blockTableStyle id="Table2">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+      <lineStyle kind="LINEABOVE" colorName="#888888" start="0,0" stop="-1,0"/>
+    </blockTableStyle>
+    <blockTableStyle id="Table3">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+      <lineStyle kind="LINEBELOW" colorName="#888888" start="0,0" stop="-1,0"/>
+    </blockTableStyle>
+    <blockTableStyle id="Table4">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+      <lineStyle kind="LINEABOVE" colorName="#888888" start="0,0" stop="-1,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#888888" start="0,0" stop="-1,0"/>
+    </blockTableStyle>
+    <blockTableStyle id="Table5">
+      <blockAlignment value="LEFT"/>
+      <lineStyle kind="GRID" colorName="#777777" start="0,0" stop="-1,-1"/>
+     </blockTableStyle>
+     <blockTableStyle id="Table6">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+      <lineStyle kind="GRID" colorName="#777777" start="0,0" stop="-1,-1"/>
+     </blockTableStyle>
+      <blockTableStyle id="Table7">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+      <lineStyle kind="LINEABOVE" colorName="#888888" start="1,0" stop="4,0"/>
+      <lineStyle kind="LINEABOVE" colorName="#888888" start="6,0" stop="-1,0"/>
+    </blockTableStyle>
+     
+    <initialize>
+      <paraStyle name="all" alignment="justify"/>
+    </initialize>
+    <paraStyle name="Standard" fontName="Helvetica"/>
+    <paraStyle name="Heading" fontName="Helvetica" fontSize="14.0" leading="17" spaceBefore="12.0" spaceAfter="6.0"/>
+    <paraStyle name="Text body" fontName="Helvetica" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="List" fontName="Helvetica" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="Caption" fontName="Helvetica-Oblique" fontSize="12.0" leading="15" spaceBefore="6.0" spaceAfter="6.0"/>
+    <paraStyle name="Index" fontName="Helvetica"/>
+    <paraStyle name="terp_header" fontName="Helvetica-Bold" fontSize="12.0" leading="15" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_header_Centre" fontName="Helvetica-Bold" fontSize="12.0" leading="15" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_default_8" fontName="Helvetica" fontSize="7.0" leading="10" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_default_8_R" fontName="Helvetica" fontSize="5.5" leading="10" alignment="RIGHT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_default_8_R_Bold" fontName="Helvetica-Bold" fontSize="6.0" leading="10" alignment="LEFT" spaceBefore="0.0" spaceAfter="4.0"/>
+    <paraStyle name="terp_default_8_num" fontName="Helvetica" fontSize="8.0" leading="10" alignment="LEFT" spaceBefore="1.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_default_8_Center" fontName="Helvetica" fontSize="5.5" leading="10" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_default_80" fontName="Helvetica" fontSize="8.0" leading="0" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_default_6" fontName="Helvetica" fontSize="7" leading="10" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_default_Bold_8" fontName="Helvetica-Bold" fontSize="8.0" leading="10" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_default_Bold_6" fontName="Helvetica-Bold" fontSize="7" leading="10" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_tblheader_Details" fontName="Helvetica-Bold" fontSize="9.0" leading="11" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_tblheader_Details_Centre" fontName="Helvetica-Bold" fontSize="9.0" leading="11" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_default_Centre_8" fontName="Helvetica" fontSize="8.0" leading="10" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_default_Centre_9" fontName="Helvetica" fontSize="9.0" leading="11" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_tblheader_General" fontName="Helvetica-Bold" fontSize="8.0" leading="10" alignment="LEFT" spaceBefore="6.0" spaceAfter="6.0"/>
+    <paraStyle name="terp_tblheader_General_Centre" fontName="Helvetica" fontSize="8.0" leading="10" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="Table Contents" fontName="Helvetica"/>
+    <paraStyle name="Footer" fontName="Helvetica"/>
+    <paraStyle name="Table Heading" fontName="Helvetica" alignment="CENTER"/>
+    <paraStyle name="Horizontal Line" fontName="Helvetica" fontSize="6.0" leading="8" spaceBefore="0.0" spaceAfter="14.0"/>
+    <paraStyle name="Heading 9" fontName="Helvetica-Bold" fontSize="75%" leading="NaN" spaceBefore="12.0" spaceAfter="6.0"/>
+    <paraStyle name="terp_tblheader_General_Right" fontName="Helvetica-Bold" fontSize="8.0" leading="10" alignment="RIGHT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_tblheader_Details_Right" fontName="Helvetica-Bold" fontSize="9.0" leading="11" alignment="RIGHT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_default_Right_8" fontName="Helvetica" fontSize="8.0" leading="10" alignment="RIGHT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_header_Right" fontName="Helvetica-Bold" fontSize="15.0" leading="19" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_default_address" fontName="Helvetica" fontSize="10.0" leading="13" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_default_9" fontName="Helvetica" fontSize="9.0" leading="11" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_default_Bold_9" fontName="Helvetica-Bold" fontSize="9.0" leading="11" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_default_Right_9" fontName="Helvetica" fontSize="9.0" leading="11" alignment="RIGHT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_default_2" fontName="Helvetica" fontSize="2.0" leading="3" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_default_5cm_Above_Space" fontName="Helvetica" fontSize="8.0" leading="10" alignment="LEFT" spaceBefore="6.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_default_1cm_above_space" fontName="Helvetica" fontSize="8.0" leading="10" alignment="LEFT" spaceBefore="3.0" spaceAfter="0.0"/>
+  </stylesheet>
+
+<!-- iznad su stilovi, ispod idu podatci... -->
+  <story>
+	 <para style="terp_default_6"> [[repeatIn(objects,'o')]] </para>   
+	 
+<!-- u tvom slučaju je samo jedan object (o) ali oper radis loop i u njemu! -->
+			<!-- <para style="terp_default_6">[[ setLang(user.lang) ]] </para> -->
+		<para style="terp_default_8" fontSize="8.0" leading="12">
+		Firma,odnosno ime i prezime samostalnog privrednika:  
+		<u>DOO ELNOS BL</u>		
+		</para>
+		<para style="terp_default_8" fontSize="8.0" leading="12">
+		PREVOZ STVARI (javni ili za vlastite potrebe)
+		</para>
+		<blockTable>
+			<tr>
+				<td>
+					<para style="terp_default_8" fontSize="8.0" leading="12">
+						Mesto:[[o.place]]
+					</para>					
+				</td>
+				<td>
+					<para style="terp_default_8" fontSize="8.0" leading="12">
+						Dana: [[o.date]]
+					</para>
+				</td>	
+			</tr>		
+		</blockTable>
+		<para style="terp_default_8" fontSize="8.0" leading="12">Serija: [[o.series]]</para>
+		
+		<para style="terp_header_Centre">
+		PUTNI NALOG
+		za teretrno i kombinovano vozilo
+		Broj:<u>[[o.num]]</u>
+		</para>
+		<para style="terp_default_8" fontSize="10.0" leading="12">
+		Prezime i ime vozača:
+		</para>
+		<blockTable>
+			<tr>
+				<td>
+					<para>
+						1.<u>[[o.driver1_id.name ]]</u> 
+					</para>				
+				</td>
+				<td>
+					<para>
+						2.<u>[[o.driver2_id.name or '________________']]</u> 
+					</para>				
+				</td>
+			</tr>
+		</blockTable>	
+				
+		<para style="terp_default_8" fontSize="10.0" leading="12">
+		Prezime i ime suvozača:
+		</para>
+		<blockTable>
+			<tr>
+				<td>
+					<para>
+						1.<u>[[o.codriver1_id.name or '________________']]</u> 
+					</para>				
+				</td>
+				<td>
+					<para>
+						2.<u>[[o.codriver2_id.name or '________________']]</u> 
+					</para>				
+				</td>
+			</tr>		
+			<tr>
+				<td>
+					<para>
+						3.<u>[[o.codriver3_id.name or '________________']]</u> 
+					</para>				
+				</td>
+				<td>
+					<para>
+						4.<u>[[o.codriver4_id.name or '________________']]</u> 
+					</para>				
+				</td>
+			</tr>
+		</blockTable>
+		<para style="terp_default_8" fontSize="10.0" leading="12">
+		Prezime i ime lica koja vrše utovar-istovar, a prevoze se u prostoru
+		određenom za smještaj tereta:
+		</para>
+		<blockTable>
+			<tr>
+				<td>
+					<para>
+						1.<u>[[o.cargo_worker1_id.name or '________________']]</u>
+					</para>				
+				</td>
+				<td>
+					<para>
+						 2.<u>[[o.cargo_worker2_id.name or '________________']]</u>
+					</para>				
+				</td>
+			</tr>		
+			<tr>
+				<td>
+					<para>
+						3.<u>[[o.cargo_worker3_id.name or '________________']]</u>
+					</para>				
+				</td>
+				<td>
+					<para>
+						 4.<u>[[o.cargo_worker4_id.name or '________________']]</u>
+					</para>				
+				</td>
+			</tr>
+		</blockTable>	
+		<para style="terp_default_8" fontSize="10.0" leading="14">
+		Relacija:<u>[[o.distance]]</u>
+		</para>
+		
+		{{script}}
+			
+			
+		{{endscript}}
+		<blockTable style="Block_Table_1" rowHeights="10mm" colWidths="25mm,25mm,25mm,25mm,25mm">
+			<tr>
+				<td>
+					<para style="terp_tblheader_General_Centre" fontSize="8.0">
+						Marka i tip vozila
+					</para>
+					
+				</td>
+				<td>
+					<para style="terp_tblheader_General_Centre" fontSize="8.0">
+						Sopstvena masa(t)
+					</para>
+					
+				</td>
+				<td>
+					<para style="terp_tblheader_General_Centre" fontSize="8.0">
+						Nosivost(t)
+					</para>
+					
+				</td>
+				<td>
+					<para style="terp_tblheader_General_Centre" fontSize="8.0">
+						Ukupna masa(t)
+					</para>
+					
+				</td>
+				<td>
+					<para style="terp_tblheader_General_Centre" fontSize="8.0">
+						Registarski broj vozila
+					</para>
+					
+				</td>
+			
+			</tr>
+			<tr>
+				<td>
+					<para style="terp_tblheader_General_Centre" fontSize="8.0">
+						[[o.vehicle_id.name]]
+					</para>
+					
+				</td>
+				<td>
+					<para style="terp_tblheader_General_Centre" fontSize="8.0">
+						[[o.vehicle_id.mass]]
+					</para>
+				</td>
+				<td>
+					<para style="terp_tblheader_General_Centre" fontSize="8.0">
+						[[o.vehicle_id.transport_capacity]]
+					</para>
+					
+				</td>
+				<td>
+					<para style="terp_tblheader_General_Centre" fontSize="8.0">
+						[[o.vehicle_id.entire_mass]]
+					</para>
+					
+				</td>
+				<td>
+					<para style="terp_tblheader_General_Centre" fontSize="8.0">
+						[[o.vehicle_id.license_plate]]
+					</para>
+					
+				</td>
+			
+			</tr>
+		
+		</blockTable>
+		<para style="terp_default_8" fontSize="10.0" leading="14">
+			Vozilu je pridodato sljedeće vozilo ___________________________
+		</para>
+		<blockTable style="Block_Table_1" rowHeights="10mm" colWidths="25mm,25mm,25mm,25mm,25mm">
+			<tr>
+				<td>
+					<para style="terp_tblheader_General_Centre" fontSize="8.0">
+						Marka i tip vozila
+					</para>
+					
+				</td>
+				<td>
+					<para style="terp_tblheader_General_Centre" fontSize="8.0">
+						Sopstvena masa(t)
+					</para>
+					
+				</td>
+				<td>
+					<para style="terp_tblheader_General_Centre" fontSize="8.0">
+						Nosivost(t)
+					</para>
+					
+				</td>
+				<td>
+					<para style="terp_tblheader_General_Centre" fontSize="8.0">
+						Ukupna masa(t)
+					</para>
+					
+				</td>
+				<td>
+					<para style="terp_tblheader_General_Centre" fontSize="8.0">
+						Registarski broj vozila
+					</para>
+					
+				</td>
+			
+			</tr>
+			<tr>
+				<td>
+					<para style="terp_tblheader_General_Centre" fontSize="8.0">
+						[[o.additional_vehicle_id.name]]
+					</para>
+					
+				</td>
+				<td>
+					<para style="terp_tblheader_General_Centre" fontSize="8.0">
+						[[o.additional_vehicle_id.mass]]
+					</para>
+				</td>
+				<td>
+					<para style="terp_tblheader_General_Centre" fontSize="8.0">
+						[[o.additional_vehicle_id.transport_capacity ]]
+					</para>
+					
+				</td>
+				<td>
+					<para style="terp_tblheader_General_Centre" fontSize="8.0">
+						[[o.additional_vehicle_id.entire_mass]]
+					</para>
+					
+				</td>
+				<td>
+					<para style="terp_tblheader_General_Centre" fontSize="8.0">
+						[[o.additional_vehicle_id.license_plate]]
+					</para>
+					
+				</td>
+			
+			</tr>
+		
+		</blockTable>
+		<para style="terp_default_8" fontSize="8.0" leading="15" alignment="CENTER">
+			Potvrda o ispravnosti vozila za vožnju
+		</para>
+		<blockTable style="Block_Table_2">
+			<tr>
+				<td>
+					<para style="terp_default_8" fontSize="5.0"  alignment="CENTER">
+						Vozilo primio bez
+						vidljivih nedostataka
+					</para>
+				</td>
+				<td>
+					<para>[['           ']]</para>
+				
+				</td>
+			
+			</tr>
+			<tr>
+				<td>
+					<para style="terp_default_8" fontSize="5.0"  alignment="CENTER">
+						_____________________________________
+						 (potpis vozača)
+					</para>
+					
+				</td>
+				<td>
+					<para style="terp_default_8" fontSize="5.0"  alignment="CENTER">
+						_______________________________________
+						potpis lica ovalšćenog za izdavanja 
+						 		putnog naloga
+					</para>
+					
+				</td>
+			
+			
+			</tr>
+		
+		
+		</blockTable>
+		
+		
+		<nextFrame/>
+		
+		<blockTable style="Block_Table_1" colWidths="12mm,17mm,15mm,12mm,12mm,13mm,12mm,12mm,22mm">
+			<tr>
+				<td>
+					<para style="terp_tblheader_General_Centre" fontSize="6.0">
+						Datum
+					</para>
+					
+				</td>
+				<td>
+					<para style="terp_tblheader_General_Centre" fontSize="6.0">
+						Mesto 
+						tankovanja
+					</para>
+					
+				</td>i
+				<td>
+					<para style="terp_tblheader_General_Centre" fontSize="6.0">
+						Stanje 
+						brojila 
+						KM
+					</para>
+					
+				</td>
+				<td>
+					<para style="terp_tblheader_General_Centre" fontSize="6.0">
+						Plinsko 
+						ulje
+					</para>
+					
+				</td>
+				<td>
+					<para style="terp_tblheader_General_Centre" fontSize="6.0">
+						Benzin
+					</para>
+					
+				</td>
+				<td>
+					<para style="terp_tblheader_General_Centre" fontSize="6.0">
+						Motorno 
+						ulje
+					</para>
+					
+				</td>
+				<td>
+					<para style="terp_tblheader_General_Centre" fontSize="6.0">
+						Ostala 
+						maziva
+					</para>
+					
+				</td>
+				<td>
+					<para style="terp_tblheader_General_Centre" fontSize="6.0">
+						Broj 
+						računa
+					</para>
+					
+				</td>
+				<td>
+					<para style="terp_tblheader_General_Centre" fontSize="6.0">
+						Pumpna stanica
+						(potpis i žig)
+					</para>
+					
+				</td>
+			
+			</tr>
+		</blockTable>
+		<section>
+			<para style="terp_default_2">[[ repeatIn(o.fuel_log_ids,'f') ]]</para>
+			<blockTable style="Block_Table_1" colWidths="12mm,17mm,15mm,12mm,12mm,13mm,12mm,12mm,22mm" rowHeights="12mm" >
+			<tr>
+				<td>
+					<para style="terp_tblheader_General_Centre" fontSize="6.0">
+						[[f.date]]
+					</para>
+					
+				</td>
+				<td>
+					<para style="terp_tblheader_General_Centre" fontSize="6.0">
+						[['  ']]
+					</para>
+					
+				</td>
+				<td>
+					<para style="terp_tblheader_General_Centre" fontSize="6.0">
+						[[f.odometer]]
+					</para>
+					
+				</td>
+				<td>
+					<para style="terp_tblheader_General_Centre" fontSize="6.0">
+						[[f.liter]]
+					</para>
+					
+				</td>
+				<td>
+					<para style="terp_tblheader_General_Centre" fontSize="6.0">
+						[['  ']]
+					</para>
+					
+				</td>
+				<td>
+					<para style="terp_tblheader_General_Centre" fontSize="6.0">
+						[['  ']]
+					</para>
+					
+				</td>
+				<td>
+					<para style="terp_tblheader_General_Centre" fontSize="6.0">
+						[['  ']]
+					</para>
+					
+				</td>
+				<td>
+					<para style="terp_tblheader_General_Centre" fontSize="6.0">
+						[[f.inv_ref]]
+					</para>
+					
+				</td>
+				<td>
+					<para style="terp_tblheader_General_Centre" fontSize="6.0">
+						[['  ']]
+					</para>
+					
+				</td>
+			
+			</tr>
+		</blockTable>	
+		
+		
+		
+		</section>
+		<section>
+			<para style="terp_default_2">[[ repeatIn(empty_rows(o.fuel_log_ids),'e') ]]</para>
+			<blockTable style="Block_Table_1" colWidths="12mm,17mm,15mm,12mm,12mm,13mm,12mm,12mm,22mm" rowHeights="12mm" >
+			<tr>
+				<td>
+					<para style="terp_tblheader_General_Centre" fontSize="6.0">
+						[['    ']]
+					</para>
+					
+				</td>
+				<td>
+					<para style="terp_tblheader_General_Centre" fontSize="6.0">
+						[['  ']]
+					</para>
+					
+				</td>
+				<td>
+					<para style="terp_tblheader_General_Centre" fontSize="6.0">
+						[['   ']]
+					</para>
+					
+				</td>
+				<td>
+					<para style="terp_tblheader_General_Centre" fontSize="6.0">
+						[['  ']]
+					</para>
+					
+				</td>
+				<td>
+					<para style="terp_tblheader_General_Centre" fontSize="6.0">
+						[['  ']]
+					</para>
+					
+				</td>
+				<td>
+					<para style="terp_tblheader_General_Centre" fontSize="6.0">
+						[['  ']]
+					</para>
+					
+				</td>
+				<td>
+					<para style="terp_tblheader_General_Centre" fontSize="6.0">
+						[['  ']]
+					</para>
+					
+				</td>
+				<td>
+					<para style="terp_tblheader_General_Centre" fontSize="6.0">
+						[['   ']]
+					</para>
+					
+				</td>
+				<td>
+					<para style="terp_tblheader_General_Centre" fontSize="6.0">
+						[['  ']]
+					</para>
+					
+				</td>
+			
+			</tr>
+		</blockTable>	
+	</section>
+	<blockTable style="Block_Table_1" colWidths="29mm,15mm,12mm,12mm,13mm,12mm,12mm,22mm" rowHeights="10mm" >
+		<tr>
+			<td>
+				<para>UKUPNO:</para>
+			</td>
+			<td>
+				<para>[['   ']]</para>
+			</td>
+			<td>
+				<para>[['   ']]</para>
+			</td>
+			<td>
+				<para>[['   ']]</para>
+			</td>
+			<td>
+				<para>[['   ']]</para>
+			</td>
+			<td>
+				<para>[['   ']]</para>
+			</td>
+			<td>
+				<para>[['   ']]</para>
+			</td>
+			<td>
+				<para>[['   ']]</para>
+			</td>		
+		</tr>
+	</blockTable>
+	<blockTable style="Block_Table_1" colWidths="93mm,34mm" rowHeights="15mm" >
+		<tr>
+			<td>
+				<para>Napomena:</para>
+			</td>
+			<td>
+				<para>________________
+						(Evidentirao)
+				</para>
+			</td>
+			
+		</tr>	
+	</blockTable>
+	
+	<setNextTemplate name="second"/>
+	<nextFrame/>
+	<spacer width="1"/>
+	<setNextTemplate name="first"/>
+
+	
+
+  </story>
+</document>

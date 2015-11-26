@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+	
+	
+    <record model="ir.actions.act_window" id="open_view_vehicle_other_cost_tree">
+        <field name="name">Vehicle Other Costs</field>
+        <field name="res_model">fleet.vehicle.log.other.cost</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+	
+	
+	
+	
+	   
+    <menuitem name="Vehicle Other Costs" parent="fleet_costs" id="menu_vehicle_other_cost" sequence="80" action="open_view_vehicle_other_cost_tree"/>
+	
+	<record model="ir.ui.view" id="view_vehicle_other_cost_tree"> 
+	    <field name="name">vehicle.other.cost.tree</field> 
+	    <field name="model">fleet.vehicle.log.other.cost</field> 
+	    <field name="arch" type="xml">
+	    	<tree string="Other Costs" editable="bottom">
+   		    	<field name="date"/>
+   		    	<field name="travel_order_id" />
+                <field name="vehicle_id"/>
+                <field name="cost_subtype_id" string="Cost Type" domain="[('category','=','other')]" required="1"/>
+<!--                 <field name="purchaser_id"/> -->
+<!--                 <field name="vendor_id"/> -->
+<!--                 <field name="inv_ref"/> -->
+                <field name="additional_info"/>
+                <field name="amount" sum="Total"/>
+	    	</tree>
+	    </field>
+	</record>	
+	
+	
+	
+	<record model="ir.ui.view" id="view_vehicle_other_cost_form"> 
+	    <field name="name">vehicle.other.cost.form</field> 
+	    <field name="model">fleet.vehicle.log.other.cost</field> 
+	    <field name="arch" type="xml">
+	    	<form string="Other Costs" edit="false" create="false">
+                    <sheet>
+                        <group col="2">
+                            <group string="Cost Details">
+                                <field name="vehicle_id"/>
+                                <field name="cost_subtype_id" string="Cost Type" domain="[('category','=','other')]" required="1"/>
+                                <field name="amount"/>
+                            </group>
+                            <group string="Odometer Details">
+                                <label for="odometer"/>
+                                <div>
+                                    <field name="odometer" class="oe_inline"/>
+                                    <field name="odometer_unit" class="oe_inline"/>
+                                </div>
+                                <field name="travel_order_id"/>
+                            </group>
+                        </group>
+                        <group col="2">
+                            <group string="Additional Details">
+                                <field name="date"/>
+                                <field name="purchaser_id"/>
+                                <field name="vendor_id" context="{'default_supplier': True}"/>
+                                <field name="inv_ref"/>
+                            </group>
+                        </group>
+                        	
+                        <group string="Notes">
+                            <field nolabel="1" name="additional_info" placeholder="Write here any other information related to the service completed."/>
+                        </group>
+                    </sheet>
+                </form>
+		</field>
+	</record>
+	
+	</data>
+</openerp>
