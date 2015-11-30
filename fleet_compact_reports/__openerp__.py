@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 
 {
-    "name" : "Fleet reports",
+    "name" : "Fleet reports - Compact doo",
     "description" : """
 Fleet management system reports
 ==========================
