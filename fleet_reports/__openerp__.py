@@ -13,9 +13,10 @@ Module for advanced reports of Fleet management system
 
     'depends': [
         'fleet',
+        'hr',
     ],
     'data':[
-
+        'wizard/generate_xls_reports_view.xml',
     ],
 
     "installable": True,

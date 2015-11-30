@@ -1,0 +1,45 @@
+<openerp>
+    <data>
+
+        <record id="fleet_excel_report_view" model="ir.ui.view">
+           <field name="name">Fleet excel report selection</field>
+           <field name="model">fleet.excel.report.selection</field>
+           <field name="arch" type="xml">
+            <form string="Create report">
+
+                </group>
+
+                <div states="get">
+                       <h2>Report creation complete</h2>
+                       <p>Here is the xls file: <field name="data" readonly="1" filename="name"/></p>
+                       <p>This file was generated using the universal <strong>Unicode/UTF-8</strong> file encoding, please be sure to view and edit
+                          using the same encoding.</p>
+                   </div>
+
+                <footer states="choose">
+                    <button name="get_report" context="" string="Print" type="object" default_focus="1" class="oe_highlight"/>
+                    or
+                    <button string="Cancel" class="oe_link" special="cancel" />
+                </footer>
+
+                <footer states="get">
+                       <button special="cancel" string="Close" type="object"/>
+                    </footer>
+            </form>
+           </field>
+       </record>
+
+
+               <record id="action_employee_timesheet_report_selection" model="ir.actions.act_window">
+                    <field name="name">Report selection</field>
+                    <field name="res_model">employee.timesheet.report.selection</field>
+                    <field name="type">ir.actions.act_window</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">form</field>
+                    <field name="view_id" ref="employee_timesheet_report_selection_view"/>
+                    <field name="context">{}</field>
+                    <field name="target">new</field>
+              </record>a
+
+    </data>
+</openerp>
