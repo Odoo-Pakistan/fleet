@@ -19,8 +19,8 @@ Added new fields and reports
                 'hr',
                 ],
     'data':[
-             'views/travel_order_view.xml',
-             'views/travel_order_line_view.xml',
+#              'views/travel_order_view.xml',
+#              'views/travel_order_line_view.xml',
              'views/fleet_vehicle_log_fuel_view.xml',
              'views/fleet_vehicle_type_view.xml',
              'views/fleet_vehicle_tyre_view.xml',

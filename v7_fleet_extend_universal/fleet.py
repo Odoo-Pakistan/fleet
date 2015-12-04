@@ -409,288 +409,288 @@ class fleet_vechile(osv.Model):
         
         
         
-class fleet_vehicle_travel_order(osv.Model):
-         
-    _name='fleet.vehicle.travel.order'
-    _rec_name='num'
-    
-
-
-
-    def onchange_vehicle(self,cr,user,ids,vehicle_id,context={}):
-           
-        today = fields.date.context_today(self, cr, user, context=context)
-        month=str(today).split('-',5)[1]
-        year=str(today).split('-',5)[0]
-        year=year+'-01'+'-01'
-        vehicle_id = vehicle_id or 0
-        cr.execute("""SELECT t.num
-                      FROM fleet_vehicle_travel_order t
-                      WHERE t.vehicle_id="""+str(vehicle_id)+""" AND RIGHT(t.num,2)='"""+month+"""' AND t.date>='"""+year+"""'
-                      ORDER BY t.num DESC                          
-                                  
-        """)
-          
-        rez=cr.fetchone() or ()
-        string = ''
-        if rez:
-            string=rez[0]
-            string=str(int(rez[0].split('/',5)[0])+1)+'/'+str(rez[0].split('/',5)[1])
-            if string!='' and (int(string.split('/')[0]) < 10):
-                string='0'+string
-
-        else:
-            string='01/'+month
-        
-
-        cr.execute("SELECT MAX(t.series) FROM fleet_vehicle_travel_order t WHERE  t.date>='"+year+"'")
-        rez2=cr.fetchone() or ()   
-        
-        
-        
-        if rez2:
-            series=rez2[0]
-            
-            if series:
-                series=int(series)+1
-            else:
-                series=1
-                
-            if(series<10):
-                series='00000'+str(series)
-            elif(series<100):
-                series='0000'+str(series)
-            elif(series<1000):
-                series='000'+str(series)
-            elif(series<10000):
-                series='00'+str(series)
-            elif(series<100000):
-                series='0'+str(series)
-            else:
-                series=str(series)
-        else:
-            series='000001'
-        
-        rez = {                   
-               'value':{
-                        'num':string,
-                        'series':series,
-                        }
-                }         
-        
-        return rez
-     
-    def _check_odometer_validity(self,cr,uid,id,value,check_type,context):
-    #provjerava da li je start veci od stop vrijednosti i suprotno
-    #ako je check_type = start onda je pozvana iz start odometra
-        this_obj = self.browse(cr, uid, id, context=context)
-        if(check_type == 'start'):
-            if not this_obj.stop_odometer_id:
-                return True
-            odometer_value = this_obj.stop_odometer_id.value
-            if value > odometer_value:
-                return False
-            else:
-                return True
-        else:
-            if not this_obj.start_odometer_id:
-                return True
-            odometer_value = this_obj.start_odometer_id.value
-            if value < odometer_value:
-                return False
-            else:
-                return True
-            
-        
-        
-        
-     
-    def _set_start_odometer(self, cr, uid, id, name, value, args=None, context=None):
-        if not value:
-            raise except_orm(_('Operation not allowed!'),_('Emptying the odometer value of a vehicle is not allowed.'))
-        if(self._check_odometer_validity(cr, uid, id, value,'start', context) == False):
-            raise except_orm(_('Odometer error'),_('Start odometer value must not be bigger than stop odometer value'))
-        
-        this_obj =self.browse(cr, uid, id, context=context)
-        #ako postoji neki zapis vezan za ovo polje, ukloni ga 
-        if(this_obj.start_odometer_id):
-            self.pool.get('fleet.vehicle.odometer').unlink(cr,1,this_obj.start_odometer_id.id)
-            
-        vehicle_id = this_obj.vehicle_id.id 
-        data = {'value': value, 'vehicle_id': vehicle_id}
-        odometer_id = self.pool.get('fleet.vehicle.odometer').create(cr, uid, data, context=context)
-        return self.write(cr, uid, id, {'start_odometer_id': odometer_id}, context=context)
-
-    def _set_stop_odometer(self, cr, uid, id, name, value, args=None, context=None):
-        if not value:
-            raise except_orm(_('Operation not allowed!'),_('Emptying the odometer value of a vehicle is not allowed.'))
-        if(self._check_odometer_validity(cr, uid, id, value,'stop', context) == False):
-            raise except_orm(_('Odometer error'),_('Stop odometer value must not be lower than start odometer value'))
-        
-        this_obj =self.browse(cr, uid, id, context=context)
-        #ako postoji neki zapis vezan za ovo polje, ukloni ga 
-        if(this_obj.stop_odometer_id):
-            self.pool.get('fleet.vehicle.odometer').unlink(cr,1,this_obj.stop_odometer_id.id)
-        
-        vehicle_id = this_obj.vehicle_id.id
-        data = {'value': value, 'vehicle_id': vehicle_id}
-        odometer_id = self.pool.get('fleet.vehicle.odometer').create(cr, uid, data, context=context)
-        return self.write(cr, uid, id, {'stop_odometer_id': odometer_id}, context=context)
-     
-    def _get_start_odometer(self, cr, uid, ids, odometer_id, arg, context):
-        res = dict.fromkeys(ids, False)
-        for record in self.browse(cr,uid,ids,context=context):
-            if record.start_odometer_id:
-                res[record.id] = record.start_odometer_id.value
-            else:
-                res[record.id] = 0
-                
-        return res
-    
-    def _get_stop_odometer(self, cr, uid, ids, odometer_id, arg, context):
-        res = dict.fromkeys(ids, False)
-        for record in self.browse(cr,uid,ids,context=context):
-            if record.stop_odometer_id:
-                res[record.id] = record.stop_odometer_id.value
-            else:
-                res[record.id] = 0
-        return res
-    
-    def _get_fuel_log_count(self, cr, uid, ids, field_name, arg, context=None):
-        res = {}
-        for id in ids:
-            res[id] = len(self.browse(cr,uid,id,context).fuel_log_ids)
-        return res 
-             
-     
-    _columns={
-               'vehicle_id':fields.many2one('fleet.vehicle','Vehicle',required=True),
-               'additional_vehicle_id':fields.many2one('fleet.vehicle','Additional Vehicle'),
-               'place': fields.char('Place',size=64),
-               'date':fields.date('Date', required=True),
-               'num':fields.char("Number",size=64,required=True),
-               'type' : fields.selection([('cargo','PN3'),('passenger','PN4')],'Type'),
-               'driver1_id':fields.many2one('hr.employee','1st Driver',required=False),
-               'driver2_id':fields.many2one('hr.employee','2nd Driver'),
-               'codriver1_id':fields.many2one('hr.employee','1st Co-Driver'),
-               'codriver2_id':fields.many2one('hr.employee','2nd Co-Driver'),
-               'codriver3_id':fields.many2one('hr.employee','3rd Co-Driver'),
-               'codriver4_id':fields.many2one('hr.employee','4th Co-Driver'),
-               'cargo_worker1_id':fields.many2one('hr.employee','1st Cargo Worker'),  
-               'cargo_worker2_id':fields.many2one('hr.employee','2nd Cargo Worker'),
-               'cargo_worker3_id':fields.many2one('hr.employee','3rd Cargo Worker'),
-               'cargo_worker4_id':fields.many2one('hr.employee','4th Cargo Worker'),            
-               'distance':fields.char('Distance',size=256,required=True),  
-               'fuel_log_ids':fields.one2many('fleet.vehicle.log.fuel','travel_order_id'),
-               'fuel_log_count':fields.function(_get_fuel_log_count,type="integer",string='Fuel Logs'),
-               'travel_order_line_ids':fields.one2many('fleet.vehicle.travel.order.line','travel_order_id'),  
-               'series':fields.char('Series', size=64, required=False),
-               'start_odometer_id': fields.many2one('fleet.vehicle.odometer', 'Odometer start', help='Odometer measure of the vehicle at the moment of this log'),
-               'start_odometer': fields.function(_get_start_odometer, fnct_inv=_set_start_odometer, type='float', string='Odometer start', help='Odometer measure of the vehicle at the moment of this log'),
-               'stop_odometer_id': fields.many2one('fleet.vehicle.odometer', 'Odometer stop', help='Odometer measure of the vehicle at the moment of this log'),
-               'stop_odometer': fields.function(_get_stop_odometer, fnct_inv=_set_stop_odometer, type='float', string='Odometer stop', help='Odometer measure of the vehicle at the moment of this log'),            
-        }
-    
-    _defaults = {
-            'place': 'Draksenić',
-            'date' : fields.datetime.now(),            
-        }
-    
-    
-    
-    def return_action_to_open_view(self, cr, uid, ids, context=None):
-        """ This opens the xml view specified in xml_id for the current vehicle """
-        if context is None:
-            context = {}
-        if context.get('xml_id'):
-            res = self.pool.get('ir.actions.act_window').for_xml_id(cr, uid ,'fleet', context['xml_id'], context=context)
-            context['default_travel_order_id']=ids[0]
-            res['context'] = context
-            res['domain'] = [('travel_order_id','=', ids[0])]
-            return res
-        return False
-        
-    def create(self, cr, uid, data, context=None):
-        #ako nisu setovani da se ne bi pozivala funckija za setovanje
-        if 'start_odometer' in data and not data['start_odometer']:
-           del(data['start_odometer'])
-        if 'stop_odometer' in data and not data['stop_odometer']:
-           del(data['stop_odometer'])
-        return super(fleet_vehicle_travel_order, self).create(cr, uid, data, context=context)
-    
-    def unlink(self,cr,uid,ids,context=None):
-        this_objs = self.browse(cr,uid,ids,context=context)
-        for this_obj in this_objs:
-            if (this_obj.start_odometer_id):
-                self.pool.get('fleet.vehicle.odometer').unlink(cr,1,this_obj.start_odometer_id.id)
-            if (this_obj.stop_odometer_id):
-                self.pool.get('fleet.vehicle.odometer').unlink(cr,1,this_obj.stop_odometer_id.id)
-        return super(fleet_vehicle_travel_order,self).unlink(cr,uid,ids,context=context)
-        
-
-class fleet_vehicle_travel_order_line(osv.Model):
-    
-    _name = 'fleet.vehicle.travel.order.line'
-         
-    def _set_odometer(self, cr, user, travel_order_id, value, context=None):
-         
-        date = fields.date.context_today(self, cr, user, context=context)  
-        tmp=self.pool.get('fleet.vehicle.travel.order').browse(cr, user, travel_order_id, context=context)  
-        #tmp=self.browse(cr,user,id,context=context)    
-         
-    #    vehicle_id = self.pool.get('fleet.vehicle.travel.order').browse(cr,user,tmp.travel_order_id,context=context).vehicle_id
-        data = {'value': value, 'date': date, 'vehicle_id': tmp.vehicle_id.id}
-        self.pool.get('fleet.vehicle.odometer').create(cr, user, data, context=context)
-        return
-    
-    
-    
-    def _set_start_odometer(self, cr, uid, id, name, value, args=None, context=None):
-        if not value:
-            raise except_orm(_('Operation not allowed!'), _('Emptying the odometer value of a vehicle is not allowed.'))
-        date = self.browse(cr, uid, id).date
-        vehicle_id = self.browse(cr, uid, id, context=context).travel_order_id.vehicle_id.id
-        data = {'value': value, 'date': date, 'vehicle_id': vehicle_id}
-        odometer_id = self.pool.get('fleet.vehicle.odometer').create(cr, uid, data, context=context)
-        return self.write(cr, uid, id, {'start_odometer_id': odometer_id}, context=context)
-
-    def _set_stop_odometer(self, cr, uid, id, name, value, args=None, context=None):
-        if not value:
-            raise except_orm(_('Operation not allowed!'), _('Emptying the odometer value of a vehicle is not allowed.'))
-        date = self.browse(cr, uid, id).date
-        vehicle_id = self.browse(cr, uid, id, context=context).travel_order_id.vehicle_id.id
-        data = {'value': value, 'date': date, 'vehicle_id': vehicle_id}
-        odometer_id = self.pool.get('fleet.vehicle.odometer').create(cr, uid, data, context=context)
-        return self.write(cr, uid, id, {'stop_odometer_id': odometer_id}, context=context)
-     
-    def _get_start_odometer(self, cr, uid, ids, odometer_id, arg, context):
-        res = dict.fromkeys(ids, False)
-        for record in self.browse(cr,uid,ids,context=context):
-            if record.start_odometer_id:
-                res[record.id] = record.start_odometer_id.value
-            else:
-                res[record.id] = 0
-        return res
-    
-    def _get_stop_odometer(self, cr, uid, ids, odometer_id, arg, context):
-        res = dict.fromkeys(ids, False)
-        for record in self.browse(cr,uid,ids,context=context):
-            if record.stop_odometer_id:
-                res[record.id] = record.stop_odometer_id.value
-            else:
-                res[record.id] = 0
-        return res
-          
-    _columns={
-              'date':fields.date('Datum'),
-              'distance':fields.char('Distance',size=64),
-              'travel_order_id':fields.many2one('fleet.vehicle.travel.order'),
-              'start_odometer_id': fields.many2one('fleet.vehicle.odometer', 'Odometer start', help='Odometer measure of the vehicle at the moment of this log'),
-              'start_odometer': fields.function(_get_start_odometer, fnct_inv=_set_start_odometer, type='float', string='Odometer start', help='Odometer measure of the vehicle at the moment of this log'),
-              'stop_odometer_id': fields.many2one('fleet.vehicle.odometer', 'Odometer stop', help='Odometer measure of the vehicle at the moment of this log'),
-              'stop_odometer': fields.function(_get_stop_odometer, fnct_inv=_set_stop_odometer, type='float', string='Odometer stop', help='Odometer measure of the vehicle at the moment of this log'),                             
-        }
-    
+# class fleet_vehicle_travel_order(osv.Model):
+#          
+#     _name='fleet.vehicle.travel.order'
+#     _rec_name='num'
+#     
+# 
+# 
+# 
+#     def onchange_vehicle(self,cr,user,ids,vehicle_id,context={}):
+#            
+#         today = fields.date.context_today(self, cr, user, context=context)
+#         month=str(today).split('-',5)[1]
+#         year=str(today).split('-',5)[0]
+#         year=year+'-01'+'-01'
+#         vehicle_id = vehicle_id or 0
+#         cr.execute("""SELECT t.num
+#                       FROM fleet_vehicle_travel_order t
+#                       WHERE t.vehicle_id="""+str(vehicle_id)+""" AND RIGHT(t.num,2)='"""+month+"""' AND t.date>='"""+year+"""'
+#                       ORDER BY t.num DESC                          
+#                                   
+#         """)
+#           
+#         rez=cr.fetchone() or ()
+#         string = ''
+#         if rez:
+#             string=rez[0]
+#             string=str(int(rez[0].split('/',5)[0])+1)+'/'+str(rez[0].split('/',5)[1])
+#             if string!='' and (int(string.split('/')[0]) < 10):
+#                 string='0'+string
+# 
+#         else:
+#             string='01/'+month
+#         
+# 
+#         cr.execute("SELECT MAX(t.series) FROM fleet_vehicle_travel_order t WHERE  t.date>='"+year+"'")
+#         rez2=cr.fetchone() or ()   
+#         
+#         
+#         
+#         if rez2:
+#             series=rez2[0]
+#             
+#             if series:
+#                 series=int(series)+1
+#             else:
+#                 series=1
+#                 
+#             if(series<10):
+#                 series='00000'+str(series)
+#             elif(series<100):
+#                 series='0000'+str(series)
+#             elif(series<1000):
+#                 series='000'+str(series)
+#             elif(series<10000):
+#                 series='00'+str(series)
+#             elif(series<100000):
+#                 series='0'+str(series)
+#             else:
+#                 series=str(series)
+#         else:
+#             series='000001'
+#         
+#         rez = {                   
+#                'value':{
+#                         'num':string,
+#                         'series':series,
+#                         }
+#                 }         
+#         
+#         return rez
+#      
+#     def _check_odometer_validity(self,cr,uid,id,value,check_type,context):
+#     #provjerava da li je start veci od stop vrijednosti i suprotno
+#     #ako je check_type = start onda je pozvana iz start odometra
+#         this_obj = self.browse(cr, uid, id, context=context)
+#         if(check_type == 'start'):
+#             if not this_obj.stop_odometer_id:
+#                 return True
+#             odometer_value = this_obj.stop_odometer_id.value
+#             if value > odometer_value:
+#                 return False
+#             else:
+#                 return True
+#         else:
+#             if not this_obj.start_odometer_id:
+#                 return True
+#             odometer_value = this_obj.start_odometer_id.value
+#             if value < odometer_value:
+#                 return False
+#             else:
+#                 return True
+#             
+#         
+#         
+#         
+#      
+#     def _set_start_odometer(self, cr, uid, id, name, value, args=None, context=None):
+#         if not value:
+#             raise except_orm(_('Operation not allowed!'),_('Emptying the odometer value of a vehicle is not allowed.'))
+#         if(self._check_odometer_validity(cr, uid, id, value,'start', context) == False):
+#             raise except_orm(_('Odometer error'),_('Start odometer value must not be bigger than stop odometer value'))
+#         
+#         this_obj =self.browse(cr, uid, id, context=context)
+#         #ako postoji neki zapis vezan za ovo polje, ukloni ga 
+#         if(this_obj.start_odometer_id):
+#             self.pool.get('fleet.vehicle.odometer').unlink(cr,1,this_obj.start_odometer_id.id)
+#             
+#         vehicle_id = this_obj.vehicle_id.id 
+#         data = {'value': value, 'vehicle_id': vehicle_id}
+#         odometer_id = self.pool.get('fleet.vehicle.odometer').create(cr, uid, data, context=context)
+#         return self.write(cr, uid, id, {'start_odometer_id': odometer_id}, context=context)
+# 
+#     def _set_stop_odometer(self, cr, uid, id, name, value, args=None, context=None):
+#         if not value:
+#             raise except_orm(_('Operation not allowed!'),_('Emptying the odometer value of a vehicle is not allowed.'))
+#         if(self._check_odometer_validity(cr, uid, id, value,'stop', context) == False):
+#             raise except_orm(_('Odometer error'),_('Stop odometer value must not be lower than start odometer value'))
+#         
+#         this_obj =self.browse(cr, uid, id, context=context)
+#         #ako postoji neki zapis vezan za ovo polje, ukloni ga 
+#         if(this_obj.stop_odometer_id):
+#             self.pool.get('fleet.vehicle.odometer').unlink(cr,1,this_obj.stop_odometer_id.id)
+#         
+#         vehicle_id = this_obj.vehicle_id.id
+#         data = {'value': value, 'vehicle_id': vehicle_id}
+#         odometer_id = self.pool.get('fleet.vehicle.odometer').create(cr, uid, data, context=context)
+#         return self.write(cr, uid, id, {'stop_odometer_id': odometer_id}, context=context)
+#      
+#     def _get_start_odometer(self, cr, uid, ids, odometer_id, arg, context):
+#         res = dict.fromkeys(ids, False)
+#         for record in self.browse(cr,uid,ids,context=context):
+#             if record.start_odometer_id:
+#                 res[record.id] = record.start_odometer_id.value
+#             else:
+#                 res[record.id] = 0
+#                 
+#         return res
+#     
+#     def _get_stop_odometer(self, cr, uid, ids, odometer_id, arg, context):
+#         res = dict.fromkeys(ids, False)
+#         for record in self.browse(cr,uid,ids,context=context):
+#             if record.stop_odometer_id:
+#                 res[record.id] = record.stop_odometer_id.value
+#             else:
+#                 res[record.id] = 0
+#         return res
+#     
+#     def _get_fuel_log_count(self, cr, uid, ids, field_name, arg, context=None):
+#         res = {}
+#         for id in ids:
+#             res[id] = len(self.browse(cr,uid,id,context).fuel_log_ids)
+#         return res 
+#              
+#      
+#     _columns={
+#                'vehicle_id':fields.many2one('fleet.vehicle','Vehicle',required=True),
+#                'additional_vehicle_id':fields.many2one('fleet.vehicle','Additional Vehicle'),
+#                'place': fields.char('Place',size=64),
+#                'date':fields.date('Date', required=True),
+#                'num':fields.char("Number",size=64,required=True),
+#                'type' : fields.selection([('cargo','PN3'),('passenger','PN4')],'Type'),
+#                'driver1_id':fields.many2one('hr.employee','1st Driver',required=False),
+#                'driver2_id':fields.many2one('hr.employee','2nd Driver'),
+#                'codriver1_id':fields.many2one('hr.employee','1st Co-Driver'),
+#                'codriver2_id':fields.many2one('hr.employee','2nd Co-Driver'),
+#                'codriver3_id':fields.many2one('hr.employee','3rd Co-Driver'),
+#                'codriver4_id':fields.many2one('hr.employee','4th Co-Driver'),
+#                'cargo_worker1_id':fields.many2one('hr.employee','1st Cargo Worker'),  
+#                'cargo_worker2_id':fields.many2one('hr.employee','2nd Cargo Worker'),
+#                'cargo_worker3_id':fields.many2one('hr.employee','3rd Cargo Worker'),
+#                'cargo_worker4_id':fields.many2one('hr.employee','4th Cargo Worker'),            
+#                'distance':fields.char('Distance',size=256,required=True),  
+#                'fuel_log_ids':fields.one2many('fleet.vehicle.log.fuel','travel_order_id'),
+#                'fuel_log_count':fields.function(_get_fuel_log_count,type="integer",string='Fuel Logs'),
+#                'travel_order_line_ids':fields.one2many('fleet.vehicle.travel.order.line','travel_order_id'),  
+#                'series':fields.char('Series', size=64, required=False),
+#                'start_odometer_id': fields.many2one('fleet.vehicle.odometer', 'Odometer start', help='Odometer measure of the vehicle at the moment of this log'),
+#                'start_odometer': fields.function(_get_start_odometer, fnct_inv=_set_start_odometer, type='float', string='Odometer start', help='Odometer measure of the vehicle at the moment of this log'),
+#                'stop_odometer_id': fields.many2one('fleet.vehicle.odometer', 'Odometer stop', help='Odometer measure of the vehicle at the moment of this log'),
+#                'stop_odometer': fields.function(_get_stop_odometer, fnct_inv=_set_stop_odometer, type='float', string='Odometer stop', help='Odometer measure of the vehicle at the moment of this log'),            
+#         }
+#     
+#     _defaults = {
+#             'place': 'Draksenić',
+#             'date' : fields.datetime.now(),            
+#         }
+#     
+#     
+#     
+#     def return_action_to_open_view(self, cr, uid, ids, context=None):
+#         """ This opens the xml view specified in xml_id for the current vehicle """
+#         if context is None:
+#             context = {}
+#         if context.get('xml_id'):
+#             res = self.pool.get('ir.actions.act_window').for_xml_id(cr, uid ,'fleet', context['xml_id'], context=context)
+#             context['default_travel_order_id']=ids[0]
+#             res['context'] = context
+#             res['domain'] = [('travel_order_id','=', ids[0])]
+#             return res
+#         return False
+#         
+#     def create(self, cr, uid, data, context=None):
+#         #ako nisu setovani da se ne bi pozivala funckija za setovanje
+#         if 'start_odometer' in data and not data['start_odometer']:
+#            del(data['start_odometer'])
+#         if 'stop_odometer' in data and not data['stop_odometer']:
+#            del(data['stop_odometer'])
+#         return super(fleet_vehicle_travel_order, self).create(cr, uid, data, context=context)
+#     
+#     def unlink(self,cr,uid,ids,context=None):
+#         this_objs = self.browse(cr,uid,ids,context=context)
+#         for this_obj in this_objs:
+#             if (this_obj.start_odometer_id):
+#                 self.pool.get('fleet.vehicle.odometer').unlink(cr,1,this_obj.start_odometer_id.id)
+#             if (this_obj.stop_odometer_id):
+#                 self.pool.get('fleet.vehicle.odometer').unlink(cr,1,this_obj.stop_odometer_id.id)
+#         return super(fleet_vehicle_travel_order,self).unlink(cr,uid,ids,context=context)
+#         
+# 
+# class fleet_vehicle_travel_order_line(osv.Model):
+#     
+#     _name = 'fleet.vehicle.travel.order.line'
+#          
+#     def _set_odometer(self, cr, user, travel_order_id, value, context=None):
+#          
+#         date = fields.date.context_today(self, cr, user, context=context)  
+#         tmp=self.pool.get('fleet.vehicle.travel.order').browse(cr, user, travel_order_id, context=context)  
+#         #tmp=self.browse(cr,user,id,context=context)    
+#          
+#     #    vehicle_id = self.pool.get('fleet.vehicle.travel.order').browse(cr,user,tmp.travel_order_id,context=context).vehicle_id
+#         data = {'value': value, 'date': date, 'vehicle_id': tmp.vehicle_id.id}
+#         self.pool.get('fleet.vehicle.odometer').create(cr, user, data, context=context)
+#         return
+#     
+#     
+#     
+#     def _set_start_odometer(self, cr, uid, id, name, value, args=None, context=None):
+#         if not value:
+#             raise except_orm(_('Operation not allowed!'), _('Emptying the odometer value of a vehicle is not allowed.'))
+#         date = self.browse(cr, uid, id).date
+#         vehicle_id = self.browse(cr, uid, id, context=context).travel_order_id.vehicle_id.id
+#         data = {'value': value, 'date': date, 'vehicle_id': vehicle_id}
+#         odometer_id = self.pool.get('fleet.vehicle.odometer').create(cr, uid, data, context=context)
+#         return self.write(cr, uid, id, {'start_odometer_id': odometer_id}, context=context)
+# 
+#     def _set_stop_odometer(self, cr, uid, id, name, value, args=None, context=None):
+#         if not value:
+#             raise except_orm(_('Operation not allowed!'), _('Emptying the odometer value of a vehicle is not allowed.'))
+#         date = self.browse(cr, uid, id).date
+#         vehicle_id = self.browse(cr, uid, id, context=context).travel_order_id.vehicle_id.id
+#         data = {'value': value, 'date': date, 'vehicle_id': vehicle_id}
+#         odometer_id = self.pool.get('fleet.vehicle.odometer').create(cr, uid, data, context=context)
+#         return self.write(cr, uid, id, {'stop_odometer_id': odometer_id}, context=context)
+#      
+#     def _get_start_odometer(self, cr, uid, ids, odometer_id, arg, context):
+#         res = dict.fromkeys(ids, False)
+#         for record in self.browse(cr,uid,ids,context=context):
+#             if record.start_odometer_id:
+#                 res[record.id] = record.start_odometer_id.value
+#             else:
+#                 res[record.id] = 0
+#         return res
+#     
+#     def _get_stop_odometer(self, cr, uid, ids, odometer_id, arg, context):
+#         res = dict.fromkeys(ids, False)
+#         for record in self.browse(cr,uid,ids,context=context):
+#             if record.stop_odometer_id:
+#                 res[record.id] = record.stop_odometer_id.value
+#             else:
+#                 res[record.id] = 0
+#         return res
+#           
+#     _columns={
+#               'date':fields.date('Datum'),
+#               'distance':fields.char('Distance',size=64),
+#               'travel_order_id':fields.many2one('fleet.vehicle.travel.order'),
+#               'start_odometer_id': fields.many2one('fleet.vehicle.odometer', 'Odometer start', help='Odometer measure of the vehicle at the moment of this log'),
+#               'start_odometer': fields.function(_get_start_odometer, fnct_inv=_set_start_odometer, type='float', string='Odometer start', help='Odometer measure of the vehicle at the moment of this log'),
+#               'stop_odometer_id': fields.many2one('fleet.vehicle.odometer', 'Odometer stop', help='Odometer measure of the vehicle at the moment of this log'),
+#               'stop_odometer': fields.function(_get_stop_odometer, fnct_inv=_set_stop_odometer, type='float', string='Odometer stop', help='Odometer measure of the vehicle at the moment of this log'),                             
+#         }
+#     
 class fleet_vehicle_cost(osv.Model):
     _name = 'fleet.vehicle.cost'
     _inherit = 'fleet.vehicle.cost'
@@ -735,21 +735,21 @@ class fleet_vehicle_cost(osv.Model):
                
          
         
-class fleet_vehicle_log_fuel(osv.Model):
-    _name='fleet.vehicle.log.fuel'
-    _inherit='fleet.vehicle.log.fuel'
-    
-    _columns={
-              'travel_order_id':fields.many2one('fleet.vehicle.travel.order','Travel Order'),
-              'department_id': fields.related('vehicle_id', 'department_id',store=True, relation='hr.department', type='many2one', string='Department'),
-        }
-    
-    def unlink(self,cr,uid,ids,context=None):
-        this_objs = self.browse(cr,uid,ids,context=context)
-        for this_obj in this_objs:
-            if(this_obj.cost_id):
-                self.pool.get('fleet.vehicle.cost').unlink(cr,1,this_obj.cost_id.id)
-        return super(fleet_vehicle_log_fuel,self).unlink(cr,uid,ids,context=context)
+# class fleet_vehicle_log_fuel(osv.Model):
+#     _name='fleet.vehicle.log.fuel'
+#     _inherit='fleet.vehicle.log.fuel'
+#     
+#     _columns={
+#               'travel_order_id':fields.many2one('fleet.vehicle.travel.order','Travel Order'),
+#               'department_id': fields.related('vehicle_id', 'department_id',store=True, relation='hr.department', type='many2one', string='Department'),
+#         }
+#     
+#     def unlink(self,cr,uid,ids,context=None):
+#         this_objs = self.browse(cr,uid,ids,context=context)
+#         for this_obj in this_objs:
+#             if(this_obj.cost_id):
+#                 self.pool.get('fleet.vehicle.cost').unlink(cr,1,this_obj.cost_id.id)
+#         return super(fleet_vehicle_log_fuel,self).unlink(cr,uid,ids,context=context)
 
 class fleet_vehicle_log_services(osv.Model):
     _name = 'fleet.vehicle.log.services'
