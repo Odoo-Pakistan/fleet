@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
 
@@ -6,6 +7,8 @@
            <field name="model">fleet.compact.excel.report.selection</field>
            <field name="arch" type="xml">
             <form string="Kreiraj izvještaj">
+
+                <field name="state" invisible="1" />
 
                 <group states="choose" string="Podešavanja izvještaja">
                     <field name="report_type" />
@@ -17,10 +20,10 @@
                 </group>
 
                 <div states="get">
-                   <h2>Kreiranje izvještaja završeno</h2>
-                   <p>Ovo je xls fajl: <field name="data" readonly="1" filename="name"/></p>
-                   <p>Ovaj fajl je generisan korištenjem <strong>Unicode/UTF-8</strong> karakter seta, pa kada ga budete koristili
-                      otvorite ga sa istim karakter setom.</p>
+                   <h2> Kreiranje izvještaja završeno </h2>
+                   <p> <field class="oe_inline" name="name" readonly="1"/> <field class="oe_inline" name="data" filename="name" readonly="1"/>  </p>
+                   <p> Ovaj fajl je generisan korištenjem <strong>Unicode/UTF-8</strong> karakter seta, pa kada ga budete koristili
+                      otvorite ga sa istim karakter setom. </p>
                 </div>
 
                 <footer states="choose">
@@ -48,6 +51,10 @@
             <field name="context">{}</field>
             <field name="target">new</field>
       </record>
+
+
+        <menuitem name="Izvještaji" parent="fleet.menu_root" id="fleet_reports" sequence="100" groups="fleet.group_fleet_manager"/>
+        <menuitem name="Izbor izvještaja" action="fleet_excel_report_action" parent="fleet_reports" id="fleet_izbor_excel_izvjestaja" sequence="100" groups="fleet.group_fleet_manager"/>
 
     </data>
 </openerp>
