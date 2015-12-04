@@ -29,15 +29,11 @@ class fleet_vehicle_travel_order(models.Model):
     def _set_stop_odometer(self):
         pass
     
-    
     #sa v8
     @api.multi
     def _compute_total_km(self):
         pass
     
-    @api.multi
-    def _get_counts_for_travel_order(self):
-        pass
     
     
     
@@ -47,7 +43,7 @@ class fleet_vehicle_travel_order(models.Model):
     place = fields.Char('Place',size=64,default='Banja Luka')
     date = fields.Date('Date',required = True,default=fields.datetime.now())
     num = fields.Char('Number',size=64,required = True)
-    type = fields.Selection([('cargo','PN3'),('passenger','PN4')],'Type',default='passenger')
+    type = fields.Selection([('cargo','PN3'),('passenger','PN4')],'Type',default='cargo')
     driver1_id = fields.Many2one('hr.employee','1st Driver')
     driver2_id = fields.Many2one('hr.employee','2nd Driver')
     codriver1_id = fields.Many2one('hr.employee','1st Co-Driver')
@@ -114,6 +110,8 @@ class fleet_vehicle_travel_order(models.Model):
                 new_series = 1     
         
             self.series = str(new_series).zfill(6)        
+    
+   
     
     @api.multi     
     def return_fuel_logs(self):
