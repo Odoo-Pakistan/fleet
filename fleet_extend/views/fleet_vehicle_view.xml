@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>		
+	     <!-- #### FORM VIEW #### -->   	     
+	     
+	     <record model="ir.ui.view" id="fleet_vehicle_form_inherit">
+			<field name="name">fleet.vehicle.form.inherit</field>
+			<field name="model">fleet.vehicle</field>
+			<field name="inherit_id" ref="fleet.fleet_vehicle_form" />
+			<field name="arch" type="xml">
+				<data>
+				
+<!-- 					<xpath expr="//button[@name='return_action_to_open']" position="after"> -->
+<!-- 						<button name="return_action_to_open_travel_orders"  -->
+<!-- 								class="oe_stat_button" -->
+<!-- 								icon="fa-book" -->
+<!-- 								type="object"  -->
+<!-- 								context="{'xml_id':'fleet_vehicle_order_act'}"  -->
+<!-- 								help="show travel orders for this vehicle" >  -->
+<!-- 							<field name="travel_order_count" widget="statinfo" /> -->
+<!-- 						</button>  -->
+<!-- 					</xpath> -->
+
+					<xpath expr="//label[@for='license_plate']" position="before">
+						<label for="type_id" class="oe_edit_only" />
+						<h2>
+							<field name="type_id"/>
+						</h2>
+						<field name="reg_required" invisible="1" />
+					</xpath>
+					
+					<xpath expr="//field[@name='car_value']" position="after">
+						<field name="avg_fuel_consumption" readonly="1"/>
+					</xpath>
+
+					<xpath expr="//field[@name='license_plate']" position="attributes">
+						<attribute name="attrs">{'required':[('reg_required','=',True)]}</attribute>
+					</xpath>
+					
+					<xpath expr="//field[@name='vin_sn']" position="after">
+						<field name="engine_num" />
+					</xpath>
+					
+					<xpath expr="//field[@name='color']" position="after">
+						<field name="mass" />
+						<field name="transport_capacity" />
+						<field name="entire_mass" />
+					</xpath>
+					
+					<xpath expr="//field[@name='seats']" position="before">
+						<field name="gps_num" />
+						<field name="year_manufactured" />
+						<field name="country_id" />
+					</xpath>
+					
+					<xpath expr="//field[@name='transmission']" position="before">
+						<field name="engine_volume_ccm3" />
+					</xpath>
+					
+					<xpath expr="//field[@name='driver_id']" position="after">
+<!-- 						<field name="department_id" widget="selection"/> -->
+					</xpath>
+					
+<!-- 					<xpath expr="//field[@name='seats']/../.." position="after"> -->
+<!-- 							<notebook> -->
+<!-- 								<page string="Tires"> -->
+<!-- 									<field name="tyre_ids"> -->
+<!-- 										<tree string="Tires"> -->
+<!-- 											<field name="name" /> -->
+<!-- 											<field name="type" /> -->
+<!-- 											<field name="note" /> -->
+<!-- 										</tree> -->
+<!-- 									</field> -->
+<!-- 								</page> -->
+<!-- 								<page string="Gear"> -->
+<!-- 									<field name="gear_ids"> -->
+<!-- 										<tree string="Gear" editable="top"> -->
+<!-- 											<field name="gear_id" /> -->
+<!-- 											<field name="date" attrs="{'required':[('alert','=',True)]}"/> -->
+<!-- 											<field name="alert" /> -->
+<!-- 											<field name="overdue" invisible="1" /> -->
+<!-- 											<field name="due_soon" invisible="1" /> -->
+<!-- 										</tree> -->
+<!-- 									</field> -->
+<!-- 								</page>	 -->
+<!-- 								<page string="Amortization" groups="fleet.group_fleet_manager"> -->
+<!-- 									<group> -->
+<!-- 										<field name="amortization_factor" /> -->
+<!-- 										<field name="salvage_value" /> -->
+<!-- 									</group> -->
+<!-- 									<button name="generate_amortization" type="object" context="{}" string="Generate amortization records" help="" /> -->
+<!-- 									<field name="amortization_ids"> -->
+<!-- 										<tree string="Amortization"> -->
+<!-- 											<field name="month" /> -->
+<!-- 											<field name="amount" /> -->
+<!-- 										</tree> -->
+<!-- 									</field> -->
+<!-- 								</page> -->
+<!-- 							</notebook> -->
+<!-- 					</xpath> -->
+					
+					<xpath expr="//field[@name='entire_mass']" position="after">
+						<field name="notes" />
+					</xpath>
+					
+					<xpath expr="//group[@string='General Properties']" position="inside">
+						<group string="Technical inspection">
+							<field name="technical_inspection_date" />
+							<field name="six_months_technical_inspection" />
+						</group>
+					</xpath>
+				</data>
+			</field>
+		</record>
+		
+<!-- 		<record model="ir.ui.view" id="fleet_vehicle_form_inherit_V7_add_colors"> -->
+<!-- 			<field name="name">v8fleet.vehicle.form.inherit</field> -->
+<!-- 			<field name="model">fleet.vehicle</field> -->
+<!-- 			<field name="inherit_id" ref="v7_fleet_extend_universal.fleet_vehicle_form_inherit" /> -->
+<!-- 			<field name="arch" type="xml"> -->
+<!-- 				<data> -->
+<!-- 					<xpath expr="//tree[@string='Gear']" position="attributes"> -->
+<!-- 						<attribute name="colors">orange:due_soon and not overdue;red:overdue -->
+<!-- 						</attribute> -->
+<!-- 					</xpath> -->
+				
+<!-- 				</data> -->
+<!-- 			</field> -->
+<!-- 		</record> -->
+		
+		<!-- #### SEARCH VIEW #### -->		
+		
+		<record model="ir.ui.view" id="view_vehicle_search">
+			<field name="name">view.vehicle.search</field>
+			<field name="model">fleet.vehicle</field>
+			<field name="arch" type="xml">
+				<search>
+				
+					<field name="license_plate"/>
+					<field name="model_id"/>
+<!-- 					<filter name="alert_true" domain="['|',('contract_renewal_due_soon','=',True),('contract_renewal_overdue','=',True)]" string="Has Alert(s)"/> -->
+					<filter string="Gasoilne" icon="terp-project" domain = "[('fuel_type','=','gasoline')]"/>
+					<filter string="Diesel" icon="terp-project" domain = "[('fuel_type','=','diesel')]"/>
+					<filter string="Electric" icon="terp-project" domain = "[('fuel_type','=','electric')]"/>
+					<filter string="Hybrid" icon="terp-project" domain = "[('fuel_type','=','hybrid')]"/>
+					<group expand="1" string="Group by..">
+						<filter string="Fuel type"  domain="" context="{'group_by':'fuel_type'}"/>
+						<filter string="Type" domain="" context="{'group_by':'type_id'}"/>
+						<filter string="Department" name="group_dep" domain="" context="{'group_by':'department_id'}" /> 
+						<filter string="Year manufactured" icon="terp-project" domain="[]" context="{'group_by':'year_manufactured'}" />
+						<filter string="Country" icon="terp-project" domain="[]" context="{'group_by':'country_id'}" />
+						<filter string="Model" icon="terp-project" domain="[]" context="{'group_by':'model_id'}" />
+					</group>   					
+				</search>
+			</field>		
+		</record>
+		
+		
+		<!-- #### ACTION #### -->
+		
+		<record id="fleet.fleet_vehicle_act" model="ir.actions.act_window">
+   			 <field name="name">Vehicle</field>
+   			 <field name="type">ir.actions.act_window</field>
+   			 <field name="res_model">fleet.vehicle</field>
+   			 <field name="view_type">form</field>
+   			 <field name="view_mode">tree,kanban,form</field>
+   			 <field name="context">{}</field>
+   			 <field name="search_view_id" ref="view_vehicle_search"/>
+		</record>
+	
+	</data>
+</openerp>
+	     
