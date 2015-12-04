@@ -4,7 +4,7 @@
     "name" : "Fleet order menu items",
     "description" : """
 Fleet order menu items
-==========================
+========================================================================
 Module for ordering menu items of Fleet management module
 """,
     "version" : "1.00",

@@ -1,18 +1,18 @@
 # -*- encoding: utf-8 -*-
 
 {
-    "name" : "Fleet - Travel order + Services",
+    "name" : "Fleet - Travel order and vehicle costs relationship",
     "description" : """
-Travel order + Services
-==========================
-This module makes relationship between travel orders and services (costs)
+Travel order + vehicle costs
+=========================================================================
+This module makes relationship between travel orders and vehicle costs
 """,
     "version" : "1.00",
     "author" : "B++",
     "category" : "Managing vehicles and contracts",
 
     'depends': [
-        'fleet_service_extend',
+        'fleet_vehicle_cost_extend',
         'fleet_travel_order',
     ],
     'data':[
