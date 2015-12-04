@@ -20,6 +20,18 @@ class fleet_vehicle(models.Model):
     def _get_transport_capacity(self):
         pass
     
+    
+    @api.multi
+    @api.depends('height', 'width', 'length')
+    def _get_volume(self):
+        for rec in self:
+            vol = 0
+            if rec.height and rec.width and rec.length:
+                vol = rec.height * rec.width * rec.length
+            rec.volume = vol
+    
+    
+    
     type_id = fields.Many2one('fleet.vehicle.type', 'Vehicle type',default=_get_default_type)
     reg_required = fields.Boolean('Registration required?')
     avg_fuel_consumption = fields.Float(compute = _get_avg_fuel_consumption, string='Average fuel consumption')
@@ -47,6 +59,14 @@ class fleet_vehicle(models.Model):
 #             'travel_order_ids': fields.one2many('fleet.vehicle.travel.order', 'vehicle_id', 'Travel Orders'),
 #             'travel_order_count': fields.function(_count_travel_orders, type='integer', string='Travel Orders'),
 #     }
+
+
+    #sa v8
+    height = fields.Float('Height')
+    width = fields.Float('Width')
+    length = fields.Float('Length')
+    volume = fields.Float('Volume', compute=_get_volume, store=True)
+    
 
     @api.onchange('type_id')
     def onchange_type(self):
