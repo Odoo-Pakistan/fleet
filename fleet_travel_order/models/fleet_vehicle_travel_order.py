@@ -17,22 +17,28 @@ class fleet_vehicle_travel_order(models.Model):
         for obj in self:
             obj.fuel_log_count = len(obj.fuel_log_ids)
     
-    def _get_start_odometer(self):
-        pass
+    def _get_odometer(self):
+        for obj in self:
+            if obj.travel_order_line_ids and obj.travel_order_line_ids[0]:
+                obj.start_odometer = obj.travel_order_line_ids[0].start_odometer
+                obj.stop_odometer = obj.travel_order_line_ids[len(obj.travel_order_line_ids)-1].stop_odometer
+            else:
+                obj.start_odometer = 0
+                obj.stop_odometer = 0
+                
     
     def _set_start_odometer(self):
         pass
     
-    def _get_stop_odometer(self):
-        pass
-    
+      
     def _set_stop_odometer(self):
         pass
     
     #sa v8
     @api.multi
     def _compute_total_km(self):
-        pass
+        for obj in self:
+            obj.total_km = obj.stop_odometer - obj.start_odometer
     
     
     
@@ -60,9 +66,9 @@ class fleet_vehicle_travel_order(models.Model):
     travel_order_line_ids = fields.One2many('fleet.vehicle.travel.order.line','travel_order_id')
     series = fields.Char('Series',size=64)
     start_odometer_id = fields.Many2one('fleet.vehicle.odometer', string ='Odometer start', help='Odometer measure of the vehicle at the moment of this log')
-    start_odometer = fields.Float(compute=_get_start_odometer, inverse = _set_start_odometer, string='Odometer start', help='Odometer measure of the vehicle at the moment of this log')
+    start_odometer = fields.Float(compute=_get_odometer, inverse = _set_start_odometer, string='Odometer start', help='Odometer measure of the vehicle at the moment of this log')
     stop_odometer_id = fields.Many2one('fleet.vehicle.odometer', string='Odometer stop', help='Odometer measure of the vehicle at the moment of this log')
-    stop_odometer = fields.Float(compute=_get_stop_odometer, inverse = _set_stop_odometer, string = 'Odometer stop', help='Odometer measure of the vehicle at the moment of this log')
+    stop_odometer = fields.Float(compute=_get_odometer, inverse = _set_stop_odometer, string = 'Odometer stop', help='Odometer measure of the vehicle at the moment of this log')
     #sa V8
     private_km = fields.Float(string='Private (km)')
     loaded_km = fields.Float(string='Loaded (km)')

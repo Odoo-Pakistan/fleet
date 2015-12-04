@@ -67,10 +67,10 @@ class fleet_vehicle_travel_order_line(models.Model):
     #columns
     date = fields.Date('Date')
     distance = fields.Char('Distance')
-    travel_order_id = fields.Many2one('fleet.vehicle.travel.order',string = 'Travel Order')
-    start_odometer_id = fields.Many2one('fleet.vehicle.odometer', string ='Odometer start', help='Odometer measure of the vehicle at the moment of this log')
+    travel_order_id = fields.Many2one('fleet.vehicle.travel.order',string = 'Travel Order',ondelete="cascade")
+    start_odometer_id = fields.Many2one('fleet.vehicle.odometer', string ='Odometer start', help='Odometer measure of the vehicle at the moment of this log',ondelete="cascade")
     start_odometer = fields.Float(compute=_get_start_odometer, inverse = _set_start_odometer, string='Odometer start', help='Odometer measure of the vehicle at the moment of this log')
-    stop_odometer_id = fields.Many2one('fleet.vehicle.odometer', string='Odometer stop', help='Odometer measure of the vehicle at the moment of this log')
+    stop_odometer_id = fields.Many2one('fleet.vehicle.odometer', string='Odometer stop', help='Odometer measure of the vehicle at the moment of this log', ondelete="cascade")
     stop_odometer = fields.Float(compute=_get_stop_odometer, inverse = _set_stop_odometer, string = 'Odometer stop', help='Odometer measure of the vehicle at the moment of this log')
     
     
@@ -85,12 +85,12 @@ class fleet_vehicle_travel_order_line(models.Model):
  
  
      
-    @api.v7
-    def unlink(self,cr,uid,ids,context=None):
-        this_objs = self.browse(cr,uid,ids,context=context)
-        for this_obj in this_objs:
-            if (this_obj.start_odometer_id):
-                self.pool.get('fleet.vehicle.odometer').unlink(cr,1,this_obj.start_odometer_id.id)
-            if (this_obj.stop_odometer_id):
-                self.pool.get('fleet.vehicle.odometer').unlink(cr,1,this_obj.stop_odometer_id.id)
-        return super(fleet_vehicle_travel_order_line,self).unlink(cr,uid,ids,context=context)
+#     @api.v7
+#     def unlink(self,cr,uid,ids,context=None):
+#         this_objs = self.browse(cr,uid,ids,context=context)
+#         for this_obj in this_objs:
+#             if (this_obj.start_odometer_id):
+#                 self.pool.get('fleet.vehicle.odometer').unlink(cr,1,this_obj.start_odometer_id.id)
+#             if (this_obj.stop_odometer_id):
+#                 self.pool.get('fleet.vehicle.odometer').unlink(cr,1,this_obj.stop_odometer_id.id)
+#         return super(fleet_vehicle_travel_order_line,self).unlink(cr,uid,ids,context=context)

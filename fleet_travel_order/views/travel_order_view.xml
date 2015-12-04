@@ -69,6 +69,15 @@
 	                                <field name="cargo_worker3_id"/>
 	                                <field name="cargo_worker4_id"/>
 	                        </group>
+	                        <group string ="Odometer">
+			             		<field name="start_odometer"/>
+			             		<field name="stop_odometer"/>
+			             		<field name="total_km" />           		
+			             	</group>
+			             	<group string ="Kilometres">
+			             		<field name="private_km"/>
+			             		<field name="loaded_km"/>             		
+			             	</group>
                         </group>
                         <group string="Distance">
                               <field name="distance"/>
@@ -76,7 +85,7 @@
                         <notebook>
                             <page string="Travel Order Line">
                                 <field name="travel_order_line_ids">
-                                    <tree >
+                                    <tree editable="bottom">
                                         <field name="date"/>
                                         <field name="distance" />
                                         <field name="start_odometer" />
