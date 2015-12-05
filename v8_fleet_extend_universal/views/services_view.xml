@@ -8,9 +8,7 @@
         <field name="inherit_id" ref="fleet.fleet_vehicle_service_types_tree" />
         <field name="arch" type="xml">
             <data>
-            	
-            	
-            
+
             	<xpath expr="//field[@name='category']" position="after">
 	    			<field name="parent_id" />
 	    			<field name="next_service" />
@@ -18,7 +16,7 @@
             </data>
         </field>
     </record>
-    
+
 
 	<record model="ir.ui.view" id="fleet_vehicle_log_services_form_inherit">
 	    <field name="name">fleet.vehicle.log.services.form.inherit</field>
@@ -26,19 +24,19 @@
 	    <field name="inherit_id" ref="fleet.fleet_vehicle_log_services_form"/>
 	    <field name="arch" type="xml">
 	    	<data>
-	    		
+
 	    		<xpath expr="//field[@name='cost_subtype_id']" position="after">
 	    			<field name="tmp_amount" invisible="1" />
 	    		</xpath>
-	    		
+
 	    		<xpath expr="//field[@name='cost_subtype_id']" position="attributes">
 	    			<attribute name="domain">[('parent_id','=',False), ('category','=','service')]</attribute>
 	    		</xpath>
-	    		
+
 	    		<xpath expr="//group[@string='Included Services']//field[@name='cost_subtype_id']" position="attributes">
 	    			<attribute name="domain">[('parent_id','!=',False), ('category','=','service')]</attribute>
 	    		</xpath>
-	    		
+
 	    		<xpath expr="//group[@string='Included Services']//field[@name='cost_subtype_id']" position="after">
 	    			<field name="additional_info" />
 	    			<field name="alert" />
@@ -48,21 +46,21 @@
 	    	</data>
 	    </field>
 	</record>
-      
+
     <record model="ir.ui.view" id="fleet_vehicle_log_services_tree_inherit">
 	    <field name="name">fleet.vehicle.log.services.tree.inherit</field>
 	    <field name="model">fleet.vehicle.log.services</field>
 	    <field name="inherit_id" ref="fleet.fleet_vehicle_log_services_tree"/>
 	    <field name="arch" type="xml">
 	    	<data>
-	    		
+
 	    		<xpath expr="//tree" position="attributes">
 	    		</xpath>
-	    	
+
 <!-- 	    		<xpath expr="//field[@name='notes']" position="replace"> -->
-	    			
+
 <!-- 	    		</xpath> -->
-	    		
+
 <!-- 	    		<xpath expr="//field[@name='cost_subtype_id']" position="after"> -->
 <!-- 	    			<field name="cost_subsubtype_id" domain="[('parent_id','=',cost_subtype_id)]" /> -->
 <!-- 	    			<field name="notes" /> -->

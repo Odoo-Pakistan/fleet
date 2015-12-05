@@ -40,16 +40,16 @@ Fleet Management System (v8)
     'depends': ['base','hr','v7_fleet_extend_universal'],
     'data': [
          'data/order_menuitems.xml',
-         'data/remove_service_types.xml',
-         'views/other_costs_view.xml',
+         # 'data/remove_service_types.xml',
+         # 'views/other_costs_view.xml',
          'views/travel_order_view.xml',
          'views/fleet_vehicle.xml',
-         'views/services_view.xml',
-         'views/contract_view.xml',
-         'views/cost_view.xml',
+         # 'views/services_view.xml',
+         # 'views/contract_view.xml',
+         # 'views/cost_view.xml',
          'views/cargo_values_view.xml',
          'security/ir.model.access.csv',
-         
+
    ],
 
     'installable': True,
