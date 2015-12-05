@@ -15,6 +15,7 @@ Module for extending core fleet with new field and functionalities
         'fleet',
     ],
     'data':[
+        'data/vehicle_type_data.xml',
         'views/fleet_vehicle_view.xml',
     ],
 
