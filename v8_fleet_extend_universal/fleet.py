@@ -117,23 +117,23 @@ import time
 #
 #     #napraviti oncahnge za vehicle_id...koja popunjava odometer
 
-class fleet_vehicle(models.Model):
-    _name = 'fleet.vehicle'
-    _inherit = 'fleet.vehicle'
-
-    @api.multi
-    @api.depends('height', 'width', 'length')
-    def _get_volume(self):
-        for rec in self:
-            vol = 0
-            if rec.height and rec.width and rec.length:
-                vol = rec.height * rec.width * rec.length
-            rec.volume = vol
-
-    height = fields.Float('Height')
-    width = fields.Float('Width')
-    length = fields.Float('Length')
-    volume = fields.Float('Volume', compute=_get_volume, store=True)
+# class fleet_vehicle(models.Model):
+#     _name = 'fleet.vehicle'
+#     _inherit = 'fleet.vehicle'
+#
+#     @api.multi
+#     @api.depends('height', 'width', 'length')
+#     def _get_volume(self):
+#         for rec in self:
+#             vol = 0
+#             if rec.height and rec.width and rec.length:
+#                 vol = rec.height * rec.width * rec.length
+#             rec.volume = vol
+#
+#     height = fields.Float('Height')
+#     width = fields.Float('Width')
+#     length = fields.Float('Length')
+#     volume = fields.Float('Volume', compute=_get_volume, store=True)
 
 class fleet_vehicle_travel_order_cargo_value_line(models.Model):
     _name = 'fleet.vehicle.travel.order.cargo.value.line'
@@ -220,12 +220,12 @@ class fleet_vehicle_travel_order(models.Model):
     #             pn.total_costs = service_cost + fuel_cost + other_cost
 
 
-    @api.multi
-    def _compute_total_km(self):
-        for rec in self:
-            rec.total_km = 0.0
-            if rec.start_odometer_id and rec.stop_odometer_id:
-                rec.total_km = rec.stop_odometer_id.value - rec.start_odometer_id.value
+    # @api.multi
+    # def _compute_total_km(self):
+    #     for rec in self:
+    #         rec.total_km = 0.0
+    #         if rec.start_odometer_id and rec.stop_odometer_id:
+    #             rec.total_km = rec.stop_odometer_id.value - rec.start_odometer_id.value
 
 
     @api.multi

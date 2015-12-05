@@ -123,64 +123,64 @@ class fleet_vechile(osv.Model):
     _name = 'fleet.vehicle'
 
 
-    def _get_default_amortization_type(self, cr, uid, context):
-        try:
-            model, model_id = self.pool.get('ir.model.data').get_object_reference(cr, uid, 'fleet_extend', 'type_service_amortization')
-        except ValueError:
-            model_id = False
-        return model_id
+    # def _get_default_amortization_type(self, cr, uid, context):
+    #     try:
+    #         model, model_id = self.pool.get('ir.model.data').get_object_reference(cr, uid, 'fleet_extend', 'type_service_amortization')
+    #     except ValueError:
+    #         model_id = False
+    #     return model_id
 
-    def _get_default_type(self, cr, uid, context):
-        try:
-            model, type_id = self.pool.get('ir.model.data').get_object_reference(cr, uid, 'fleet_extend', 'fleet_vehicle_type_5')
-        except ValueError:
-            type_id = False
-        return type_id
+    # def _get_default_type(self, cr, uid, context):
+    #     try:
+    #         model, type_id = self.pool.get('ir.model.data').get_object_reference(cr, uid, 'fleet_extend', 'fleet_vehicle_type_5')
+    #     except ValueError:
+    #         type_id = False
+    #     return type_id
 
-    def _get_transport_capacity(self, cr, uid, ids, field_names, args, context={}):
-        res = {}
+    # def _get_transport_capacity(self, cr, uid, ids, field_names, args, context={}):
+    #     res = {}
+    #
+    #     for id in ids:
+    #         vh_mass = self.browse(cr, uid, id).mass or 0
+    #         vh_ent_mass = self.browse(cr, uid, id).entire_mass or 0
+    #         if (vh_ent_mass - vh_mass < 0):
+    #             res[id] = 0
+    #         else:
+    #             res[id] = vh_ent_mass - vh_mass
+    #     return res
 
-        for id in ids:
-            vh_mass = self.browse(cr, uid, id).mass or 0
-            vh_ent_mass = self.browse(cr, uid, id).entire_mass or 0
-            if (vh_ent_mass - vh_mass < 0):
-                res[id] = 0
-            else:
-                res[id] = vh_ent_mass - vh_mass
-        return res
 
-
-    def _get_avg_fuel_consumption(self, cr, uid, ids, field_names, args, context={}):
-        res = {}
-
-        for id in ids:
-            cr.execute(""" SELECT MIN(od.value) as min, MAX(od.value) as max, SUM(fuel.liter) as lit
-                            FROM fleet_vehicle_log_fuel fuel
-                            JOIN fleet_vehicle_cost cost ON (fuel.cost_id = cost.id)
-                            JOIN fleet_vehicle_odometer od ON (cost.odometer_id = od.id)
-                            WHERE cost.vehicle_id = """ + str(id))
-            result = cr.fetchone() or ()
-            cr.execute(""" SELECT last.lit
-                            FROM (SELECT fuel.liter as lit
-                                    FROM fleet_vehicle_log_fuel fuel
-                                    JOIN fleet_vehicle_cost cost ON (fuel.cost_id = cost.id)
-                                    WHERE cost.vehicle_id = """ + str(id) + """
-                                    ORDER BY fuel.id DESC
-                                    LIMIT 1) last """)
-            last_fuel = cr.fetchone() or ()
-            if len(last_fuel)>0 and len(result)>0 and result[2]!=None and result[0]!=None and result[0]!=result[1]:
-                liter = result[2] - last_fuel[0]
-                odo_max = result[1]
-                odo_min = result[0]
-                if odo_max-odo_min!=0:
-                    avg = (liter/(odo_max-odo_min))*100
-                else:
-                    avg = 0
-                res[id] = avg
-            else:
-                res[id] = 0
-
-        return res
+    # def _get_avg_fuel_consumption(self, cr, uid, ids, field_names, args, context={}):
+    #     res = {}
+    #
+    #     for id in ids:
+    #         cr.execute(""" SELECT MIN(od.value) as min, MAX(od.value) as max, SUM(fuel.liter) as lit
+    #                         FROM fleet_vehicle_log_fuel fuel
+    #                         JOIN fleet_vehicle_cost cost ON (fuel.cost_id = cost.id)
+    #                         JOIN fleet_vehicle_odometer od ON (cost.odometer_id = od.id)
+    #                         WHERE cost.vehicle_id = """ + str(id))
+    #         result = cr.fetchone() or ()
+    #         cr.execute(""" SELECT last.lit
+    #                         FROM (SELECT fuel.liter as lit
+    #                                 FROM fleet_vehicle_log_fuel fuel
+    #                                 JOIN fleet_vehicle_cost cost ON (fuel.cost_id = cost.id)
+    #                                 WHERE cost.vehicle_id = """ + str(id) + """
+    #                                 ORDER BY fuel.id DESC
+    #                                 LIMIT 1) last """)
+    #         last_fuel = cr.fetchone() or ()
+    #         if len(last_fuel)>0 and len(result)>0 and result[2]!=None and result[0]!=None and result[0]!=result[1]:
+    #             liter = result[2] - last_fuel[0]
+    #             odo_max = result[1]
+    #             odo_min = result[0]
+    #             if odo_max-odo_min!=0:
+    #                 avg = (liter/(odo_max-odo_min))*100
+    #             else:
+    #                 avg = 0
+    #             res[id] = avg
+    #         else:
+    #             res[id] = 0
+    #
+    #     return res
 
     def _search_get_overdue_contract_reminder(self, cr, uid, obj, name, args, context):
         res = []
@@ -375,20 +375,20 @@ class fleet_vechile(osv.Model):
             return res
         return False
 
-    def return_action_to_open_travel_orders(self, cr, uid, ids, context=None):
-        """ This opens the xml view specified in xml_id for the current vehicle """
-        if context is None:
-            context = {}
-
-        if context.get('xml_id'):
-            if 'group_by' in context:
-                del context['group_by']
-            res = self.pool.get('ir.actions.act_window').for_xml_id(cr, uid ,'v7_fleet_extend_universal', context['xml_id'], context=context)
-            res['context'] = context
-            res['domain'] = [('vehicle_id','=', ids[0])]
-            res['context'].update({'default_vehicle_id': ids[0]})
-            return res
-        return False
+    # def return_action_to_open_travel_orders(self, cr, uid, ids, context=None):
+    #     """ This opens the xml view specified in xml_id for the current vehicle """
+    #     if context is None:
+    #         context = {}
+    #
+    #     if context.get('xml_id'):
+    #         if 'group_by' in context:
+    #             del context['group_by']
+    #         res = self.pool.get('ir.actions.act_window').for_xml_id(cr, uid ,'v7_fleet_extend_universal', context['xml_id'], context=context)
+    #         res['context'] = context
+    #         res['domain'] = [('vehicle_id','=', ids[0])]
+    #         res['context'].update({'default_vehicle_id': ids[0]})
+    #         return res
+    #     return False
 
     def onchange_type(self, cr, user, ids, type_id, context={}):
         model = self.pool.get('fleet.vehicle.type')
