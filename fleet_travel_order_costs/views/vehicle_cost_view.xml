@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+
+        <!-- #### SEARCH VIEW #### -->
+
+        <record model='ir.ui.view' id='fleet_vehicle_costs_search_inherit'>
+            <field name="name">fleet.vehicle.cost.search.inherit</field>
+            <field name="model">fleet.vehicle.cost</field>
+            <field name="inherit_id" ref="fleet.fleet_vehicle_costs_search"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//filter[@name='groupby_parent_id']" position="after">
+                        <filter string="Travel Order" name="group_travel_order" domain="" context="{'group_by':'travel_order_id'}" />
+                    </xpath>
+                </data>
+            </field>
+        </record>
+
+    </data>
+</openerp>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+
+        <!-- #### FORM VIEW #### -->
+        <record model="ir.ui.view" id="fleet_vehicle_travel_order_form_inherit">
+            <field name="name">fleet.vehicle.travel.order.form.inherit</field>
+            <field name="model">fleet.vehicle.travel.order</field>
+            <field name="inherit_id" ref="fleet_travel_order.fleet_vehicle_travel_order_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//button[@name='return_action_to_open_view']" position="after">
+                     <button name="return_services"
+                             type="object"
+                             class="oe_stat_button"
+                             icon="fa-wrench"
+                             help="show the services for this vehicle" >
+                             <field name="services_count" widget="statinfo"/>
+                     </button>
+                     <button name="return_other_costs"
+                             type="object"
+                             class="oe_stat_button"
+                             icon="fa-usd"
+                             help="show the other costs for this vehicle" >
+                             <field name="other_cost_count" widget="statinfo"/>
+                     </button>
+                 </xpath>
+
+
+                <xpath expr="//group[@string='Travel Order']" position="after">
+                    <group string="Costs">
+                        <field name="total_fuel_cost"/>
+                        <field name="total_service_cost"/>
+                        <field name="total_other_cost"/>
+                        <field name="total_costs"/>
+                        <field name="driver_cash"/>
+                    </group>
+                    <group string="Profit">
+
+                    </group>
+                </xpath>
+
+                <xpath expr="//page[@string='Travel Order Line']" position="replace">
+                    <page string="Cargo Values">
+                        <field name="cargo_value_line_ids">
+                            <tree editable="bottom">
+                                <field name="partner_id" />
+                                <field name="value" sum="Price" />
+                                <field name="notes" />
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+
+            </field>
+        </record>
+
+
+        <!-- #### TREE VIEW #### -->
+        <record model="ir.ui.view" id="fleet_vehicle_travel_order_tree_inherit">
+              <field name="name">fleet.vehicle.travel.order.tree.inherit</field>
+              <field name="model">fleet.vehicle.travel.order</field>
+              <field name="inherit_id" ref="fleet_travel_order.fleet_vehicle_travel_order_tree"/>
+              <field name="arch" type="xml">
+                    <xpath expr="//field[@name='vehicle_id']" position="after">
+                        <field name="total_fuel_cost" sum="Total Fuel Costs"/>
+                        <field name="total_service_cost" sum="Total Service Costs"/>
+                        <field name="total_other_cost" sum="Total Other Costs"/>
+                        <field name="total_costs" sum="Total Costs"/>
+                    </xpath>
+              </field>
+          </record>
+
+    </data>
+</openerp>
