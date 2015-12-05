@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
-	<data>	
-		
+	<data>
+
 	     <!-- #### TREE VIEW #### -->
-	     
+
 	     <record model="ir.ui.view" id="fleet_vehicle_log_contract_tree_inherit">
 			<field name="name">fleet.vehicle.log.contract.tree.inherit</field>
 			<field name="model">fleet.vehicle.log.contract</field>
@@ -16,9 +16,9 @@
 				</data>
 			</field>
 		</record>
-	     
+
 	     <!-- #### FORM VIEW #### -->
-	     
+
 	  	<record model="ir.ui.view" id="fleet_vehicle_log_contract_form_inherit">
 			<field name="name">fleet.vehicle.log.contract.form.inherit</field>
 			<field name="model">fleet.vehicle.log.contract</field>
@@ -31,9 +31,9 @@
 				</data>
 			</field>
 		</record>
-		
+
 		 <!-- #### SEARCH VIEW #### -->
-		
+
 		<record model="ir.ui.view" id="vehicle_log_contract_search">
 			<field name="name">view.vehicle.log.contract.search</field>
 			<field name="model">fleet.vehicle.log.contract</field>
@@ -45,11 +45,10 @@
 						<filter name="groupby_department" context="{'group_by' : 'department_id'}" string="Department"/>
 						<filter string="Vehicle"  domain="" context="{'group_by':'vehicle_id'}"/>
 						<filter string="Contract type"  domain="" context="{'group_by':'cost_subtype_id'}"/>
-					</group>   					
+					</group>
 				</search>
-			</field>		
+			</field>
 		</record>
-		
+
 	</data>
 </openerp>
-	     

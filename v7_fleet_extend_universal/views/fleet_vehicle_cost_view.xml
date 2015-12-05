@@ -1,32 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
-	<data>		
+	<data>
 	     <!-- #### FORM VIEW #### -->
-	     
+
 	     <record model='ir.ui.view' id='fleet_vehicle_costs_search_inherit'>
             <field name="name">fleet.vehicle.cost.search.inherit</field>
             <field name="model">fleet.vehicle.cost</field>
             <field name="inherit_id" ref="fleet.fleet_vehicle_costs_search" />
             <field name="arch" type="xml">
             	<data>
-            		<xpath expr="//filter[@name='parent_false']" position="replace">
-						<filter name="parent_false"  domain="[('date','&lt;=', context_today().strftime('%%Y-%%m-%%d')),('parent_id','=',False)]" string="Effective costs until today"/>
-						<filter name="parent_false_all"  domain="[('parent_id','=',False)]" string="All effective costs"/>
-					</xpath>
-					
-					<xpath expr="//filter[@name='parent_true']" position="replace">
-						<filter name="parent_true"  domain="[('date','&lt;=', context_today().strftime('%%Y-%%m-%%d')),('parent_id','!=',False)]" string="Indicative costs until today"/>
-						<filter name="parent_true_all"  domain="[('parent_id','!=',False)]" string="All indicative costs"/>
-					</xpath>
-			
-					
+
 					<xpath expr="//filter[@name='groupby_vehicle_id']" position="after">
 						<filter name="groupby_department" context="{'group_by' : 'department_id'}" string="Department"/>
 					</xpath>
-					
+
             	</data>
         	</field>
 		</record>
-	
+
 	</data>
-</openerp>  
+</openerp>
