@@ -63,7 +63,22 @@
             </field>
         </record>
 
+        <!-- #### SEARCH VIEW #### -->
 
+  	     <record model='ir.ui.view' id='fleet_vehicle_costs_search_inherit'>
+              <field name="name">fleet.vehicle.cost.search.inherit</field>
+              <field name="model">fleet.vehicle.cost</field>
+              <field name="inherit_id" ref="fleet.fleet_vehicle_costs_search" />
+              <field name="arch" type="xml">
+              	<data>
+
+  					<xpath expr="//filter[@name='groupby_vehicle_id']" position="after">
+  						<filter name="groupby_department" context="{'group_by' : 'department_id'}" string="Department"/>
+  					</xpath>
+
+              	</data>
+          	</field>
+  		</record>
 
     </data>
 </openerp>
