@@ -42,7 +42,7 @@ Fleet Management System (v8)
          'data/order_menuitems.xml',
          # 'data/remove_service_types.xml',
          # 'views/other_costs_view.xml',
-         'views/travel_order_view.xml',
+         # 'views/travel_order_view.xml',
          'views/fleet_vehicle.xml',
          # 'views/services_view.xml',
          # 'views/contract_view.xml',
