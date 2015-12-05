@@ -8,36 +8,36 @@ from dateutil.relativedelta import relativedelta
 from openerp.osv.orm import except_orm
 from openerp.tools.translate import _
 
-def str_to_datetime(strdate):
-    return datetime.datetime.strptime(strdate, tools.DEFAULT_SERVER_DATE_FORMAT)
-
-def get_month_name(month):
-        if (month == 1):
-            return 'January'
-        elif (month == 2):
-            return 'February'
-        elif (month == 3):
-            return 'March'
-        elif (month == 4):
-            return 'April'
-        elif (month == 5):
-            return 'May'
-        elif (month == 6):
-            return 'June'
-        elif (month == 7):
-            return 'July'
-        elif (month == 8):
-            return 'August'
-        elif (month == 9):
-            return 'September'
-        elif (month == 10):
-            return 'October'
-        elif (month == 11):
-            return 'November'
-        elif (month == 12):
-            return 'December'
-        else:
-            return ''
+# def str_to_datetime(strdate):
+#     return datetime.datetime.strptime(strdate, tools.DEFAULT_SERVER_DATE_FORMAT)
+# 
+# def get_month_name(month):
+#         if (month == 1):
+#             return 'January'
+#         elif (month == 2):
+#             return 'February'
+#         elif (month == 3):
+#             return 'March'
+#         elif (month == 4):
+#             return 'April'
+#         elif (month == 5):
+#             return 'May'
+#         elif (month == 6):
+#             return 'June'
+#         elif (month == 7):
+#             return 'July'
+#         elif (month == 8):
+#             return 'August'
+#         elif (month == 9):
+#             return 'September'
+#         elif (month == 10):
+#             return 'October'
+#         elif (month == 11):
+#             return 'November'
+#         elif (month == 12):
+#             return 'December'
+#         else:
+#             return ''
 
 class fleet_vehicle_tyre(osv.Model):
 
@@ -103,18 +103,18 @@ class fleet_vehicle_gear_rel(osv.Model):
 
 
 
-class fleet_vechile_type(osv.Model):
-
-    _name = 'fleet.vehicle.type'
-    _description = 'Fleet vehicle type'
-
-
-    _columns = {
-            'name': fields.char('Name', size=128, required=True),
-            'reg_required': fields.boolean('Registration required?'),
-            'measure': fields.selection([('km','Kilometers'),('hour','Working hours')],'Measure unit'),
-            'vehicle_ids': fields.one2many('fleet.vehicle', 'type_id', 'Vehicles'),
-    }
+# class fleet_vechile_type(osv.Model):
+# 
+#     _name = 'fleet.vehicle.type'
+#     _description = 'Fleet vehicle type'
+# 
+# 
+#     _columns = {
+#             'name': fields.char('Name', size=128, required=True),
+#             'reg_required': fields.boolean('Registration required?'),
+#             'measure': fields.selection([('km','Kilometers'),('hour','Working hours')],'Measure unit'),
+#             'vehicle_ids': fields.one2many('fleet.vehicle', 'type_id', 'Vehicles'),
+#     }
 
 class fleet_vechile(osv.Model):
 
@@ -249,25 +249,25 @@ class fleet_vechile(osv.Model):
 
 
 
-    def _count_travel_orders(self, cr, uid, ids, field_name, arg, context=None):
-        res = {}
-        for id in ids:
-            TravelOrder = self.pool['fleet.vehicle.travel.order']
-            res[id] = TravelOrder.search_count(cr, uid, [('vehicle_id', '=', id)], context=context)
-        return res
+#     def _count_travel_orders(self, cr, uid, ids, field_name, arg, context=None):
+#         res = {}
+#         for id in ids:
+#             TravelOrder = self.pool['fleet.vehicle.travel.order']
+#             res[id] = TravelOrder.search_count(cr, uid, [('vehicle_id', '=', id)], context=context)
+#         return res
 
     _columns = {
-            'type_id': fields.many2one('fleet.vehicle.type', 'Vehicle type'),
-            'reg_required': fields.boolean('Registration required?'),
-            'avg_fuel_consumption': fields.function(_get_avg_fuel_consumption, type="float", string='Average fuel consumption'),
-            'gps_num': fields.char('GPS number', size=64),
-            'year_manufactured': fields.char('Year of manufacturing'),
-            'country_id': fields.many2one('res.country', string='Country'),
-            'engine_volume_ccm3': fields.integer('Engine volume in ccm3'),
-            'engine_num': fields.char('Engine number', size=64),
-            'mass': fields.integer('Vehicle mass'),
-            'entire_mass': fields.integer('Entire mass'),
-            'transport_capacity': fields.function(_get_transport_capacity, type="integer", string="Transport mass capacity", readonly=True),
+#             'type_id': fields.many2one('fleet.vehicle.type', 'Vehicle type'),
+#             'reg_required': fields.boolean('Registration required?'),
+#             'avg_fuel_consumption': fields.function(_get_avg_fuel_consumption, type="float", string='Average fuel consumption'),
+#             'gps_num': fields.char('GPS number', size=64),
+#             'year_manufactured': fields.char('Year of manufacturing'),
+#             'country_id': fields.many2one('res.country', string='Country'),
+#             'engine_volume_ccm3': fields.integer('Engine volume in ccm3'),
+#             'engine_num': fields.char('Engine number', size=64),
+#             'mass': fields.integer('Vehicle mass'),
+#             'entire_mass': fields.integer('Entire mass'),
+#             'transport_capacity': fields.function(_get_transport_capacity, type="integer", string="Transport mass capacity", readonly=True),
             'tyre_ids': fields.many2many('fleet.vehicle.tyre','fleet_vehicle_tyre_rel', 'vehicle_id', 'tyre_id', string='Tires'),
             'gear_ids': fields.one2many( 'fleet.vehicle.gear.rel','vehicle_id', string='Gear'),
             'department_id': fields.many2one('hr.department', string='Company department'),
@@ -275,22 +275,22 @@ class fleet_vechile(osv.Model):
             'contract_renewal_overdue': fields.function(_get_contract_reminder_fnc, fnct_search=_search_get_overdue_contract_reminder, type="boolean", string='Has Contracts Overdued', multi='contract_info'),
             'contract_renewal_name': fields.function(_get_contract_reminder_fnc, type="text", string='Name of contract to renew soon', multi='contract_info'),
             'contract_renewal_total': fields.function(_get_contract_reminder_fnc, type="integer", string='Total of contracts due or overdue minus one', multi='contract_info'),
-            'notes': fields.text('Additional information'),
-            'technical_inspection_date': fields.date('Technical inspection date'),
-            '6_months_technical_inspection': fields.boolean('Every 6 months'),
-            'amortization_ids': fields.one2many('fleet.vehicle.amortization', 'vehicle_id', string='Amortization'),
-            'amortization_factor': fields.float('Amortization factor', digits=(12,2)),
-            'salvage_value': fields.float('Salvage value', digits=(12,2)),
-            'travel_order_ids': fields.one2many('fleet.vehicle.travel.order', 'vehicle_id', 'Travel Orders'),
-            'travel_order_count': fields.function(_count_travel_orders, type='integer', string='Travel Orders'),
+#             'notes': fields.text('Additional information'),
+#             'technical_inspection_date': fields.date('Technical inspection date'),
+#             '6_months_technical_inspection': fields.boolean('Every 6 months'),
+#             'amortization_ids': fields.one2many('fleet.vehicle.amortization', 'vehicle_id', string='Amortization'),
+#             'amortization_factor': fields.float('Amortization factor', digits=(12,2)),
+#             'salvage_value': fields.float('Salvage value', digits=(12,2)),
+#             'travel_order_ids': fields.one2many('fleet.vehicle.travel.order', 'vehicle_id', 'Travel Orders'),
+#             'travel_order_count': fields.function(_count_travel_orders, type='integer', string='Travel Orders'),
     }
 
-    _defaults = {
-        'type_id': _get_default_type,
-        'technical_inspection_date': False,
-        'amortization_factor': 0.2,
-        'salvage_value': 2000.0,
-    }
+#     _defaults = {
+#         'type_id': _get_default_type,
+#         'technical_inspection_date': False,
+#         'amortization_factor': 0.2,
+#         'salvage_value': 2000.0,
+#     }
 
 
 
@@ -390,16 +390,16 @@ class fleet_vechile(osv.Model):
     #         return res
     #     return False
 
-    def onchange_type(self, cr, user, ids, type_id, context={}):
-        model = self.pool.get('fleet.vehicle.type')
-        obj = model.read(cr, user, type_id, ['reg_required'])
-        if obj:
-            reg_required = obj.get('reg_required', False)
-            return {
-                'value': {'reg_required': reg_required}
-                }
-        else:
-            return True
+#     def onchange_type(self, cr, user, ids, type_id, context={}):
+#         model = self.pool.get('fleet.vehicle.type')
+#         obj = model.read(cr, user, type_id, ['reg_required'])
+#         if obj:
+#             reg_required = obj.get('reg_required', False)
+#             return {
+#                 'value': {'reg_required': reg_required}
+#                 }
+#         else:
+#             return True
 
 
 
