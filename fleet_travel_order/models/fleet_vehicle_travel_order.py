@@ -131,3 +131,14 @@ class fleet_vehicle_travel_order(models.Model):
                 }
 
 
+    @api.v7
+    def unlink(self,cr,uid,ids,context=None):
+        this_objs = self.browse(cr,uid,ids,context=context)
+        for this_obj in this_objs:
+            for this_obj_line in this_obj.travel_order_line_ids:
+                self.pool.get('fleet.vehicle.travel.order.line').unlink(cr,1,this_obj_line.id)
+        return super(fleet_vehicle_travel_order,self).unlink(cr,uid,ids,context=context)
+
+
+
+        
