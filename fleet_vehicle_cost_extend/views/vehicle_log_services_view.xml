@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+
+		<!-- #### FORM VIEW #### -->
+
+		<record model="ir.ui.view" id="fleet_vehicle_log_services_form_inherit">
+			<field name="name">fleet.vehicle.log.services.form.inherit</field>
+			<field name="model">fleet.vehicle.log.services</field>
+			<field name="inherit_id" ref="fleet.fleet_vehicle_log_services_form"/>
+			<field name="arch" type="xml">
+				<data>
+
+					<xpath expr="//field[@name='cost_subtype_id']" position="after">
+						<field name="tmp_amount" invisible="1" />
+					</xpath>
+
+					<xpath expr="//field[@name='cost_subtype_id']" position="attributes">
+						<attribute name="domain">[('parent_id','=',False), ('category','=','service')]</attribute>
+					</xpath>
+
+					<xpath expr="//group[@string='Included Services']//field[@name='cost_subtype_id']" position="attributes">
+						<attribute name="domain">[('parent_id','!=',False), ('category','=','service')]</attribute>
+					</xpath>
+
+					<xpath expr="//group[@string='Included Services']//field[@name='cost_subtype_id']" position="after">
+						<field name="notes" />
+						<field name="alert" />
+						<field name="next_service" />
+						<field name="next_service_in" invisible="1"/>
+					</xpath>
+				</data>
+			</field>
+		</record>
+
+
+	     <!-- #### SEARCH VIEW #### -->
+
+		<record model="ir.ui.view" id="view_log_services_search">
+			<field name="name">view.vehicle.log.services.search</field>
+			<field name="model">fleet.vehicle.log.services</field>
+			<field name="inherit_id" ref="fleet.fleet_vehicle_log_services_search" />
+			<field name="arch" type="xml">
+				<search>
+					<field name="date" />
+                    <field name="vehicle_id" />
+                    <field name="cost_subtype_id"/>
+                    <field name="purchaser_id"/>
+                    <field name="vendor_id" />
+                    <field name="inv_ref" />
+                    <field name="notes" />
+                    <field name="amount" />
+                    <group expand="0" string="Group By...">
+                    	<filter name="groupby_year" context="{'group_by' : 'year'}" string="Year"/>
+                    	<filter name="groupby_date" context="{'group_by' : 'date'}" string="Date"/>
+                    	<filter name="groupby_department" context="{'group_by' : 'department_id'}" string="Department"/>
+                        <filter name="groupby_vehicle" context="{'group_by' : 'vehicle_id'}" string="Vehicle"/>
+                        <filter name="groupby_supplier" context="{'group_by' : 'vendor_id'}" string="Supplier"/>
+                    </group>
+				</search>
+			</field>
+		</record>
+
+	</data>
+</openerp>

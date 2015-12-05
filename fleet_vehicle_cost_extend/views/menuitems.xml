@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+
+        <menuitem name="Vehicle Other Costs" parent="fleet.fleet_vehicles" id="menu_vehicle_other_cost" sequence="100" action="open_view_vehicle_other_cost_tree"/>
+        <menuitem action="fleet_vehicle_costs_detail_act" parent="fleet.fleet_vehicles" sequence="100" id="fleet_vehicle_costs_menu" groups="fleet.group_fleet_manager"/>
+
+    </data>
+</openerp>

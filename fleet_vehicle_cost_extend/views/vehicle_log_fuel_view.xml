@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+
+        <!-- #### SEARCH VIEW #### -->
+
+        <record model="ir.ui.view" id="view_fuel_log_search_inherit">
+			<field name="name">view.vehicle.fuel.log.search.inherit</field>
+			<field name="model">fleet.vehicle.log.fuel</field>
+			<field name="inherit_id" ref="fleet.fleet_vehicle_log_fuel_search" />
+			<field name="arch" type="xml">
+				<data>
+					<xpath expr="//filter[@name='groupby_vehicle']" position="after">
+						<filter name="groupby_year" context="{'group_by' : 'year'}" string="Year"/>
+						<filter name="groupby_date" context="{'group_by' : 'date'}" string="Date"/>
+						<filter name="groupby_department" context="{'group_by' : 'department_id'}" string="Department"/>
+						<filter name="groupby_supplier" context="{'group_by' : 'vendor_id'}" string="Supplier"/>
+					</xpath>
+				</data>
+			</field>
+		</record>
+
+
+	</data>
+</openerp>

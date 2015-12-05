@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+
+        <!-- #### FORM VIEW #### -->
+
+  	  	<record model="ir.ui.view" id="fleet_vehicle_log_contract_form_inherit">
+  			<field name="name">fleet.vehicle.log.contract.form.inherit</field>
+  			<field name="model">fleet.vehicle.log.contract</field>
+  			<field name="inherit_id" ref="fleet.fleet_vehicle_log_contract_form" />
+  			<field name="arch" type="xml">
+  				<data>
+  					<xpath expr="//field[@name='date']" position="before">
+  						<field name="is_deposited" />
+  					</xpath>
+
+					<xpath expr="//notebook" position="replace">
+					</xpath>
+
+  				</data>
+  			</field>
+  		</record>
+
+  		 <!-- #### SEARCH VIEW #### -->
+
+  		<record model="ir.ui.view" id="vehicle_log_contract_search">
+  			<field name="name">view.vehicle.log.contract.search</field>
+  			<field name="model">fleet.vehicle.log.contract</field>
+  			<field name="arch" type="xml">
+  				<search>
+  					<field name="vehicle_id"/>
+  					<field name="cost_subtype_id"/>
+					<field name="state" />
+					<field name="insurer_id" />
+					<field name="purchaser_id"/>
+					<field name="ins_ref" />
+					<field name="notes" />
+					<field name="amount" />
+  					<group expand="1" string="Group by...">
+  						<filter name="groupby_department" context="{'group_by' : 'department_id'}" string="Department"/>
+  						<filter string="Vehicle"  domain="" context="{'group_by':'vehicle_id'}"/>
+  						<filter string="Contract type"  domain="" context="{'group_by':'cost_subtype_id'}"/>
+  					</group>
+  				</search>
+  			</field>
+  		</record>
+
+	</data>
+</openerp>

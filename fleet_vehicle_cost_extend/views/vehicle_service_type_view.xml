@@ -1,0 +1,23 @@
+<openerp>
+    <data>
+
+
+        <record model='ir.ui.view' id='fleet_vehicle_service_types_tree_inherit'>
+            <field name="name">fleet.service.type.tree.inherit</field>
+            <field name="model">fleet.service.type</field>
+            <field name="inherit_id" ref="fleet.fleet_vehicle_service_types_tree" />
+            <field name="arch" type="xml">
+                <data>
+
+                    <xpath expr="//field[@name='category']" position="after">
+                        <field name="parent_id" />
+                        <field name="next_service" />
+                    </xpath>
+
+                </data>
+            </field>
+        </record>
+
+
+    </data>
+</openerp>

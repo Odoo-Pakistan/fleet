@@ -13,9 +13,17 @@ Module for extending service and cost features of Fleet management module
 
     'depends': [
         'fleet',
+        'hr',
     ],
     'data':[
-
+        'data/remove_service_types.xml',
+        'views/vehicle_service_type_view.xml',
+        'views/vehicle_log_services_view.xml',
+        'views/vehicle_log_fuel_view.xml',
+        'views/vehicle_log_contract_view.xml',
+        'views/vehicle_log_other_cost_view.xml',
+        'views/vehicle_cost_view.xml',
+        'views/menuitems.xml',
     ],
 
     "installable": True,
