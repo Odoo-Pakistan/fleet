@@ -48,7 +48,7 @@
         <!-- #### ACTION #### -->
 
         <record model='ir.actions.act_window' id='fleet_vehicle_costs_detail_act'>
-            <field name="name">Replaced Parts</field>
+            <field name="name">Indicative costs</field>
             <field name="res_model">fleet.vehicle.cost</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form,graph</field>

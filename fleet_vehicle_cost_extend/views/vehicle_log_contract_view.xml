@@ -2,6 +2,24 @@
 <openerp>
 	<data>
 
+		<!-- #### TREE VIEW #### -->
+
+		<record model="ir.ui.view" id="fleet_vehicle_log_contract_tree_inherit">
+			<field name="name">fleet.vehicle.log.contract.tree.inherit</field>
+			<field name="model">fleet.vehicle.log.contract</field>
+			<field name="inherit_id" ref="fleet.fleet_vehicle_log_contract_tree" />
+			<field name="arch" type="xml">
+				<data>
+
+					<xpath expr="//tree[@string='Contract logs']" position="attributes">
+						<attribute name="colors">orange:days_left>0 and days_left&lt;30;red:days_left==0;grey:state=='closed'</attribute>
+					</xpath>
+
+				</data>
+			</field>
+		</record>
+
+
         <!-- #### FORM VIEW #### -->
 
   	  	<record model="ir.ui.view" id="fleet_vehicle_log_contract_form_inherit">
@@ -13,9 +31,6 @@
   					<xpath expr="//field[@name='date']" position="before">
   						<field name="is_deposited" />
   					</xpath>
-
-					<xpath expr="//notebook" position="replace">
-					</xpath>
 
   				</data>
   			</field>
