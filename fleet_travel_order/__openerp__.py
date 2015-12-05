@@ -23,7 +23,7 @@ This module adds functionality for organizing travel orders, both for passenger 
 #              'views/fleet_vehicle_tyre_view.xml',
 #              'views/fleet_vehicle_gear_view.xml',
 #              'views/fleet_vehicle_log_contract_view.xml',
-#              'views/fleet_vehicle_view.xml',
+              'views/fleet_vehicle_view.xml',
 #              'views/fleet_vehicle_cost_view.xml',
 #              'views/fleet_vehicle_log_services_view.xml',
 #              'views/travel_order_report_view.xml',
