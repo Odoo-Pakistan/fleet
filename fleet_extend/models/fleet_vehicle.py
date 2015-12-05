@@ -45,7 +45,8 @@ class FleetVehicle(models.Model):
     @api.depends('mass', 'entire_mass')
     def _get_transport_capacity(self):
         for rec in self:
-            rec.transport_capacity = (rec.entire_mass or 0) - (rec.mass or 0)
+            transport_capacity = (rec.entire_mass or 0) - (rec.mass or 0)
+            rec.transport_capacity = transport_capacity if (transport_capacity > 0 ) else 0
         return True
 
     @api.multi
@@ -87,23 +88,12 @@ class FleetVehicle(models.Model):
     #       'amortization_ids: fields.one2many('fleet.vehicle.amortization', 'vehicle_id', string='Amortization'),
     #             'amortization_factor': fields.float('Amortization factor', digits=(12,2)),
     #             'salvage_value': fields.float('Salvage value', digits=(12,2)),
-    #             'travel_order_ids': fields.one2many('fleet.vehicle.travel.order', 'vehicle_id', 'Travel Orders'),
-    #             'travel_order_count': fields.function(_count_travel_orders, type='integer', string='Travel Orders'),
     #     }
 
     @api.onchange('type_id')
     def onchange_type(self):
-        pass
+        for obj in self:
+            if obj.type_id:
+                obj.reg_required = obj.type_id.reg_required
 
-# @api.v7
-#     def onchange_type(self, cr, user, ids, type_id, context={}):
-#         model = self.pool.get('fleet.vehicle.type')
-#         obj = model.read(cr, user, type_id, ['reg_required'])
-#         if obj:
-#             reg_required = obj.get('reg_required', False)
-#             return {
-#                 'value': {'reg_required': reg_required}
-#                 }
-#         else:
-#             return True
-#
+
