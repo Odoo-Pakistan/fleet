@@ -52,9 +52,5 @@
             <field name="target">new</field>
       </record>
 
-
-        <menuitem name="Izvještaji" parent="fleet.menu_root" id="fleet_reports" sequence="100" groups="fleet.group_fleet_manager"/>
-        <menuitem name="Izbor izvještaja" action="fleet_excel_report_action" parent="fleet_reports" id="fleet_izbor_excel_izvjestaja" sequence="100" groups="fleet.group_fleet_manager"/>
-
     </data>
 </openerp>
