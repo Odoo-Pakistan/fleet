@@ -1,29 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
 	<data>
-
-        <!-- #### FORM VIEW #### -->
-
-    <record model="ir.ui.view" id="fleet_vehicle_form_inherit">
-	<field name="name">fleet.vehicle.form.inherit</field>
-	<field name="model">fleet.vehicle</field>
-	<field name="inherit_id" ref="fleet.fleet_vehicle_form" />
-	<field name="arch" type="xml">
-		<data>
-
-            <xpath expr="//button[@name='return_action_to_open']" position="after">
-                <button name="return_action_to_open_travel_orders"
-                        class="oe_stat_button"
-                        icon="fa-book"
-                        type="object"
-                        context="{'xml_id':'fleet_vehicle_order_act'}"
-                        help="show travel orders for this vehicle" >
-                    <field name="travel_order_count" widget="statinfo" />
-                </button>
-            </xpath>
-
-        </data>
-    </field>
-
+	    <!-- #### FORM VIEW #### -->
+	
+	    <record model="ir.ui.view" id="fleet_vehicle_form_inherit">
+			<field name="name">fleet.vehicle.form.inherit</field>
+			<field name="model">fleet.vehicle</field>
+			<field name="inherit_id" ref="fleet.fleet_vehicle_form" />
+			<field name="arch" type="xml">
+			<data>
+				<xpath expr="//button[@name='return_action_to_open']" position="after">
+					<button name="return_action_to_open_travel_orders" class="oe_stat_button"
+						icon="fa-book" type="object" context="{'xml_id':'fleet_vehicle_order_act'}"
+						help="show travel orders for this vehicle">
+						<field name="travel_order_count" widget="statinfo" />
+					</button>
+				</xpath>
+			</data>
+			</field>
+	    </record>
     </data>
 </openerp>
