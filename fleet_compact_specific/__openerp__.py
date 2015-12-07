@@ -21,7 +21,7 @@ Module for specific things in Fleet management system
         'fleet_order_menu_items',
     ],
     'data':[
-        'wizard/generate_xls_reports_view.xml',
+        'views/vehicle_travel_order_view.xml',
     ],
 
     "installable": True,

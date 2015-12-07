@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+
+        <!-- #### FORM VIEW #### -->
+
+        <record model="ir.ui.view" id="fleet_vehicle_travel_order_form_inherit">
+            <field name="name">fleet.vehicle.travel.order.form.inherit</field>
+            <field name="model">fleet.vehicle.travel.order</field>
+            <field name="inherit_id" ref="fleet_travel_order.fleet_vehicle_travel_order_form"/>
+            <field name="arch" type="xml">
+            <data>
+
+                <xpath expr="//page[@string='Travel Order Line']" position="after">
+                    <page string="Fakture">
+                        <field name="invoice_ids">
+                            <tree editable="bottom">
+                                <field name="broj_fakture" />
+                                <field name="prevezeno_tona" />
+                                <field name="cijena_po_toni_EUR" />
+                                <field name="cijena_po_toni_KM" />
+                                <field name="ukupan_iznos" />
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+
+            </data>
+            </field>
+        </record>
+
+    </data>
+</openerp>
