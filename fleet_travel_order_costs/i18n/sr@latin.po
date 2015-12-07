@@ -1,0 +1,419 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* fleet_travel_order_costs
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-12-07 21:26+0000\n"
+"PO-Revision-Date: 2015-12-07 21:33+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"Language: Invalid\n"
+"Plural-Forms: nplurals=2; plural=n!=1\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+
+#. module: fleet_vehicle_cost_extend
+#: model:ir.actions.act_window,help:fleet_vehicle_cost_extend.
+#: fleet_vehicle_costs_detail_act
+msgid ""
+"<p>\n"
+"                Odoo helps you managing the costs for your different\n"
+"                vehicles. Costs are created automatically from services,\n"
+"                contracts (fixed or recurring) and fuel logs.\n"
+"              </p>\n"
+"            "
+msgstr ""
+"<p>\n"
+"             Odoo Vam pomaže pri upravljanju troškovima Vaših vozila.\n"
+"             Troškovi se kreiraju automatski preko servisa, ugovora,\n"
+"             evidencije točenja goriva...\n"
+"              </p>\n"
+"            "
+
+#. module: fleet_vehicle_cost_extend
+#: view:fleet.vehicle.log.other.cost:fleet_vehicle_cost_extend.
+#: view_vehicle_other_cost_form
+msgid "Additional Details"
+msgstr "Dodatne informacije"
+
+#. module: fleet_vehicle_cost_extend
+#: field:fleet.vehicle.cost,notes:0
+msgid "Additional info"
+msgstr "Dodatne informacije"
+
+#. module: fleet_vehicle_cost_extend
+#: model:fleet.service.type,name:fleet_vehicle_cost_extend.type_service_agregat
+msgid "Agregat"
+msgstr "Agregat"
+
+#. module: fleet_vehicle_cost_extend
+#: field:fleet.vehicle.cost,alert:0
+msgid "Alert"
+msgstr "Upozori me"
+
+#. module: fleet_vehicle_cost_extend
+#: model:ir.model,name:fleet_vehicle_cost_extend.model_fleet_vehicle_log_contract
+msgid "Contract information on a vehicle"
+msgstr "Informacije o ugovoru na vozilu"
+
+#. module: fleet_vehicle_cost_extend
+#: view:fleet.vehicle.log.contract:fleet_vehicle_cost_extend.
+#: vehicle_log_contract_search
+msgid "Contract type"
+msgstr "Tip ugovora"
+
+#. module: fleet_vehicle_cost_extend
+#: field:fleet.vehicle.log.other.cost,cost_id:0
+msgid "Cost"
+msgstr "Trošak"
+
+#. module: fleet_vehicle_cost_extend
+#: view:fleet.vehicle.log.other.cost:fleet_vehicle_cost_extend.
+#: view_vehicle_other_cost_form
+msgid "Cost Details"
+msgstr "Detalji"
+
+#. module: fleet_vehicle_cost_extend
+#: view:fleet.vehicle.log.other.cost:fleet_vehicle_cost_extend.
+#: view_vehicle_other_cost_form
+#: view:fleet.vehicle.log.other.cost:fleet_vehicle_cost_extend.
+#: view_vehicle_other_cost_tree
+msgid "Cost Type"
+msgstr "Tip troška"
+
+#. module: fleet_vehicle_cost_extend
+#: model:ir.model,name:fleet_vehicle_cost_extend.model_fleet_vehicle_cost
+msgid "Cost related to a vehicle"
+msgstr "Trošak vezan za vozilo"
+
+#. module: fleet_vehicle_cost_extend
+#: field:fleet.vehicle.log.other.cost,create_uid:0
+msgid "Created by"
+msgstr "Kreirao"
+
+#. module: fleet_vehicle_cost_extend
+#: field:fleet.vehicle.log.other.cost,create_date:0
+msgid "Created on"
+msgstr "Kreirano dana"
+
+#. module: fleet_vehicle_cost_extend
+#: model:fleet.service.type,name:fleet_vehicle_cost_extend.type_service_black
+msgid "Crni trošak"
+msgstr "Crni trošak"
+
+#. module: fleet_vehicle_cost_extend
+#: view:fleet.vehicle.log.fuel:fleet_vehicle_cost_extend.
+#: view_fuel_log_search_inherit
+#: view:fleet.vehicle.log.services:fleet_vehicle_cost_extend.
+#: view_log_services_search
+msgid "Date"
+msgstr "Datum"
+
+#. module: fleet_vehicle_cost_extend
+#: view:fleet.vehicle.cost:fleet_vehicle_cost_extend.
+#: fleet_vehicle_costs_search_inherit
+#: field:fleet.vehicle.cost,department_id:0
+#: view:fleet.vehicle.log.contract:fleet_vehicle_cost_extend.
+#: vehicle_log_contract_search
+#: view:fleet.vehicle.log.fuel:fleet_vehicle_cost_extend.
+#: view_fuel_log_search_inherit
+#: view:fleet.vehicle.log.services:fleet_vehicle_cost_extend.
+#: view_log_services_search
+msgid "Department"
+msgstr "Sektor"
+
+#. module: fleet_vehicle_cost_extend
+#: model:fleet.service.type,name:fleet_vehicle_cost_extend.type_service_devizno
+msgid "Devizno"
+msgstr "Devizno"
+
+#. module: fleet_vehicle_cost_extend
+#: model:fleet.service.type,name:fleet_vehicle_cost_extend.type_service_diskPlocice
+msgid "Disk pločice"
+msgstr "Disk pločice"
+
+#. module: fleet_vehicle_cost_extend
+#: model:fleet.service.type,name:fleet_vehicle_cost_extend.type_service_diskovi
+msgid "Diskovi"
+msgstr "Diskovi"
+
+#. module: fleet_vehicle_cost_extend
+#: model:fleet.service.type,name:fleet_vehicle_cost_extend.
+#: type_service_dnevniceZaradeVozaca
+msgid "Dnevnice i zarade vozača"
+msgstr "Dnevnice i zarade vozača"
+
+#. module: fleet_vehicle_cost_extend
+#: model:fleet.service.type,name:fleet_vehicle_cost_extend.
+#: type_service_donjiPostroj
+msgid "Donji postroj"
+msgstr "Donji postroj"
+
+#. module: fleet_vehicle_cost_extend
+#: model:fleet.service.type,name:fleet_vehicle_cost_extend.type_service_elektro
+msgid "Elektro"
+msgstr "Elektro"
+
+#. module: fleet_vehicle_cost_extend
+#: code:addons/fleet_vehicle_cost_extend/models/fleet_vehicle_cost.py:13
+#, python-format
+msgid "Emptying the odometer value of a vehicle is not allowed."
+msgstr "Pražnjenje kilometar sata nije dozvoljeno"
+
+#. module: fleet_vehicle_cost_extend
+#: model:fleet.service.type,name:fleet_vehicle_cost_extend.type_service_filteri
+msgid "Filteri"
+msgstr "Filteri"
+
+#. module: fleet_vehicle_cost_extend
+#: model:ir.model,name:fleet_vehicle_cost_extend.model_fleet_vehicle_log_fuel
+msgid "Fuel log for vehicles"
+msgstr "Evidencija točenja goriva"
+
+#. module: fleet_vehicle_cost_extend
+#: view:fleet.vehicle.log.services:fleet_vehicle_cost_extend.
+#: view_log_services_search
+msgid "Group By..."
+msgstr "Grupiši po..."
+
+#. module: fleet_vehicle_cost_extend
+#: view:fleet.vehicle.log.contract:fleet_vehicle_cost_extend.
+#: vehicle_log_contract_search
+msgid "Group by..."
+msgstr "Grupiši po..."
+
+#. module: fleet_vehicle_cost_extend
+#: model:fleet.service.type,name:fleet_vehicle_cost_extend.type_service_gume
+msgid "Gume"
+msgstr "Gume"
+
+#. module: fleet_vehicle_cost_extend
+#: field:fleet.vehicle.log.other.cost,id:0
+msgid "ID"
+msgstr "ID"
+
+#. module: fleet_vehicle_cost_extend
+#: model:ir.actions.act_window,name:fleet_vehicle_cost_extend.
+#: fleet_vehicle_costs_detail_act
+#: model:ir.ui.menu,name:fleet_vehicle_cost_extend.fleet_vehicle_costs_menu
+msgid "Indicative costs"
+msgstr "Indikativni troškovi"
+
+#. module: fleet_vehicle_cost_extend
+#: field:fleet.vehicle.log.other.cost,inv_ref:0
+msgid "Invoice Reference"
+msgstr "Broj fakture"
+
+#. module: fleet_vehicle_cost_extend
+#: field:fleet.vehicle.log.contract,is_deposited:0
+msgid "Is contract deposited?"
+msgstr "Ugovor deponovan?"
+
+#. module: fleet_vehicle_cost_extend
+#: model:fleet.service.type,name:fleet_vehicle_cost_extend.type_service_casco
+msgid "Kasko"
+msgstr "Kasko"
+
+#. module: fleet_vehicle_cost_extend
+#: model:fleet.service.type,name:fleet_vehicle_cost_extend.type_service_penalty
+msgid "Kazna"
+msgstr "Kazna"
+
+#. module: fleet_vehicle_cost_extend
+#: field:fleet.vehicle.log.other.cost,write_uid:0
+msgid "Last Updated by"
+msgstr "Zadnja izmjena"
+
+#. module: fleet_vehicle_cost_extend
+#: field:fleet.vehicle.log.other.cost,write_date:0
+msgid "Last Updated on"
+msgstr "Zadnja izmjena"
+
+#. module: fleet_vehicle_cost_extend
+#: model:fleet.service.type,name:fleet_vehicle_cost_extend.type_service_nadgradnja
+msgid "Nadgradnja"
+msgstr "Nadgradnja"
+
+#. module: fleet_vehicle_cost_extend
+#: field:fleet.vehicle.log.other.cost,name:0
+msgid "Name"
+msgstr "Naziv"
+
+#. module: fleet_vehicle_cost_extend
+#: field:fleet.vehicle.cost,next_service:0
+msgid "Next Service"
+msgstr "Naredni servis"
+
+#. module: fleet_vehicle_cost_extend
+#: field:fleet.vehicle.cost,next_service_in:0
+msgid "Next Service In"
+msgstr "Naredni servis za"
+
+#. module: fleet_vehicle_cost_extend
+#: field:fleet.service.type,next_service:0
+msgid "Next service"
+msgstr "Naredni servis"
+
+#. module: fleet_vehicle_cost_extend
+#: view:fleet.vehicle.log.other.cost:fleet_vehicle_cost_extend.
+#: view_vehicle_other_cost_form
+msgid "Notes"
+msgstr "Napomene"
+
+#. module: fleet_vehicle_cost_extend
+#: view:fleet.vehicle.log.other.cost:fleet_vehicle_cost_extend.
+#: view_vehicle_other_cost_form
+msgid "Odometer Details"
+msgstr "Detalji kilometar sata"
+
+#. module: fleet_vehicle_cost_extend
+#: code:addons/fleet_vehicle_cost_extend/models/fleet_vehicle_cost.py:13
+#, python-format
+msgid "Operation not allowed!"
+msgstr "Operacija nije dozvoljena"
+
+#. module: fleet_vehicle_cost_extend
+#: code:addons/fleet_vehicle_cost_extend/models/fleet_vehicle_log_services.py:32
+#, python-format
+msgid "Operation not supported"
+msgstr "Operacija nije podržana"
+
+#. module: fleet_vehicle_cost_extend
+#: view:fleet.vehicle.log.other.cost:fleet_vehicle_cost_extend.
+#: view_vehicle_other_cost_form
+#: view:fleet.vehicle.log.other.cost:fleet_vehicle_cost_extend.
+#: view_vehicle_other_cost_tree
+msgid "Other Costs"
+msgstr "Ostali troškovi"
+
+#. module: fleet_vehicle_cost_extend
+#: model:ir.model,name:fleet_vehicle_cost_extend.model_fleet_vehicle_log_other_cost
+msgid "Other costs for vehicles"
+msgstr "Ostali troškovi vozila"
+
+#. module: fleet_vehicle_cost_extend
+#: field:fleet.service.type,parent_id:0
+msgid "Parent"
+msgstr "Roditeljski zapis"
+
+#. module: fleet_vehicle_cost_extend
+#: model:fleet.service.type,name:fleet_vehicle_cost_extend.
+#: type_service_pranjeVozila
+msgid "Pranje vozila"
+msgstr "Pranje vozila"
+
+#. module: fleet_vehicle_cost_extend
+#: field:fleet.vehicle.log.other.cost,purchaser_id:0
+msgid "Purchaser"
+msgstr "Odgovorna osoba"
+
+#. module: fleet_vehicle_cost_extend
+#: model:fleet.service.type,name:fleet_vehicle_cost_extend.type_service_putarina
+msgid "Putarina"
+msgstr "Putarina"
+
+#. module: fleet_vehicle_cost_extend
+#: model:fleet.service.type,name:fleet_vehicle_cost_extend.
+#: type_service_putniTroskovi
+msgid "Putni troškovi"
+msgstr "Putni troškovi"
+
+#. module: fleet_vehicle_cost_extend
+#: model:ir.model,name:fleet_vehicle_cost_extend.model_fleet_vehicle_log_services
+msgid "Services for vehicles"
+msgstr "Servisi vozila"
+
+#. module: fleet_vehicle_cost_extend
+#: view:fleet.vehicle.log.fuel:fleet_vehicle_cost_extend.
+#: view_fuel_log_search_inherit
+#: field:fleet.vehicle.log.other.cost,vendor_id:0
+#: view:fleet.vehicle.log.services:fleet_vehicle_cost_extend.
+#: view_log_services_search
+msgid "Supplier"
+msgstr "Dobavljač"
+
+#. module: fleet_vehicle_cost_extend
+#: model:fleet.service.type,name:fleet_vehicle_cost_extend.type_service_terminali
+msgid "Terminali"
+msgstr "Terminali"
+
+#. module: fleet_vehicle_cost_extend
+#: view:fleet.vehicle.log.other.cost:fleet_vehicle_cost_extend.
+#: view_vehicle_other_cost_tree
+msgid "Total"
+msgstr "Ukupno"
+
+#. module: fleet_vehicle_cost_extend
+#: model:ir.model,name:fleet_vehicle_cost_extend.model_fleet_service_type
+msgid "Type of services available on a vehicle"
+msgstr "Type of services available on a vehicle"
+
+#. module: fleet_vehicle_cost_extend
+#: model:fleet.service.type,name:fleet_vehicle_cost_extend.type_service_ulje
+msgid "Ulje"
+msgstr "Ulje"
+
+#. module: fleet_vehicle_cost_extend
+#: view:fleet.vehicle.log.contract:fleet_vehicle_cost_extend.
+#: vehicle_log_contract_search
+#: view:fleet.vehicle.log.services:fleet_vehicle_cost_extend.
+#: view_log_services_search
+msgid "Vehicle"
+msgstr "Vozilo"
+
+#. module: fleet_vehicle_cost_extend
+#: model:ir.actions.act_window,name:fleet_vehicle_cost_extend.
+#: open_view_vehicle_other_cost_tree
+#: model:ir.ui.menu,name:fleet_vehicle_cost_extend.menu_vehicle_other_cost
+msgid "Vehicle Other Costs"
+msgstr "Ostali troškovi vozila"
+
+#. module: fleet_vehicle_cost_extend
+#: view:fleet.vehicle.log.other.cost:fleet_vehicle_cost_extend.
+#: view_vehicle_other_cost_form
+msgid "Write here any other information related to the service completed."
+msgstr "Ovdje upišite za Vas bitne informacije o uradjenom servisu."
+
+#. module: fleet_vehicle_cost_extend
+#: view:fleet.vehicle.log.fuel:fleet_vehicle_cost_extend.
+#: view_fuel_log_search_inherit
+#: view:fleet.vehicle.log.services:fleet_vehicle_cost_extend.
+#: view_log_services_search
+msgid "Year"
+msgstr "Godina"
+
+#. module: fleet_vehicle_cost_extend
+#: view:fleet.vehicle.log.services:fleet_vehicle_cost_extend.
+#: fleet_vehicle_log_services_form_inherit
+msgid "[('parent_id','!=',False), ('category','=','service')]"
+msgstr "[('parent_id','!=',False), ('category','=','service')]"
+
+#. module: fleet_vehicle_cost_extend
+#: view:fleet.vehicle.log.services:fleet_vehicle_cost_extend.
+#: fleet_vehicle_log_services_form_inherit
+msgid "[('parent_id','=',False), ('category','=','service')]"
+msgstr "[('parent_id','=',False), ('category','=','service')]"
+
+#. module: fleet_vehicle_cost_extend
+#: view:fleet.vehicle.cost:fleet_vehicle_cost_extend.
+#: fleet_vehicle_cost_form_inherit
+#: view:fleet.vehicle.cost:fleet_vehicle_cost_extend.
+#: fleet_vehicle_cost_tree_inherit
+msgid "false"
+msgstr "false"
+
+#. module: fleet_vehicle_cost_extend
+#: view:fleet.vehicle.log.contract:fleet_vehicle_cost_extend.
+#: fleet_vehicle_log_contract_tree_inherit
+msgid "orange:days_left>0 and days_left<30;red:days_left==0;grey:state=='closed'"
+msgstr "orange:days_left>0 and days_left<30;red:days_left==0;grey:state=='closed'"
+
+#. module: fleet_vehicle_cost_extend
+#: model:fleet.service.type,name:fleet_vehicle_cost_extend.
+#: type_service_spediterskeUsluge
+msgid "Špediterske usluge"
+msgstr "Špediterske usluge"

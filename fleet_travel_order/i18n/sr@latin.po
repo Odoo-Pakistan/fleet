@@ -1,0 +1,347 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* fleet_travel_order
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-12-07 21:29+0000\n"
+"PO-Revision-Date: 2015-12-07 21:29+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: fleet_travel_order
+#: field:fleet.vehicle.travel.order,cargo_worker1_id:0
+msgid "1st Cargo Worker"
+msgstr "1st Cargo Worker"
+
+#. module: fleet_travel_order
+#: field:fleet.vehicle.travel.order,codriver1_id:0
+msgid "1st Co-Driver"
+msgstr "1st Co-Driver"
+
+#. module: fleet_travel_order
+#: field:fleet.vehicle.travel.order,driver1_id:0
+msgid "1st Driver"
+msgstr "1st Driver"
+
+#. module: fleet_travel_order
+#: field:fleet.vehicle.travel.order,cargo_worker2_id:0
+msgid "2nd Cargo Worker"
+msgstr "2nd Cargo Worker"
+
+#. module: fleet_travel_order
+#: field:fleet.vehicle.travel.order,codriver2_id:0
+#: field:fleet.vehicle.travel.order,driver2_id:0
+msgid "2nd Driver"
+msgstr "2nd Driver"
+
+#. module: fleet_travel_order
+#: field:fleet.vehicle.travel.order,cargo_worker3_id:0
+msgid "3rd Cargo Worker"
+msgstr "3rd Cargo Worker"
+
+#. module: fleet_travel_order
+#: field:fleet.vehicle.travel.order,codriver3_id:0
+msgid "3rd Driver"
+msgstr "3rd Driver"
+
+#. module: fleet_travel_order
+#: field:fleet.vehicle.travel.order,cargo_worker4_id:0
+msgid "4th Cargo Worker"
+msgstr "4th Cargo Worker"
+
+#. module: fleet_travel_order
+#: field:fleet.vehicle.travel.order,codriver4_id:0
+msgid "4th Driver"
+msgstr "4th Driver"
+
+#. module: fleet_travel_order
+#: model:ir.actions.act_window,help:fleet_travel_order.fleet_vehicle_order_act
+msgid "<p class=\"oe_view_nocontent_create\">\n"
+"                Click to create a vehicle travel order.\n"
+"              </p>\n"
+"              <p>\n"
+"                Here you can create travel orders for your vehicles...\n"
+"              </p>\n"
+"            "
+msgstr "<p class=\"oe_view_nocontent_create\">\n"
+"                Click to create a vehicle travel order.\n"
+"              </p>\n"
+"              <p>\n"
+"                Here you can create travel orders for your vehicles...\n"
+"              </p>\n"
+"            "
+
+#. module: fleet_travel_order
+#: field:fleet.vehicle.travel.order,additional_vehicle_id:0
+msgid "Additional vehicle"
+msgstr "Additional vehicle"
+
+#. module: fleet_travel_order
+#: view:fleet.vehicle.travel.order:fleet_travel_order.view_vehicle_travel_order_search
+msgid "Cargo"
+msgstr "Cargo"
+
+#. module: fleet_travel_order
+#: view:fleet.vehicle.travel.order:fleet_travel_order.fleet_vehicle_travel_order_form
+msgid "Cargo Workers"
+msgstr "Cargo Workers"
+
+#. module: fleet_travel_order
+#: view:fleet.vehicle.travel.order:fleet_travel_order.fleet_vehicle_travel_order_form
+msgid "Co-Drivers"
+msgstr "Co-Drivers"
+
+#. module: fleet_travel_order
+#: field:fleet.vehicle.travel.order,create_uid:0
+#: field:fleet.vehicle.travel.order.line,create_uid:0
+msgid "Created by"
+msgstr "Created by"
+
+#. module: fleet_travel_order
+#: field:fleet.vehicle.travel.order,create_date:0
+#: field:fleet.vehicle.travel.order.line,create_date:0
+msgid "Created on"
+msgstr "Created on"
+
+#. module: fleet_travel_order
+#: view:fleet.vehicle.log.fuel:fleet_travel_order.view_fuel_log_search_inherit
+#: view:fleet.vehicle.travel.order:fleet_travel_order.view_vehicle_travel_order_search
+#: field:fleet.vehicle.travel.order,date:0
+#: field:fleet.vehicle.travel.order.line,date:0
+msgid "Date"
+msgstr "Date"
+
+#. module: fleet_travel_order
+#: view:fleet.vehicle.log.fuel:fleet_travel_order.view_fuel_log_search_inherit
+msgid "Department"
+msgstr "Department"
+
+#. module: fleet_travel_order
+#: view:fleet.vehicle.travel.order:fleet_travel_order.fleet_vehicle_travel_order_form
+#: field:fleet.vehicle.travel.order,distance:0
+#: field:fleet.vehicle.travel.order.line,distance:0
+msgid "Distance"
+msgstr "Distance"
+
+#. module: fleet_travel_order
+#: view:fleet.vehicle.travel.order:fleet_travel_order.fleet_vehicle_travel_order_form
+msgid "Drivers"
+msgstr "Drivers"
+
+#. module: fleet_travel_order
+#: code:addons/fleet_travel_order/models/fleet_vehicle_travel_order_line.py:35
+#: code:addons/fleet_travel_order/models/fleet_vehicle_travel_order_line.py:46
+#, python-format
+msgid "Emptying the odometer value of a vehicle is not allowed."
+msgstr "Emptying the odometer value of a vehicle is not allowed."
+
+#. module: fleet_travel_order
+#: model:ir.model,name:fleet_travel_order.model_fleet_vehicle_log_fuel
+msgid "Fuel log for vehicles"
+msgstr "Fuel log for vehicles"
+
+#. module: fleet_travel_order
+#: field:fleet.vehicle.travel.order,fuel_log_ids:0
+msgid "Fuel log ids"
+msgstr "Fuel log ids"
+
+#. module: fleet_travel_order
+#: view:fleet.vehicle.travel.order:fleet_travel_order.view_vehicle_travel_order_search
+msgid "Group by..."
+msgstr "Group by..."
+
+#. module: fleet_travel_order
+#: field:fleet.vehicle.travel.order,id:0
+#: field:fleet.vehicle.travel.order.line,id:0
+msgid "ID"
+msgstr "ID"
+
+#. module: fleet_travel_order
+#: model:ir.model,name:fleet_travel_order.model_fleet_vehicle
+msgid "Information on a vehicle"
+msgstr "Information on a vehicle"
+
+#. module: fleet_travel_order
+#: view:fleet.vehicle.travel.order:fleet_travel_order.fleet_vehicle_travel_order_form
+msgid "Kilometres"
+msgstr "Kilometres"
+
+#. module: fleet_travel_order
+#: field:fleet.vehicle.travel.order,write_uid:0
+#: field:fleet.vehicle.travel.order.line,write_uid:0
+msgid "Last Updated by"
+msgstr "Last Updated by"
+
+#. module: fleet_travel_order
+#: field:fleet.vehicle.travel.order,write_date:0
+#: field:fleet.vehicle.travel.order.line,write_date:0
+msgid "Last Updated on"
+msgstr "Last Updated on"
+
+#. module: fleet_travel_order
+#: field:fleet.vehicle.travel.order,loaded_km:0
+msgid "Loaded (km)"
+msgstr "Loaded (km)"
+
+#. module: fleet_travel_order
+#: field:fleet.vehicle.travel.order,num:0
+msgid "Number"
+msgstr "Number"
+
+#. module: fleet_travel_order
+#: view:fleet.vehicle.travel.order:fleet_travel_order.fleet_vehicle_travel_order_form
+msgid "Odometer"
+msgstr "Odometer"
+
+#. module: fleet_travel_order
+#: code:addons/fleet_travel_order/models/fleet_vehicle_travel_order_line.py:37
+#: code:addons/fleet_travel_order/models/fleet_vehicle_travel_order_line.py:48
+#, python-format
+msgid "Odometer error"
+msgstr "Odometer error"
+
+#. module: fleet_travel_order
+#: help:fleet.vehicle.travel.order,start_odometer_id:0
+#: help:fleet.vehicle.travel.order,stop_odometer_id:0
+#: help:fleet.vehicle.travel.order.line,start_odometer_id:0
+#: help:fleet.vehicle.travel.order.line,stop_odometer_id:0
+msgid "Odometer measure of the vehicle at the moment of this log"
+msgstr "Odometer measure of the vehicle at the moment of this log"
+
+#. module: fleet_travel_order
+#: field:fleet.vehicle.travel.order,start_odometer_id:0
+#: field:fleet.vehicle.travel.order.line,start_odometer_id:0
+msgid "Odometer start"
+msgstr "Odometer start"
+
+#. module: fleet_travel_order
+#: field:fleet.vehicle.travel.order,stop_odometer_id:0
+#: field:fleet.vehicle.travel.order.line,stop_odometer_id:0
+msgid "Odometer stop"
+msgstr "Odometer stop"
+
+#. module: fleet_travel_order
+#: code:addons/fleet_travel_order/models/fleet_vehicle_travel_order_line.py:35
+#: code:addons/fleet_travel_order/models/fleet_vehicle_travel_order_line.py:46
+#, python-format
+msgid "Operation not allowed!"
+msgstr "Operation not allowed!"
+
+#. module: fleet_travel_order
+#: selection:fleet.vehicle.travel.order,type:0
+msgid "PN3"
+msgstr "PN3"
+
+#. module: fleet_travel_order
+#: selection:fleet.vehicle.travel.order,type:0
+msgid "PN4"
+msgstr "PN4"
+
+#. module: fleet_travel_order
+#: view:fleet.vehicle.travel.order:fleet_travel_order.view_vehicle_travel_order_search
+msgid "Passenger"
+msgstr "Passenger"
+
+#. module: fleet_travel_order
+#: view:fleet.vehicle.travel.order:fleet_travel_order.view_vehicle_travel_order_search
+#: field:fleet.vehicle.travel.order,place:0
+msgid "Place"
+msgstr "Place"
+
+#. module: fleet_travel_order
+#: field:fleet.vehicle.travel.order,private_km:0
+msgid "Private (km)"
+msgstr "Private (km)"
+
+#. module: fleet_travel_order
+#: field:fleet.vehicle.travel.order,series:0
+msgid "Series"
+msgstr "Series"
+
+#. module: fleet_travel_order
+#: code:addons/fleet_travel_order/models/fleet_vehicle_travel_order_line.py:37
+#, python-format
+msgid "Start odometer value must not be bigger than stop odometer value"
+msgstr "Start odometer value must not be bigger than stop odometer value"
+
+#. module: fleet_travel_order
+#: code:addons/fleet_travel_order/models/fleet_vehicle_travel_order_line.py:48
+#, python-format
+msgid "Stop odometer value must not be lower than start odometer value"
+msgstr "Stop odometer value must not be lower than start odometer value"
+
+#. module: fleet_travel_order
+#: view:fleet.vehicle.log.fuel:fleet_travel_order.view_fuel_log_search_inherit
+msgid "Supplier"
+msgstr "Supplier"
+
+#. module: fleet_travel_order
+#: view:fleet.vehicle.log.fuel:fleet_travel_order.view_fuel_log_search_inherit
+#: view:fleet.vehicle.travel.order:fleet_travel_order.fleet_vehicle_travel_order_form
+#: field:fleet.vehicle.travel.order.line,travel_order_id:0
+msgid "Travel Order"
+msgstr "Travel Order"
+
+#. module: fleet_travel_order
+#: view:fleet.vehicle.travel.order:fleet_travel_order.fleet_vehicle_travel_order_form
+msgid "Travel Order Line"
+msgstr "Travel Order Line"
+
+#. module: fleet_travel_order
+#: field:fleet.vehicle,travel_order_ids:0
+#: view:fleet.vehicle.travel.order:fleet_travel_order.fleet_vehicle_travel_order_form
+#: view:fleet.vehicle.travel.order:fleet_travel_order.fleet_vehicle_travel_order_tree
+#: model:ir.actions.act_window,name:fleet_travel_order.fleet_vehicle_order_act
+#: model:ir.ui.menu,name:fleet_travel_order.fleet_vehicle_order_menu
+msgid "Travel Orders"
+msgstr "Travel Orders"
+
+#. module: fleet_travel_order
+#: field:fleet.vehicle.log.fuel,travel_order_id:0
+msgid "Travel order"
+msgstr "Travel order"
+
+#. module: fleet_travel_order
+#: field:fleet.vehicle.travel.order,travel_order_line_ids:0
+msgid "Travel order line ids"
+msgstr "Travel order line ids"
+
+#. module: fleet_travel_order
+#: view:fleet.vehicle.travel.order:fleet_travel_order.view_vehicle_travel_order_search
+msgid "Travel order type:"
+msgstr "Travel order type:"
+
+#. module: fleet_travel_order
+#: field:fleet.vehicle.travel.order,type:0
+msgid "Type"
+msgstr "Type"
+
+#. module: fleet_travel_order
+#: view:fleet.vehicle.travel.order:fleet_travel_order.fleet_vehicle_travel_order_form
+#: view:fleet.vehicle.travel.order:fleet_travel_order.view_vehicle_travel_order_search
+#: field:fleet.vehicle.travel.order,vehicle_id:0
+msgid "Vehicle"
+msgstr "Vehicle"
+
+#. module: fleet_travel_order
+#: view:fleet.vehicle.log.fuel:fleet_travel_order.view_fuel_log_search_inherit
+msgid "Year"
+msgstr "Year"
+
+#. module: fleet_travel_order
+#: view:fleet.vehicle.travel.order:fleet_travel_order.fleet_vehicle_travel_order_form
+msgid "show the fuel logs for this vehicle"
+msgstr "show the fuel logs for this vehicle"
+
+#. module: fleet_travel_order
+#: view:fleet.vehicle:fleet_travel_order.fleet_vehicle_form_inherit
+msgid "show travel orders for this vehicle"
+msgstr "show travel orders for this vehicle"
+
