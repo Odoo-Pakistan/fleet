@@ -11,6 +11,16 @@
                 <form string="Travel Orders" version="7.0">
                     <sheet>
 
+                        <div class="oe_right oe_button_box">
+                            <button name="return_fuel_logs"
+                                    type="object"
+                                    class="oe_stat_button"
+                                    icon="fa-flask"
+                                    help="show the fuel logs for this vehicle" >
+                                   <field name="fuel_log_count" widget="statinfo"/>
+                            </button>
+                        </div>
+
                         <div class="oe_title" string="Vehicle">
 
                             <label for="vehicle_id" class="oe_edit_only"/>
@@ -33,15 +43,7 @@
                             </h2>
 
                         </div>
-                         <div class="oe_right oe_button_box">
-                             <button name="return_fuel_logs"
-                             		 type="object"
-                             		 class="oe_stat_button"
-                             		 icon="fa-flask"
-                             		 help="show the fuel logs for this vehicle" >
-                             		<field name="fuel_log_count" widget="statinfo"/>
-                             </button>
-                         </div>
+
 
                         <group col="2">
                             <group string="Travel Order">

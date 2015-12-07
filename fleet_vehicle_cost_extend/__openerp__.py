@@ -12,7 +12,7 @@ Module for extending service and cost features of Fleet management module
     "category" : "Managing vehicles and contracts",
 
     'depends': [
-        'fleet',
+        'fleet_extend',
         'hr',
     ],
     'data':[

@@ -64,9 +64,9 @@ class FleetVehicleTravelOrder(models.Model):
     def _get_counts_for_travel_order(self):
         for obj in self:
             self.services_count = self.env['fleet.vehicle.log.services'].search_count(
-                [('travel_order_id', '=', self.id)])
+                [('travel_order_id', '=', obj.id)])
             self.other_cost_count = self.env['fleet.vehicle.log.other.cost'].search_count(
-                [('travel_order_id', '=', self.id)])
+                [('travel_order_id', '=', obj.id)])
 
     total_fuel_cost = fields.Float(string='Fuel costs', compute=_compute_costs)
     total_service_cost = fields.Float(string='Service costs', compute=_compute_costs)
