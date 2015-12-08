@@ -18,7 +18,6 @@ Module for specific things in Fleet management system
         'fleet_vehicle_cost_extend',
         'fleet_travel_order',
         'fleet_travel_order_costs',
-        'fleet_order_menu_items',
     ],
     'data':[
         'views/vehicle_travel_order_view.xml',
