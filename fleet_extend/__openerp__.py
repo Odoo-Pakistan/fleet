@@ -17,6 +17,7 @@ Module for extending core fleet with new field and functionalities
     'data':[
         'data/vehicle_type_data.xml',
         'views/fleet_vehicle_view.xml',
+        'views/res_config_view.xml'
     ],
 
     "installable": True,

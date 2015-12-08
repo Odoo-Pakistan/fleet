@@ -1,0 +1,47 @@
+<openerp>
+    <data>
+
+        <record id="view_fleet_configuration" model="ir.ui.view">
+        <field name="name">Fleet settings</field>
+        <field name="model">fleet.config.settings</field>
+        <field name="arch" type="xml">
+            <form string="Configure Fleet" class="oe_form_configuration">
+                <header>
+                    <button string="Apply" type="object" name="execute" class="oe_highlight"/>
+                    or
+                    <button string="Cancel" type="object" name="cancel" class="oe_link"/>
+                </header>
+                <separator string="Fleet Management"/>
+                <group>
+                    <label for="id" string="Additional features"/>
+                    <div>
+                        <div>
+                            <field name="module_fleet_vehicle_cost_extend" class="oe_inline"/>
+                            <label for="module_fleet_vehicle_cost_extend"/>
+                        </div>
+                        <div>
+                            <field name="module_fleet_travel_order" class="oe_inline"/>
+                            <label for="module_fleet_travel_order"/>
+                        </div>
+                        <div>
+                            <field name="module_fleet_travel_order_costs" class="oe_inline"/>
+                            <label for="module_fleet_travel_order_costs"/>
+                        </div>
+                    </div>
+                </group>
+            </form>
+        </field>
+    </record>
+
+        <record id="action_fleet_configuration" model="ir.actions.act_window">
+            <field name="name">Configure Fleet</field>
+            <field name="res_model">fleet.config.settings</field>
+            <field name="view_id" ref="view_fleet_configuration"/>
+            <field name="view_mode">form</field>
+            <field name="target">inline</field>
+        </record>
+
+        <menuitem id="menu_fleet_configuration" name="Fleet Configuration" parent="fleet.fleet_configuration"
+                    sequence="5" action="action_fleet_configuration"/>
+    </data>
+</openerp>
