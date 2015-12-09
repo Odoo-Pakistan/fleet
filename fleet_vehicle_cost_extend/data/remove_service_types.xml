@@ -197,6 +197,11 @@
           <field name="category">other</field>
     </record>
 
+    <record id="type_service_parkingVozila" model="fleet.service.type">
+          <field name="name">Parking vozila</field>
+          <field name="category">other</field>
+    </record>
+
 
 
 
