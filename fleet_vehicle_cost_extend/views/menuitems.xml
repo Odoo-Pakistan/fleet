@@ -2,8 +2,13 @@
 <openerp>
 	<data>
 
-        <menuitem name="Vehicle Other Costs" parent="fleet.fleet_vehicles" id="menu_vehicle_other_cost" sequence="100" action="open_view_vehicle_other_cost_tree"/>
-        <menuitem action="fleet_vehicle_costs_detail_act" parent="fleet.fleet_vehicles" sequence="100" id="fleet_vehicle_costs_menu" groups="fleet.group_fleet_manager"/>
+        <menuitem name="Vehicle Other Costs" parent="fleet_extend.fleet_costs" id="menu_vehicle_other_cost" sequence="50"
+                  action="open_view_vehicle_other_cost_tree"
+                  groups="fleet.group_fleet_user" />
+
+        <menuitem action="fleet_vehicle_costs_detail_act" parent="fleet_extend.fleet_costs" id="fleet_vehicle_costs_menu"
+                  sequence="100"
+                  groups="fleet.group_fleet_manager"/>
 
     </data>
 </openerp>

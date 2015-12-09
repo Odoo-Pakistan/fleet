@@ -164,7 +164,7 @@
 
 
         <!-- #### MENU ITEM #### -->
-        <menuitem action="fleet_vehicle_order_act" parent="fleet.fleet_vehicles" id="fleet_vehicle_order_menu" sequence="30" groups="fleet.group_fleet_manager"/>
+        <menuitem action="fleet_vehicle_order_act" parent="fleet.fleet_vehicles" id="fleet_vehicle_order_menu" sequence="20" groups="fleet.group_fleet_manager"/>
 
 
 
