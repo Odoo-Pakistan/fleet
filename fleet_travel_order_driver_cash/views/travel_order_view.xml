@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+
+		<!-- #### FORM VIEW #### -->
+
+		<record model="ir.ui.view" id="fleet_vehicle_travel_order_form_cash_inherit">
+            <field name="name">fleet.vehicle.travel.order.form.cash.inherit</field>
+            <field name="model">fleet.vehicle.travel.order</field>
+            <field name="inherit_id" ref="fleet_travel_order.fleet_vehicle_travel_order_form" />
+            <field name="arch" type="xml">            
+            <notebook>
+                <page string="Driver Cash">
+                    <field name="driver_cash_ids">
+						<tree editable="bottom">
+							<field name="currency_id"/>
+							<field name="received_amount"/>
+							<field name="returned_amount"/>
+                        </tree>
+                    </field>
+                </page>
+			</notebook>
+            </field>
+        </record>
+
+
+
+
+
+
+
+	</data>
+</openerp>

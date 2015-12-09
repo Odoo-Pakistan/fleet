@@ -18,7 +18,8 @@ Managing driver budget per travel order
         'fleet_travel_order_costs',
     ],
     'data':[
-#         'views/travel_order_view.xml',
+        'views/travel_order_view.xml',
+#         'views/vehicle_log_fuel_view.xml',
     ],
 
     "installable": True,

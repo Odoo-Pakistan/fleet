@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+
+
+	     <!-- #### FORM VIEW #### -->
+
+ 		<record model='ir.ui.view' id='fleet_vehicle_log_fuel_form_cash_inherit'>
+        	<field name="name">fleet.vehicle.log.fuel.form.cash.inherit</field>
+            <field name="model">fleet.vehicle.log.fuel</field>
+            <field name="inherit_id" ref="fleet.fleet_vehicle_log_fuel_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='inv_ref']" position="after">
+                        <field name="driver_cash_id" domain="[('travel_order_id','=',travel_order_id)]" readonly="0"/>
+                </xpath>
+            </field>
+        </record>
+
+	</data>
+</openerp>
