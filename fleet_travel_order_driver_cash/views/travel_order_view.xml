@@ -13,10 +13,11 @@
                 <page string="Driver Cash">
                     <field name="driver_cash_ids">
 						<tree editable="bottom">
-							<field name="currency_id"/>
+							<field name="currency_id" />
                             <field name="currency_rate" />
-							<field name="received_amount"/>
-							<field name="returned_amount"/>
+							<field name="received_amount" />
+							<field name="returned_amount" />
+                            <field name="diff_amount" readonly="1"/>
                         </tree>
                     </field>
                 </page>
