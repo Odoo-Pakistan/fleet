@@ -15,7 +15,7 @@ Managing driver budget per travel order
         'fleet',
         'hr',
         'fleet_travel_order',
-        'fleet_travel_order_costs',
+        # 'fleet_travel_order_costs',
     ],
     'data':[
         'views/travel_order_view.xml',

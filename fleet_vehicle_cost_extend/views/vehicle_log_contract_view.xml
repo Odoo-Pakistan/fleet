@@ -11,7 +11,7 @@
 			<field name="arch" type="xml">
 				<data>
 
-					<xpath expr="//tree[@string='Contract logs']" position="attributes">
+					<xpath expr="//tree" position="attributes">
 						<attribute name="colors">orange:days_left>0 and days_left&lt;30;red:days_left==0;grey:state=='closed'</attribute>
 					</xpath>
 

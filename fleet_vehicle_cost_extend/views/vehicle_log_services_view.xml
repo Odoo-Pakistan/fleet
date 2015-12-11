@@ -19,11 +19,11 @@
 						<attribute name="domain">[('parent_id','=',False), ('category','=','service')]</attribute>
 					</xpath>
 
-					<xpath expr="//group[@string='Included Services']//field[@name='cost_subtype_id']" position="attributes">
+					<xpath expr="//field[@name='cost_ids']//field[@name='cost_subtype_id']" position="attributes">
 						<attribute name="domain">[('parent_id','!=',False), ('category','=','service')]</attribute>
 					</xpath>
 
-					<xpath expr="//group[@string='Included Services']//field[@name='cost_subtype_id']" position="after">
+					<xpath expr="//field[@name='cost_ids']//field[@name='cost_subtype_id']" position="after">
 						<field name="notes" />
 						<field name="alert" />
 						<field name="next_service" />

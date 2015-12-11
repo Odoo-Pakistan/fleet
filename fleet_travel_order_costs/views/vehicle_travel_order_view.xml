@@ -29,17 +29,18 @@
                  </xpath>
 
 
-                <xpath expr="//group[@string='Travel Order']" position="after">
+                <xpath expr="//field[@name='place']/.." position="after">
                     <group string="Costs">
                         <field name="total_fuel_cost"/>
                         <field name="total_service_cost"/>
                         <field name="total_other_cost"/>
                         <field name="total_costs"/>
-                        <!--<field name="driver_cash"/>-->
                     </group>
-                    <group string="Profit">
 
-                    </group>
+                    <!--<group string="Profit">-->
+
+                    <!--</group>-->
+
                 </xpath>
 
                 <!--<xpath expr="//page[@string='Travel Order Line']" position="replace">-->

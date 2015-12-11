@@ -66,9 +66,9 @@ class fleet_vehicle_travel_order(models.Model):
     travel_order_line_ids = fields.One2many('fleet.vehicle.travel.order.line','travel_order_id')
     series = fields.Char('Series',size=64)
     start_odometer_id = fields.Many2one('fleet.vehicle.odometer', string ='Odometer start', help='Odometer measure of the vehicle at the moment of this log')
-    start_odometer = fields.Float(compute=_get_odometer, inverse = _set_start_odometer, string='Odometer start', help='Odometer measure of the vehicle at the moment of this log')
+    start_odometer = fields.Float(compute=_get_odometer, inverse = _set_start_odometer, readonly=True, string='Odometer start', help='Odometer measure of the vehicle at the moment of this log')
     stop_odometer_id = fields.Many2one('fleet.vehicle.odometer', string='Odometer stop', help='Odometer measure of the vehicle at the moment of this log')
-    stop_odometer = fields.Float(compute=_get_odometer, inverse = _set_stop_odometer, string = 'Odometer stop', help='Odometer measure of the vehicle at the moment of this log')
+    stop_odometer = fields.Float(compute=_get_odometer, inverse = _set_stop_odometer, readonly=True, string = 'Odometer stop', help='Odometer measure of the vehicle at the moment of this log')
     #sa V8
     private_km = fields.Float(string='Private (km)')
     loaded_km = fields.Float(string='Loaded (km)')

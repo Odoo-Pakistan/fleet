@@ -94,7 +94,7 @@
 <!-- 					</xpath> -->
 
 
-					<xpath expr="//group[@string='General Properties']" position="inside">
+					<xpath expr="//field[@name='car_value']/.." position="after">
 						<group string="Technical inspection">
 							<field name="technical_inspection_date" />
 							<field name="six_months_technical_inspection" />
