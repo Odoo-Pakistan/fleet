@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+	    <!-- #### FORM VIEW #### -->
+
+	    <record model="ir.ui.view" id="fleet_vehicle_form_inherit">
+			<field name="name">fleet.vehicle.form.inherit</field>
+			<field name="model">fleet.vehicle</field>
+			<field name="inherit_id" ref="fleet.fleet_vehicle_form" />
+			<field name="arch" type="xml">
+			<data>
+				<xpath expr="//button[@name='return_action_to_open']" position="after">
+					<button name="return_action_to_open_other_costs"
+                            class="oe_stat_button"
+						    icon="fa-usd"
+                            type="object"
+                            context="{'xml_id':'open_view_vehicle_other_cost_tree'}"
+						    help="show travel orders for this vehicle">
+						<field name="other_cost_count" widget="statinfo" />
+					</button>
+				</xpath>
+			</data>
+			</field>
+	    </record>
+    </data>
+</openerp>

@@ -3,3 +3,4 @@ import fleet_vehicle_log_contract
 import fleet_vehicle_log_services
 import fleet_vehicle_log_other_cost
 import fleet_service_type
+import fleet_vehicle

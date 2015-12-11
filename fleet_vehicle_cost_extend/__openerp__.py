@@ -24,6 +24,7 @@ Module for extending service and cost features of Fleet management module
         'views/vehicle_log_other_cost_view.xml',
         'views/vehicle_cost_view.xml',
         'views/menuitems.xml',
+        'views/vehicle_view.xml',
     ],
 
     "installable": True,
