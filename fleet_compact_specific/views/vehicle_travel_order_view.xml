@@ -11,7 +11,7 @@
             <field name="arch" type="xml">
             <data>
 
-                <xpath expr="//page[@string='Travel Order Line']" position="after">
+                <xpath expr="//notebook" position="inside">
                     <page string="Fakture">
                         <field name="invoice_ids">
                             <tree editable="bottom">
