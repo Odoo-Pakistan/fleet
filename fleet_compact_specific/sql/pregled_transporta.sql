@@ -36,7 +36,7 @@ from
 		select coalesce(sum(fuel.liter), 0)
 		from fleet_vehicle_log_fuel fuel
 		left join fleet_vehicle_cost cst on (cst.id = fuel.cost_id)
-		where fuel.travel_order_id = tro.id
+		where cst.travel_order_id = tro.id
 	) as gorivo_litara
 	,(
 		select coalesce(sum(cst.amount), 0)
