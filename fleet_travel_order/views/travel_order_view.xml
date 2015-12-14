@@ -111,9 +111,11 @@
             <field name="model">fleet.vehicle.travel.order</field>
             <field name="arch" type="xml">
                 <tree string="Travel Orders">
-                    <field name="num"/>
                     <field name="date"/>
+                    <field name="series"/>
+                    <field name="num"/>
                     <field name="vehicle_id"/>
+                    <field name="distance"/>
                 </tree>
             </field>
         </record>
