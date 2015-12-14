@@ -65,7 +65,7 @@
               <field name="model">fleet.vehicle.travel.order</field>
               <field name="inherit_id" ref="fleet_travel_order.fleet_vehicle_travel_order_tree"/>
               <field name="arch" type="xml">
-                    <xpath expr="//field[@name='vehicle_id']" position="after">
+                    <xpath expr="//field[@name='distance']" position="after">
                         <field name="total_fuel_cost" sum="Total Fuel Costs"/>
                         <field name="total_service_cost" sum="Total Service Costs"/>
                         <field name="total_other_cost" sum="Total Other Costs"/>
