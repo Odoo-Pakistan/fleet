@@ -35,9 +35,10 @@ class fleet_vehicle_travel_order_line(models.Model):
                 raise except_orm(_('Operation not allowed!'),_('Emptying the odometer value of a vehicle is not allowed.'))
             if not obj._check_odometer_validity('start'):
                 raise except_orm(_('Odometer error'),_('Start odometer value must not be bigger than stop odometer value'))
+            value = obj.start_odometer
             if obj.start_odometer_id:
-                obj.start_odometer_id.unlink()
-            obj.start_odometer_id = self.env['fleet.vehicle.odometer'].create({'value':obj.start_odometer,'vehicle_id':obj.travel_order_id.vehicle_id.id})
+                obj.start_odometer_id.sudo().unlink()
+            obj.start_odometer_id = self.env['fleet.vehicle.odometer'].create({'value':value,'vehicle_id':obj.travel_order_id.vehicle_id.id})
 
     
     def _set_stop_odometer(self):
@@ -46,9 +47,10 @@ class fleet_vehicle_travel_order_line(models.Model):
                 raise except_orm(_('Operation not allowed!'),_('Emptying the odometer value of a vehicle is not allowed.'))
             if not obj._check_odometer_validity('stop'):
                 raise except_orm(_('Odometer error'),_('Stop odometer value must not be lower than start odometer value'))
+            value = obj.stop_odometer
             if obj.stop_odometer_id:
-                obj.stop_odometer_id.unlink()
-            obj.stop_odometer_id = self.env['fleet.vehicle.odometer'].create({'value':obj.stop_odometer,'vehicle_id':obj.travel_order_id.vehicle_id.id})
+                obj.stop_odometer_id.sudo().unlink()
+            obj.stop_odometer_id = self.env['fleet.vehicle.odometer'].create({'value':value,'vehicle_id':obj.travel_order_id.vehicle_id.id})
     
     def _get_start_odometer(self):
         for obj in self:
