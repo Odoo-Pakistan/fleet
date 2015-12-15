@@ -1,0 +1,10 @@
+<openerp>
+    <data>
+        <record id="contract_renewal_alert" model="fleet.alert">
+              <field name="name">Contract renewal alert</field>
+              <field name="is_alert_set" eval="True"/>
+              <field name="due_soon_days" eval="15"/>
+        </record>
+        
+	</data>
+</openerp>
