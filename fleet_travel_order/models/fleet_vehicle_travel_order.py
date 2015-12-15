@@ -60,6 +60,18 @@ class fleet_vehicle_travel_order(models.Model):
     private_km = fields.Float(string='Private (km)')
     loaded_km = fields.Float(string='Loaded (km)')
     total_km = fields.Float(string='Total (km)', compute=_get_odometer, store=True)
+    state = fields.Selection([('open','Open'),('terminated','Terminated')],string='State',default='open')
+    
+    
+    
+    @api.one
+    def button_open(self):
+        self.state='open'
+        
+    @api.one
+    def button_terminate(self):
+        self.state='terminated'
+    
 
 
 

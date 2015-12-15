@@ -9,8 +9,25 @@
             <field name="model">fleet.vehicle.travel.order</field>
             <field name="arch" type="xml">
                 <form string="Travel Orders" version="7.0">
+                    <header>
+                    	<button name="button_open"
+                    			type="object"
+                    			class="oe_highlight"
+                    			states="terminated"
+                    			string="Open"
+                    			>      	
+                    	</button>
+                    	<button name="button_terminate"
+                    			type="object"
+                    			class="oe_highlight"
+                    			states="open"
+                    			string="Terminate"
+                    			>      	
+                    	</button>
+                    	<field name="state" widget="statusbar"/>
+                    	
+                    </header>                    
                     <sheet>
-
                         <div class="oe_right oe_button_box">
                             <button name="return_fuel_logs"
                                     type="object"
