@@ -8,27 +8,23 @@ from openerp.tools.translate import _
 class FleetVehicleCost(models.Model):
     _inherit = 'fleet.vehicle.cost'
 
-    def _set_odometer(self, cr, uid, id, name, value, args=None, context=None):
-        if not value:
-            raise except_orm(_('Operation not allowed!'), _('Emptying the odometer value of a vehicle is not allowed.'))
-        date = self.browse(cr, uid, id, context=context).date
-        if not date:
-            date = fields.date.context_today(self, cr, uid, context=context)
-        this_obj = self.browse(cr, uid, id, context=context)
-        if this_obj.odometer_id:
-            self.pool.get('fleet.vehicle.odometer').unlink(cr, 1, this_obj.odometer_id.id)
-        vehicle_id = this_obj.vehicle_id
-        data = {'value': value, 'date': date, 'vehicle_id': vehicle_id.id}
-        odometer_id = self.pool.get('fleet.vehicle.odometer').create(cr, uid, data, context=context)
-        return self.write(cr, uid, id, {'odometer_id': odometer_id}, context=context)
+    def _set_odometer(self):
+        for rec in self:
+            if not rec.odometer:
+                raise except_orm(_('Operation not allowed!'),_('Emptying the odometer value of a vehicle is not allowed.'))
+            value = rec.odometer
+            if rec.odometer_id:
+                rec.odometer_id.sudo().unlink()
+            rec.odometer_id = self.env['fleet.vehicle.odometer'].create({'value':value, 'vehicle_id': rec.vehicle_id.id})
 
-    def _get_odometer(self, cr, uid, ids, odometer_id, arg, context):
-        res = dict.fromkeys(ids, False)
-        for record in self.browse(cr, uid, ids, context=context):
+    @api.multi
+    def _get_odometer(self):
+        for record in self:
             if record.odometer_id:
-                res[record.id] = record.odometer_id.value
-        return res
+                record.odometer = record.odometer_id.value
 
+
+    odometer = fields.Float(string="Odometer Value", compute=_get_odometer, inverse=_set_odometer, help='Odometer measure of the vehicle at the moment of this log')
     department_id = fields.Many2one('hr.department', string='Department')
     notes = fields.Text('Additional info')
 
