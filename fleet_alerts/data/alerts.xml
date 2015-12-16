@@ -9,7 +9,7 @@
         <record id="services_alert" model="fleet.alert">
               <field name="name">Service alerts</field>
               <field name="is_alert_set" eval="True"/>
-              <field name="due_soon_days" eval="0"/>
+              <field name="due_soon_days" eval="1000"/>
         </record>
 
 	</data>

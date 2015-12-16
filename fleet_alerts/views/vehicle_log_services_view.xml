@@ -43,7 +43,7 @@
             <field name="view_type">form</field>
             <field name="view_mode">tree</field>
             <field name="view_id" ref="fleet_vehicle_cost_tree_simple"/>
-            <field name="domain">[]</field>
+            <field name="domain">[('vehicle_id','=', active_id), ('parent_id','!=',False)]</field>
         </record>
 
     </data>

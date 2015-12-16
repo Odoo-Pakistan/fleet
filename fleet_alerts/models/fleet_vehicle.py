@@ -103,17 +103,40 @@ class FleetVehicle(models.Model):
 
     @api.multi
     def _get_services_reminder_fnc(self):
+        for rec in self:
+            overdue = False
+            due_soon = False
+            str_overdue = 'Overdue services:\n'
+            str_due_soon = 'Due soon services:\n'
+            alert_rule = self.env.ref('fleet_alerts.services_alert')
+            alert_active = False
+            border = 0.0
+            if alert_rule:
+                alert_active = alert_rule.is_alert_set
+                border = alert_rule.due_soon_days or 0.0
+            if alert_active:
+                odometer = rec.odometer or 0.0
+                services = self.env['fleet.vehicle.cost'].search([('vehicle_id', '=', rec.id),('alert', '=', True)])
+                for service in services:
+                    diff = service.next_service_absolute - odometer
+                    if (diff < border) and (diff >0):
+                        due_soon = True
+                        str_due_soon += 'Ovdje upisati info o servisu\n'
+                    elif (diff < border) and (diff <= 0):
+                        overdue = True
+                        str_overdue += 'Ovdje upisati info o servisu\n'
+
+            rec.services_overdue = overdue
+            rec.services_due_soon = due_soon
+            rec.services_info = str_overdue + str_due_soon
         pass
     def _search_services_due_soon(self):
         pass
     def _search_services_overdue(self):
         pass
 
-    @api.multi
-    def _get_services_info(self):
-        pass
 
     services_due_soon = fields.Boolean(compute=_get_services_reminder_fnc, search=_search_services_due_soon, string='Has Services to do soon')
     services_overdue = fields.Boolean(compute=_get_services_reminder_fnc, search=_search_services_overdue, string='Has Services overdue')
-    services_info = fields.Html(compute=_get_services_info, string='Services Info')
+    services_info = fields.Html(compute=_get_services_reminder_fnc, string='Services Info')
 
