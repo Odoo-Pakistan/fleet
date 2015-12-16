@@ -37,8 +37,8 @@ class FleetVehicle(models.Model):
                         if diff_time < overdue_days and diff_time >=0:
                             due_soon=True
                  
-                obj.contract_due_soon = due_soon
-                obj.contract_overdue  = overdue
+                obj.contract_renewal_due_soon = due_soon
+                obj.contract_renewal_overdue  = overdue
 
      
      
@@ -50,7 +50,6 @@ class FleetVehicle(models.Model):
     def _search_get_overdue_contract_reminder(self):
         pass
      
-    contract_due_soon = fields.Boolean(compute=_get_contract_reminder_fnc, search=_search_contract_renewal_due_soon,string='Has Contracts to renew')
-    contract_overdue  = fields.Boolean(compute=_get_contract_reminder_fnc, search=_search_get_overdue_contract_reminder, type="boolean", string='Has Contracts Overdued')
-
+    contract_renewal_due_soon = fields.Boolean(compute=_get_contract_reminder_fnc, search=_search_contract_renewal_due_soon,string='Has Contracts to renew')
+    contract_renewal_overdue  = fields.Boolean(compute=_get_contract_reminder_fnc, search=_search_get_overdue_contract_reminder,string='Has Contracts Overdued')
 
