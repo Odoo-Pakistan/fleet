@@ -1,14 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <openerp>
     <data>
 			<!--     	#### TREE VIEW #### -->
 
-   		<record model="ir.ui.view" id="fleet_vehicle_tree_inherit">
- 			<field name="name">fleet.vehicle.tree.inherit</field>
- 			<field name="model">fleet.vehicle</field>
- 			<field name="inherit_id" ref="fleet.fleet_vehicle_tree" />
- 			<field name="arch" type="xml">
- 				<data>
+<!--   		<record model="ir.ui.view" id="fleet_vehicle_tree_inherit"> -->
+<!-- 			<field name="name">fleet.vehicle.tree.inherit</field> -->
+<!-- 			<field name="model">fleet.vehicle</field> -->
+<!-- 			<field name="inherit_id" ref="fleet.fleet_vehicle_tree" /> -->
+<!-- 			<field name="arch" type="xml"> -->
+<!-- 				<data> -->
 <!-- 					<xpath expr="//field[@name='license_plate']/.." position="attributes"> -->
 <!-- 						<attribute name="colors">orange:contract_due_soon and not contract_overdue;red:contract_overdue -->
 <!-- 						</attribute> -->
@@ -21,34 +20,23 @@
 <!-- 					</xpath> -->
 <!-- 					<xpath expr="//field[@name='contract_renewal_total']" position="replace"> -->
 <!-- 					</xpath>				 -->
- 				</data>
- 			</field>
- 		</record>
+<!-- 				</data> -->
+<!-- 			</field> -->
+<!-- 		</record> -->
 
 
-        <!--#### FORM VIEW #### -->
+        <!-- #### SEARCH VIEW #### -->
 
-  		<record model="ir.ui.view" id="fleet_vehicle_form_inherit">
-			<field name="name">fleet.vehicle.form.inherit</field>
-			<field name="model">fleet.vehicle</field>
-			<field name="inherit_id" ref="fleet.fleet_vehicle_form" />
-			<field name="arch" type="xml">
-				<data>
-					<xpath expr="//field[@name='seats']/../.." position="after">
-                        <notebook>
-                            <page string="Alerts">
-
-
-                                <button string="Show Alerted" type="action" name="fleet_alerts.fleet_vehicle_alert_cost_action" />
-                                <label for="services_info" class="oe_inline" />
-                                <field name="services_info" />
-
-                            </page>
-                        </notebook>
-					</xpath>
-				</data>
-			</field>
-		</record>
+        <record model="ir.ui.view" id="view_vehicle_search_inherit">
+            <field name="name">view.vehicle.search.inherit</field>
+            <field name="model">fleet.vehicle</field>
+            <field name="inherit_id" ref="fleet_extend.view_vehicle_search"/>
+            <field name="arch" type="xml">
+            <xpath expr="//field[@name='model_id']" position="after">
+                <filter name="alert_true" domain="['|',('contract_renewal_due_soon','=',True),('contract_renewal_overdue','=',True)]" string="Has Alert(s)"/>
+            </xpath>
+            </field>
+        </record>
 
 
     </data>
