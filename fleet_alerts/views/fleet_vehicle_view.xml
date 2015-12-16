@@ -36,12 +36,8 @@
 					<xpath expr="//field[@name='seats']/../.." position="after">
                         <notebook>
                             <page string="Alerts">
-
-
                                 <button string="Show Alerted" type="action" name="fleet_alerts.fleet_vehicle_alert_cost_action" />
-                                <label for="services_info" class="oe_inline" />
                                 <field name="services_info" />
-
                             </page>
                         </notebook>
 					</xpath>
