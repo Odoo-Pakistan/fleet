@@ -25,9 +25,6 @@
 
 					<xpath expr="//field[@name='cost_ids']//field[@name='cost_subtype_id']" position="after">
 						<field name="notes" />
-						<field name="alert" />
-						<field name="next_service" />
-						<field name="next_service_in" invisible="1"/>
 					</xpath>
 				</data>
 			</field>

@@ -27,21 +27,3 @@ class FleetVehicleCost(models.Model):
     odometer = fields.Float(string="Odometer Value", compute=_get_odometer, inverse=_set_odometer, help='Odometer measure of the vehicle at the moment of this log')
     department_id = fields.Many2one('hr.department', string='Department')
     notes = fields.Text('Additional info')
-
-    # TODO: Ovdje treba napraviti nekakav nacin za obavjestavanje i racunanje ovih vrijednosti
-    alert = fields.Boolean('Alert')
-    next_service = fields.Float('Next Service', default=0.0)
-    next_service_in = fields.Float('Next Service In', default=0.0)
-
-    # @api.onchange('alert')
-    # def on_change_subtype(self):
-    #     self.next_service = 0.0
-    #     if self.alert and self.cost_subtype_id:
-    #         self.next_service = self.cost_subtype_id.next_service
-    #         self.next_service_in = self.next_service + self.parent_id.odometer_id.value
-
-    # @api.onchange('next_service')
-    # def on_change_next_service(self):
-    #     self.next_service_in = 0.0
-    #     if self.alert and self.parent_id.odometer_id and self.next_service:
-    #         self.next_service_in = self.next_service + self.parent_id.odometer_id.value

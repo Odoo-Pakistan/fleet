@@ -13,12 +13,14 @@ Managing alerts (Warning that vehicle contract has expired or will soon etc..)
 
     'depends': [
         'fleet_extend',
+        'fleet_vehicle_cost_extend',
     ],
     'data':[
+        'data/alerts.xml',
         'views/fleet_vehicle_view.xml',
         'views/fleet_alert_view.xml',
-        'data/alerts.xml',
-        
+        'views/vehicle_log_services_view.xml',
+
     ],
 
     "installable": True,

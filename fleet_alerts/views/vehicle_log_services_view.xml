@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+
+        <!-- #### FORM VIEW #### -->
+
+        <record model="ir.ui.view" id="fleet_vehicle_log_services_form_inherit">
+            <field name="name">fleet.vehicle.log.services.form.inherit</field>
+            <field name="model">fleet.vehicle.log.services</field>
+            <field name="inherit_id" ref="fleet.fleet_vehicle_log_services_form"/>
+            <field name="arch" type="xml">
+                <data>
+
+                    <xpath expr="//field[@name='cost_ids']//field[@name='amount']" position="before">
+                        <field name="alert" />
+                        <field name="next_service_relative" />
+                        <field name="next_service_absolute" invisible="0"/>
+                    </xpath>
+
+                </data>
+            </field>
+        </record>
+
+        <!-- #### TREE VIEW FOR ALERTS #### -->
+
+        <record model="ir.ui.view" id="fleet_vehicle_cost_tree_simple">
+            <field name="name">fleet.vehicle.cost.tree.simple</field>
+            <field name="model">fleet.vehicle.cost</field>
+            <field name="arch" type="xml">
+                <tree create="false" edit="false">
+                    <field name="cost_subtype_id" readonly="1" />
+                    <field name="notes" readonly="1" />
+                    <field name="alert" readonly="1" />
+                    <field name="next_service_absolute" readonly="1" />
+                    <button name="make_done" type="object" string="Silent" />
+                </tree>
+            </field>
+        </record>
+
+        <record model='ir.actions.act_window' id='fleet_vehicle_alert_cost_action'>
+            <field name="name">Alerted Services</field>
+            <field name="res_model">fleet.vehicle.cost</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="fleet_vehicle_cost_tree_simple"/>
+            <field name="domain">[]</field>
+        </record>
+
+    </data>
+</openerp>

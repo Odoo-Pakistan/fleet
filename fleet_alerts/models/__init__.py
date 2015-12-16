@@ -1,2 +1,3 @@
 import fleet_vehicle
 import fleet_alert
+import fleet_vehicle_cost
