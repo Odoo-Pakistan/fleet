@@ -1,7 +1,7 @@
 <openerp>
     <data>
 			<!--     	#### TREE VIEW #### -->
-    
+
 <!--   		<record model="ir.ui.view" id="fleet_vehicle_tree_inherit"> -->
 <!-- 			<field name="name">fleet.vehicle.tree.inherit</field> -->
 <!-- 			<field name="model">fleet.vehicle</field> -->
@@ -23,7 +23,21 @@
 <!-- 				</data> -->
 <!-- 			</field> -->
 <!-- 		</record> -->
-    
-    
+
+
+        <!-- #### SEARCH VIEW #### -->
+
+        <record model="ir.ui.view" id="view_vehicle_search_inherit">
+            <field name="name">view.vehicle.search.inherit</field>
+            <field name="model">fleet.vehicle</field>
+            <field name="inherit_id" ref="fleet_extend.view_vehicle_search"/>
+            <field name="arch" type="xml">
+            <xpath expr="//field[@name='model_id']" position="after">
+                <filter name="alert_true" domain="['|',('contract_renewal_due_soon','=',True),('contract_renewal_overdue','=',True)]" string="Has Alert(s)"/>
+            </xpath>
+            </field>
+        </record>
+
+
     </data>
 </openerp>
