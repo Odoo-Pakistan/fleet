@@ -20,6 +20,7 @@ class FleetVehicle(models.Model):
 
         if alert_active:
             overdue_days = alert_rules.due_soon_days
+
             for obj in self:
                 total = 0
                 overdue = False
@@ -39,15 +40,14 @@ class FleetVehicle(models.Model):
                         if diff_time < overdue_days and diff_time >=0:
                             due_soon=True
                             total += 1
+
                 if due_soon or overdue:
                     name = self.env['fleet.vehicle.log.contract'].search([('vehicle_id', '=', obj.id), ('state', 'in', ('open', 'toclose'))], limit=1, order='expiration_date asc')[0].cost_subtype_id.name
 
                 obj.contract_renewal_due_soon = due_soon
-                obj.contract_renewal_overdue  = overdue
+                obj.contract_renewal_overdue = overdue
                 obj.contract_renewal_total = total
                 obj.contract_renewal_name = name
-
-
 
     @api.multi
     def _search_contract_renewal_due_soon(self,operator,value):
@@ -100,3 +100,20 @@ class FleetVehicle(models.Model):
     contract_renewal_overdue = fields.Boolean(compute=_get_contract_reminder_fnc, search=_search_get_overdue_contract_reminder,string='Has Contracts Overdued')
     contract_renewal_name = fields.Char(compute=_get_contract_reminder_fnc,string='Name of contract to renew soon')
     contract_renewal_total = fields.Float(compute=_get_contract_reminder_fnc,string='Total of contracts due or overdue minus one')
+
+    @api.multi
+    def _get_services_reminder_fnc(self):
+        pass
+    def _search_services_due_soon(self):
+        pass
+    def _search_services_overdue(self):
+        pass
+
+    @api.multi
+    def _get_services_info(self):
+        pass
+
+    services_due_soon = fields.Boolean(compute=_get_services_reminder_fnc, search=_search_services_due_soon, string='Has Services to do soon')
+    services_overdue = fields.Boolean(compute=_get_services_reminder_fnc, search=_search_services_overdue, string='Has Services overdue')
+    services_info = fields.Html(compute=_get_services_info, string='Services Info')
+

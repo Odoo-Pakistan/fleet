@@ -1,7 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <openerp>
     <data>
 			<!--     	#### TREE VIEW #### -->
-
 <!--   		<record model="ir.ui.view" id="fleet_vehicle_tree_inherit"> -->
 <!-- 			<field name="name">fleet.vehicle.tree.inherit</field> -->
 <!-- 			<field name="model">fleet.vehicle</field> -->
@@ -25,6 +25,32 @@
 <!-- 		</record> -->
 
 
+        <!--#### FORM VIEW #### -->
+
+  		<record model="ir.ui.view" id="fleet_vehicle_form_inherit">
+			<field name="name">fleet.vehicle.form.inherit</field>
+			<field name="model">fleet.vehicle</field>
+			<field name="inherit_id" ref="fleet.fleet_vehicle_form" />
+			<field name="arch" type="xml">
+				<data>
+					<xpath expr="//field[@name='seats']/../.." position="after">
+                        <notebook>
+                            <page string="Alerts">
+
+
+                                <button string="Show Alerted" type="action" name="fleet_alerts.fleet_vehicle_alert_cost_action" />
+                                <label for="services_info" class="oe_inline" />
+                                <field name="services_info" />
+
+                            </page>
+                        </notebook>
+					</xpath>
+				</data>
+			</field>
+		</record>
+
+
+
         <!-- #### SEARCH VIEW #### -->
 
         <record model="ir.ui.view" id="view_vehicle_search_inherit">
@@ -37,6 +63,7 @@
             </xpath>
             </field>
         </record>
+
 
 
     </data>
