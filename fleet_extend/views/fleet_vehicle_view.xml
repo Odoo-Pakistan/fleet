@@ -129,7 +129,6 @@
 
 					<field name="license_plate"/>
 					<field name="model_id"/>
-<!-- 					<filter name="alert_true" domain="['|',('contract_renewal_due_soon','=',True),('contract_renewal_overdue','=',True)]" string="Has Alert(s)"/> -->
 					<filter string="Gasoilne" icon="terp-project" domain = "[('fuel_type','=','gasoline')]"/>
 					<filter string="Diesel" icon="terp-project" domain = "[('fuel_type','=','diesel')]"/>
 					<filter string="Electric" icon="terp-project" domain = "[('fuel_type','=','electric')]"/>
