@@ -1,0 +1,6 @@
+Instalirati odbc driver za postgres:
+    http://www.postgresql.org/ftp/odbc/versions/msi/
+
+Podesiti Control Panel/ODBC Sources
+
+U Excel novu konekciju / ODBC DSN / pa se unesu parametri

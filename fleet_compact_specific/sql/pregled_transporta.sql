@@ -1,5 +1,11 @@
-﻿select 	tbl.relacija, 
-	tbl.datum, 
+﻿-- drop view fleet_pregled_transporta
+create or replace view fleet_pregled_transporta as
+select 	
+	tbl.vozilo,
+	tbl.vozac,
+	tbl.relacija,
+	tbl.datum,
+	tbl.relacija::text || ' (' || to_char(tbl.datum, 'dd.MM.yyyy') || ')' as relacija_datum,
 	tbl.prevezeno_tona, 
 	tbl.vrijednost_km, 
 	tbl.gorivo_litara, 
@@ -20,6 +26,8 @@ from
 	select
 	
 	tro.distance as relacija
+	,veh.license_plate as vozilo
+	,res.name as vozac
 	,tro.date as datum
 	,(
 		select coalesce(sum(fak.prevezeno_tona), 0)
@@ -64,4 +72,7 @@ from
 	, tro.total_km as predjeno_km
 
 	from fleet_vehicle_travel_order tro
+	left join fleet_vehicle veh on (veh.id = tro.vehicle_id)
+	left join hr_employee emp on (emp.id = tro.driver1_id)
+	left join resource_resource res on (res.id = emp.resource_id)
 ) as tbl
