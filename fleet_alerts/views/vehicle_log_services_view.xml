@@ -27,11 +27,14 @@
             <field name="name">fleet.vehicle.cost.tree.simple</field>
             <field name="model">fleet.vehicle.cost</field>
             <field name="arch" type="xml">
-                <tree create="false" edit="false">
+                <tree create="false" edit="false" decoration-warning="due_soon" decoration-danger="overdue">
                     <field name="cost_subtype_id" readonly="1" />
                     <field name="notes" readonly="1" />
                     <field name="alert" readonly="1" />
+                    <field name="parent_odometer" readonly="1" />
                     <field name="next_service_absolute" readonly="1" />
+                    <field name="due_soon" invisible="1" />
+                    <field name="overdue" invisible="1" />
                     <button name="make_done" type="object" string="Silent" />
                 </tree>
             </field>
@@ -43,7 +46,7 @@
             <field name="view_type">form</field>
             <field name="view_mode">tree</field>
             <field name="view_id" ref="fleet_vehicle_cost_tree_simple"/>
-            <field name="domain">[('vehicle_id','=', active_id), ('parent_id','!=',False), ('alert', '!=', False)]</field>
+            <field name="domain">[('vehicle_id','=', active_id), ('parent_id','!=',False), '|', ('overdue', '!=', False), ('due_soon', '!=', False)]</field>
         </record>
 
     </data>

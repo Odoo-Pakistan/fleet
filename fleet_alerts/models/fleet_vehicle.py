@@ -121,18 +121,21 @@ class FleetVehicle(models.Model):
                 border = alert_rule.due_soon_days or 0.0
             if alert_active:
                 odometer = rec.odometer or 0.0
-                services = self.env['fleet.vehicle.cost'].search([('vehicle_id', '=', rec.id), ('alert', '=', True)])
-                for service in services:
-                    diff = service.next_service_absolute - odometer
-                    if (diff < border) and (diff > 0):
-                        due_soon = True
-                        total += 1
-                        # str_due_soon += '<div>Ovdje upisati info o servisu</div>'
-                    elif (diff < border) and (diff <= 0):
-                        overdue = True
-                        total += 1
-                        # str_overdue += '<div>Ovdje upisati info o servisu</div>'
-
+                services_overdue = self.env['fleet.vehicle.cost'].search_count([('vehicle_id', '=', rec.id), ('overdue', '=', True)])
+                services_due_soon = self.env['fleet.vehicle.cost'].search_count([('vehicle_id', '=', rec.id), ('due_soon', '=', True)])
+                total = services_due_soon + services_overdue
+                if services_overdue > 0:
+                    overdue = True
+                if services_due_soon > 0:
+                    due_soon = True
+                # for service in services:
+                #     diff = service.next_service_absolute - odometer
+                #     if (diff < border) and (diff > 0):
+                #         due_soon = True
+                #         total += 1
+                #     elif (diff < border) and (diff <= 0):
+                #         overdue = True
+                #         total += 1
             if due_soon or overdue:
                 str_info = self.env['fleet.vehicle.cost'].search(
                     [('vehicle_id', '=', rec.id), ('alert', '=', True)], limit=1,
@@ -195,6 +198,6 @@ class FleetVehicle(models.Model):
             res = self.pool.get('ir.actions.act_window').for_xml_id(cr, uid ,'fleet_alerts', context['xml_id'], context=context)
             res['context'] = context
             res['context'].update({'default_vehicle_id': ids[0]})
-            res['domain'] = [('vehicle_id','=', ids[0]), ('parent_id','!=',False), ('alert', '=', True)]
+            res['domain'] = [('vehicle_id','=', ids[0]), ('parent_id','!=',False), '|', ('overdue', '=', True), ('due_soon', '=', True)]
             return res
         return False

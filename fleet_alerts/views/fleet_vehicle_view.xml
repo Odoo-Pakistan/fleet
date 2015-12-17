@@ -36,7 +36,7 @@
 					<xpath expr="//field[@name='seats']/../.." position="after">
                         <notebook>
                             <page string="Alerts">
-                                <button string="Show Alerted" type="action" name="fleet_alerts.fleet_vehicle_alert_cost_action" />
+                                <button string="Show Alerted Services" type="action" name="fleet_alerts.fleet_vehicle_alert_cost_action" />
                                 <field name="services_info" />
                             </page>
                         </notebook>
@@ -44,6 +44,8 @@
 				</data>
 			</field>
 		</record>
+
+        <!-- #### KANBAN VIEW #### -->
 
         <record model='ir.ui.view' id='fleet_vehicle_kanban_inherit'>
             <field name="name">fleet.vehicle.kanban.inherit</field>
@@ -59,9 +61,11 @@
                     </xpath>
 
                     <xpath expr="//div[@class='o_kanban_button']" position="after">
+
                         <a t-if="record.services_due_soon.raw_value and !record.services_overdue.raw_value" data-type="object" data-name="return_action_to_open_alerts" href="#" class="oe_kanban_action btn btn-sm btn-warning" data-context='{"xml_id":"fleet_vehicle_alert_cost_action"}'>
                             <field name="services_info"/> <t t-if="record.services_total.raw_value > 0"> and <field name="services_total" /> other(s)</t>
                         </a>
+
                         <a t-if="record.services_overdue.raw_value" data-type="object" data-name="return_action_to_open_alerts" href="#" class="oe_kanban_action btn btn-sm btn-danger" data-context='{"xml_id":"fleet_vehicle_alert_cost_action"}'>
                             <field name="services_info"/> <t t-if="record.services_total.raw_value > 0"> and <field name="services_total" /> other(s)</t>
                         </a>
