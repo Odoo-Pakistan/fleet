@@ -20,7 +20,7 @@ Managing alerts (Warning that vehicle contract has expired or will soon etc..)
         'views/fleet_vehicle_view.xml',
         'views/fleet_alert_view.xml',
         'views/vehicle_log_services_view.xml',
-
+        'security/ir.model.access.csv',
     ],
 
     "installable": True,
