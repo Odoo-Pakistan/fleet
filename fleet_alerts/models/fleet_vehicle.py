@@ -103,7 +103,7 @@ class FleetVehicle(models.Model):
                                               search=_search_get_overdue_contract_reminder,
                                               string='Has Contracts Overdued')
     contract_renewal_name = fields.Char(compute=_get_contract_reminder_fnc, string='Name of contract to renew soon')
-    contract_renewal_total = fields.Float(compute=_get_contract_reminder_fnc,
+    contract_renewal_total = fields.Integer(compute=_get_contract_reminder_fnc,
                                           string='Total of contracts due or overdue minus one')
 
     @api.multi
@@ -111,8 +111,8 @@ class FleetVehicle(models.Model):
         for rec in self:
             overdue = False
             due_soon = False
-            str_overdue = 'Overdue services:\n'
-            str_due_soon = 'Due soon services:\n'
+            total = 0
+            str_info = ''
             alert_rule = self.env.ref('fleet_alerts.services_alert')
             alert_active = False
             border = 0.0
@@ -126,16 +126,24 @@ class FleetVehicle(models.Model):
                     diff = service.next_service_absolute - odometer
                     if (diff < border) and (diff > 0):
                         due_soon = True
-                        str_due_soon += '<div>Ovdje upisati info o servisu</div>'
+                        total += 1
+                        # str_due_soon += '<div>Ovdje upisati info o servisu</div>'
                     elif (diff < border) and (diff <= 0):
                         overdue = True
-                        str_overdue += '<div>Ovdje upisati info o servisu</div>'
+                        total += 1
+                        # str_overdue += '<div>Ovdje upisati info o servisu</div>'
 
+            if due_soon or overdue:
+                str_info = self.env['fleet.vehicle.cost'].search(
+                    [('vehicle_id', '=', rec.id), ('alert', '=', True)], limit=1,
+                    order='odometer desc')[0].cost_subtype_id.name
             rec.services_overdue = overdue
             rec.services_due_soon = due_soon
-            rec.services_info = str_overdue + str_due_soon
+            rec.services_info = str_info
+            rec.services_total = total - 1
         pass
 
+    @api.multi
     def _search_services_due_soon(self, operator, value):
         assert operator in ('=', '!=', '<>') and value in (True, False), 'Operation not supported'
         alert_rule = self.env.ref('fleet_alerts.services_alert')
@@ -147,17 +155,13 @@ class FleetVehicle(models.Model):
                 search_operator = 'in'
             else:
                 search_operator = 'not in'
-            services = self.env['fleet.vehicle.cost'].search([('vehicle_id', '=', rec.id), ('alert', '=', True)])
             res_ids = []
-            due_soon = False
-            for service in services:
-                if service.due_soon:
-                    due_soon = True
-            if due_soon:
-                res_ids.append(self.id)
-
+            for rec in self.env['fleet.vehicle'].search([]):
+                if rec.services_due_soon:
+                    res_ids.append(rec.id)
         return [('id', search_operator, res_ids)]
 
+    @api.multi
     def _search_services_overdue(self, operator, value):
         assert operator in ('=', '!=', '<>') and value in (True, False), 'Operation not supported'
         alert_rule = self.env.ref('fleet_alerts.services_alert')
@@ -169,19 +173,28 @@ class FleetVehicle(models.Model):
                 search_operator = 'in'
             else:
                 search_operator = 'not in'
-            services = self.env['fleet.vehicle.cost'].search([('vehicle_id', '=', rec.id), ('alert', '=', True)])
             res_ids = []
-            overdue = False
-            for service in services:
-                if service.due_soon:
-                    overdue = True
-            if overdue:
-                res_ids.append(self.id)
-
+            for rec in self.env['fleet.vehicle'].search([]):
+                if rec.services_overdue:
+                    res_ids.append(rec.id)
         return [('id', search_operator, res_ids)]
 
     services_due_soon = fields.Boolean(compute=_get_services_reminder_fnc, search=_search_services_due_soon,
                                        string='Has Services to do soon')
     services_overdue = fields.Boolean(compute=_get_services_reminder_fnc, search=_search_services_overdue,
                                       string='Has Services overdue')
-    services_info = fields.Html(compute=_get_services_reminder_fnc, string='Services Info')
+    services_info = fields.Char(compute=_get_services_reminder_fnc, string='Services Info')
+    services_total = fields.Integer(compute=_get_services_reminder_fnc, string='Total alerted services')
+
+
+    def return_action_to_open_alerts(self, cr, uid, ids, context=None):
+        """ This opens the xml view specified in xml_id for the current vehicle """
+        if context is None:
+            context = {}
+        if context.get('xml_id'):
+            res = self.pool.get('ir.actions.act_window').for_xml_id(cr, uid ,'fleet_alerts', context['xml_id'], context=context)
+            res['context'] = context
+            res['context'].update({'default_vehicle_id': ids[0]})
+            res['domain'] = [('vehicle_id','=', ids[0]), ('parent_id','!=',False), ('alert', '=', True)]
+            return res
+        return False
