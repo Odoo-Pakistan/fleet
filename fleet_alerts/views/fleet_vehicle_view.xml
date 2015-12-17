@@ -55,7 +55,8 @@
             <field name="inherit_id" ref="fleet_extend.view_vehicle_search"/>
             <field name="arch" type="xml">
             <xpath expr="//field[@name='model_id']" position="after">
-                <filter name="alert_true" domain="['|',('contract_renewal_due_soon','=',True),('contract_renewal_overdue','=',True)]" string="Has Alert(s)"/>
+                <filter name="alert_true" domain="['|',('contract_renewal_due_soon','=',True),('contract_renewal_overdue','=',True)]" string="Has Contracts Alert(s)"/>
+                <filter name="services_alert_true" domain="['|',('services_due_soon','=',True),('services_overdue','=',True)]" string="Has Services Alert(s)"/>
             </xpath>
             </field>
         </record>
