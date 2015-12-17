@@ -1,7 +1,7 @@
 <openerp>
 	<data>
-		
-		
+
+
 	  	<record model="ir.ui.view" id="fleet_alert_tree_view">
 			<field name="name">fleet.alert.tree.view</field>
 			<field name="model">fleet.alert</field>
@@ -13,24 +13,24 @@
 				</tree>
 			</field>
 		</record>
-	       
-        
+
+
         	<!-- #### ACTION #### -->
 
         <record model='ir.actions.act_window' id='fleet_alert_act'>
-            <field name="name">Alerts</field>
+            <field name="name">Alerts configuration</field>
             <field name="res_model">fleet.alert</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
         </record>
-		
+
 		 <!-- #### MENU ITEM #### -->
-        <menuitem 
-        	action="fleet_alert_act" 
-        	parent="fleet.fleet_configuration" 
-        	id="fleet_alert_menu" 
-        	sequence="120" 
+        <menuitem
+        	action="fleet_alert_act"
+        	parent="fleet.fleet_configuration"
+        	id="fleet_alert_menu"
+        	sequence="120"
         	groups="fleet.group_fleet_manager"/>
-	
+
 	</data>
 </openerp>
