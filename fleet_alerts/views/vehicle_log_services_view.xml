@@ -14,7 +14,7 @@
                     <xpath expr="//field[@name='cost_ids']//field[@name='amount']" position="before">
                         <field name="alert" />
                         <field name="next_service_relative" />
-                        <field name="next_service_absolute" invisible="0"/>
+                        <field name="next_service_absolute" invisible="1"/>
                     </xpath>
 
                 </data>

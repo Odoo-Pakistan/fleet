@@ -46,7 +46,7 @@ class FleetVehicle(models.Model):
 
                 obj.contract_renewal_due_soon = due_soon
                 obj.contract_renewal_overdue = overdue
-                obj.contract_renewal_total = total
+                obj.contract_renewal_total = total - 1
                 obj.contract_renewal_name = name
 
     @api.multi
@@ -136,10 +136,15 @@ class FleetVehicle(models.Model):
                 #     elif (diff < border) and (diff <= 0):
                 #         overdue = True
                 #         total += 1
-            if due_soon or overdue:
+            if overdue:
                 str_info = self.env['fleet.vehicle.cost'].search(
-                    [('vehicle_id', '=', rec.id), ('alert', '=', True)], limit=1,
+                    [('vehicle_id', '=', rec.id), ('overdue', '=', True)], limit=1,
                     order='odometer desc')[0].cost_subtype_id.name
+            elif due_soon:
+                str_info = self.env['fleet.vehicle.cost'].search(
+                    [('vehicle_id', '=', rec.id), ('due_soon', '=', True)], limit=1,
+                    order='odometer desc')[0].cost_subtype_id.name
+
             rec.services_overdue = overdue
             rec.services_due_soon = due_soon
             rec.services_info = str_info
