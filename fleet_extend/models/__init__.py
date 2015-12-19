@@ -3,4 +3,5 @@ import fleet_vehicle_type
 import fleet_vehicle_log_fuel
 import fleet_vehicle_log_services
 import fleet_vehicle_log_contract
+import fleet_vehicle_cost
 import res_config

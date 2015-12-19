@@ -1,14 +1,16 @@
 # -*- coding: utf-8 -*-
 
-from openerp import models
+from openerp import models, api
 
 
 class FleetVehicleLogFuel(models.Model):
     _inherit = 'fleet.vehicle.log.fuel'
 
-    def unlink(self, cr, uid, ids, context=None):
-        this_objs = self.browse(cr, uid, ids, context=context)
-        for this_obj in this_objs:
-            if this_obj.cost_id:
-                self.pool.get('fleet.vehicle.cost').unlink(cr, 1, this_obj.cost_id.id)
-        return super(FleetVehicleLogFuel, self).unlink(cr, uid, ids, context=context)
+    @api.multi
+    def unlink(self):
+        for obj in self:
+            for child_cost in obj.cost_ids:
+                child_cost.sudo().unlink()
+            if obj.cost_id:
+                obj.cost_id.sudo().unlink()
+        return super(FleetVehicleLogFuel, self).unlink()
