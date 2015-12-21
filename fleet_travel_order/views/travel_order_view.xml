@@ -101,7 +101,7 @@
                             </group>
                         </group>
                         <group string="Distance">
-                              <field name="distance"/>
+                              <field name="distance" required="1"/>
                         </group>
                         <notebook>
                             <page string="Travel Order Line">
@@ -134,7 +134,7 @@
                     <field name="series"/>
                     <field name="num"/>
                     <field name="vehicle_id"/>
-                    <field name="distance" required="1"/>
+                    <field name="distance" />
                 </tree>
             </field>
         </record>
