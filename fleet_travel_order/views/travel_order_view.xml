@@ -15,18 +15,18 @@
                     			class="oe_highlight"
                     			states="terminated"
                     			string="Open"
-                    			>      	
+                    			>
                     	</button>
                     	<button name="button_terminate"
                     			type="object"
                     			class="oe_highlight"
                     			states="open"
                     			string="Terminate"
-                    			>      	
+                    			>
                     	</button>
                     	<field name="state" widget="statusbar"/>
-                    	
-                    </header>                    
+
+                    </header>
                     <sheet>
                         <div class="oe_right oe_button_box">
                             <button name="return_fuel_logs"
@@ -69,34 +69,36 @@
                                 <field name="type"/>
                             </group>
                         </group>
-                        <group col="2">
+                        <group>
                             <group string="Drivers">
                                 <field name="driver1_id"/>
                                 <field name="driver2_id"/>
                             </group>
-                            <group string="Co-Drivers" attrs="{'invisible':[('type','=','passenger')]}">
-                                <field name="codriver1_id"/>
-                                <field name="codriver2_id"/>
-                                <field name="codriver3_id"/>
-                                <field name="codriver4_id"/>
-                            </group>
                         </group>
                         <group col="2">
-	                        <group string="Cargo Workers" colspan="1" attrs="{'invisible':[('type','=','passenger')]}">
-	                                <field name="cargo_worker1_id"/>
-	                                <field name="cargo_worker2_id"/>
-	                                <field name="cargo_worker3_id"/>
-	                                <field name="cargo_worker4_id"/>
-	                        </group>
-	                        <group string ="Odometer">
-			             		<field name="start_odometer"/>
-			             		<field name="stop_odometer"/>
-			             		<field name="total_km" />
-			             	</group>
-			             	<group string ="Kilometres">
-			             		<field name="private_km"/>
-			             		<field name="loaded_km"/>
-			             	</group>
+                            <group string="Co-Drivers" attrs="{'invisible':[('type','=','passenger')]}">
+                               <field name="codriver1_id"/>
+                               <field name="codriver2_id"/>
+                               <field name="codriver3_id"/>
+                               <field name="codriver4_id"/>
+                           </group>
+                            <group string="Cargo Workers" colspan="1" attrs="{'invisible':[('type','=','passenger')]}">
+                                <field name="cargo_worker1_id"/>
+                                <field name="cargo_worker2_id"/>
+                                <field name="cargo_worker3_id"/>
+                                <field name="cargo_worker4_id"/>
+   	                        </group>
+                        </group>
+                        <group col="2">
+                            <group string ="Odometer">
+                               <field name="start_odometer"/>
+                               <field name="stop_odometer"/>
+                               <field name="total_km" />
+                            </group>
+                            <group string ="Kilometres">
+                                <field name="private_km"/>
+                                <field name="loaded_km"/>
+                            </group>
                         </group>
                         <group string="Distance">
                               <field name="distance"/>
@@ -132,7 +134,7 @@
                     <field name="series"/>
                     <field name="num"/>
                     <field name="vehicle_id"/>
-                    <field name="distance"/>
+                    <field name="distance" required="1"/>
                 </tree>
             </field>
         </record>
