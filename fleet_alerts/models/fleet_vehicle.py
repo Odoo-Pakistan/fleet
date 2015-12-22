@@ -138,12 +138,10 @@ class FleetVehicle(models.Model):
                 #         total += 1
             if overdue:
                 str_info = self.env['fleet.vehicle.cost'].search(
-                    [('vehicle_id', '=', rec.id), ('overdue', '=', True)], limit=1,
-                    order='odometer desc')[0].cost_subtype_id.name
+                    [('vehicle_id', '=', rec.id), ('overdue', '=', True)], limit=1)[0].cost_subtype_id.name
             elif due_soon:
                 str_info = self.env['fleet.vehicle.cost'].search(
-                    [('vehicle_id', '=', rec.id), ('due_soon', '=', True)], limit=1,
-                    order='odometer desc')[0].cost_subtype_id.name
+                    [('vehicle_id', '=', rec.id), ('due_soon', '=', True)], limit=1)[0].cost_subtype_id.name
 
             rec.services_overdue = overdue
             rec.services_due_soon = due_soon
