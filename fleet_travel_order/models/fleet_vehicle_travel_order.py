@@ -37,17 +37,17 @@ class fleet_vehicle_travel_order(models.Model):
     date = fields.Date('Date',required = True,default=fields.datetime.now())
     num = fields.Char('Number',size=64,required = True)
     type = fields.Selection([('cargo','PN3'),('passenger','PN4')],'Type',default='cargo')
-    driver1_id = fields.Many2one('hr.employee','1st Driver')
+    driver1_id = fields.Many2one('hr.employee','1st Driver',required=True)
     driver2_id = fields.Many2one('hr.employee','2nd Driver')
     codriver1_id = fields.Many2one('hr.employee','1st Co-Driver')
-    codriver2_id = fields.Many2one('hr.employee','2nd Driver')
-    codriver3_id = fields.Many2one('hr.employee','3rd Driver')
-    codriver4_id = fields.Many2one('hr.employee','4th Driver')
+    codriver2_id = fields.Many2one('hr.employee','2nd Co-Driver')
+    codriver3_id = fields.Many2one('hr.employee','3rd Co-Driver')
+    codriver4_id = fields.Many2one('hr.employee','4th Co-Driver')
     cargo_worker1_id = fields.Many2one('hr.employee','1st Cargo Worker')
     cargo_worker2_id = fields.Many2one('hr.employee','2nd Cargo Worker')
     cargo_worker3_id = fields.Many2one('hr.employee','3rd Cargo Worker')
     cargo_worker4_id = fields.Many2one('hr.employee','4th Cargo Worker')
-    distance = fields.Char('Distance',size=256,requried=True)
+    distance = fields.Char('Distance',size=256)
     fuel_log_ids = fields.One2many('fleet.vehicle.log.fuel','travel_order_id')
     fuel_log_count = fields.Integer(compute=_get_fuel_log_count,string='Fuel Logs')
     travel_order_line_ids = fields.One2many('fleet.vehicle.travel.order.line','travel_order_id')
@@ -61,17 +61,17 @@ class fleet_vehicle_travel_order(models.Model):
     loaded_km = fields.Float(string='Loaded (km)')
     total_km = fields.Float(string='Total (km)', compute=_get_odometer, store=True)
     state = fields.Selection([('open','Open'),('terminated','Terminated')],string='State',default='open')
-    
-    
-    
+
+
+
     @api.one
     def button_open(self):
         self.state='open'
-        
+
     @api.one
     def button_terminate(self):
         self.state='terminated'
-    
+
 
 
 
