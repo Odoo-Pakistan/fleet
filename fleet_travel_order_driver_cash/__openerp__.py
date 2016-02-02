@@ -20,6 +20,7 @@ Managing driver budget per travel order
     'data':[
         'views/travel_order_view.xml',
 #         'views/vehicle_log_fuel_view.xml',
+        'security/ir.model.access.csv',
     ],
 
     "installable": True,

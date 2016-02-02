@@ -15,18 +15,20 @@
                     			class="oe_highlight"
                     			states="terminated"
                     			string="Open"
-                    			>      	
+                                groups="fleet.group_fleet_manager"
+                    			>
                     	</button>
                     	<button name="button_terminate"
                     			type="object"
                     			class="oe_highlight"
                     			states="open"
                     			string="Terminate"
-                    			>      	
+                                groups="fleet.group_fleet_manager"
+                    			>
                     	</button>
                     	<field name="state" widget="statusbar"/>
-                    	
-                    </header>                    
+
+                    </header>
                     <sheet>
                         <div class="oe_right oe_button_box">
                             <button name="return_fuel_logs"
@@ -183,7 +185,7 @@
 
 
         <!-- #### MENU ITEM #### -->
-        <menuitem action="fleet_vehicle_order_act" parent="fleet.fleet_vehicles" id="fleet_vehicle_order_menu" sequence="20" groups="fleet.group_fleet_manager"/>
+        <menuitem action="fleet_vehicle_order_act" parent="fleet.fleet_vehicles" id="fleet_vehicle_order_menu" sequence="20" groups="fleet.group_fleet_user"/>
 
 
 

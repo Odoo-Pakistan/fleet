@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+fleet_vehicle_other_cost_access_right_manager,fleet.vehicle.other.cost.category.manager,model_fleet_vehicle_log_other_cost,fleet.group_fleet_manager,1,1,1,1
+fleet_vehicle_other_cost_access_right_user,fleet.vehicle.other.cost.category.user,model_fleet_vehicle_log_other_cost,fleet.group_fleet_user,1,0,0,0

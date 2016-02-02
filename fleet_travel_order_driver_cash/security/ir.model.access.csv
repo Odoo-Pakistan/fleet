@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+fleet_travel_order_driver_cash_access_right_manager,fleet.travel.order.driver.cash.category.manager,model_fleet_travel_order_driver_cash,fleet.group_fleet_manager,1,1,1,1
+fleet_travel_order_driver_cash_access_right_user,fleet.travel.order.driver.cash.category.user,model_fleet_travel_order_driver_cash,fleet.group_fleet_user,1,0,0,0
