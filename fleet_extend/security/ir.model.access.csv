@@ -1,4 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-fleet.fleet_vehicle_access_right_user,fleet.vehicle.category.user,model_fleet_vehicle,fleet.group_fleet_user,1,0,0,0
-fleet.access_fleet_vehicle_cost_user,access_fleet_vehicle_cost,model_fleet_vehicle_cost,fleet.group_fleet_user,1,0,0,0
-fleet.fleet_vehicle_log_fuel_access_right,fleet_vehicle_log_fuel_access_right,model_fleet_vehicle_log_fuel,fleet.group_fleet_user,1,0,0,0
+fleet.fleet_vehicle_access_right_user,fleet.vehicle.category.user,fleet.model_fleet_vehicle,fleet.group_fleet_user,1,0,0,0
+fleet.access_fleet_vehicle_cost_user,access_fleet_vehicle_cost,fleet.model_fleet_vehicle_cost,fleet.group_fleet_user,1,0,0,0
+fleet.fleet_vehicle_log_fuel_access_right,fleet_vehicle_log_fuel_access_right,fleet.model_fleet_vehicle_log_fuel,fleet.group_fleet_user,1,0,0,0
+fleet.fleet_vehicle_odometer_access_right,fleet_vehicle_odometer_access_right,fleet.model_fleet_vehicle_odometer,fleet.group_fleet_user,1,0,0,0
