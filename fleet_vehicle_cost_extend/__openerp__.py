@@ -26,6 +26,7 @@ Module for extending service and cost features of Fleet management module
         'views/menuitems.xml',
         'views/vehicle_view.xml',
         'security/ir.model.access.csv',
+        'security/ir.model.access.csv',
     ],
 
     "installable": True,

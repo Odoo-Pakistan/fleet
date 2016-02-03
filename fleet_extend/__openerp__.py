@@ -20,6 +20,7 @@ Module for extending core fleet with new field and functionalities
         'views/res_config_view.xml',
         'data/order_menuitems.xml',
         'security/ir.model.access.csv',
+        'security/fleet_security_rules.xml',
     ],
 
     "installable": True,

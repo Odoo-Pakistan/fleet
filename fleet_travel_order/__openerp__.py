@@ -31,6 +31,7 @@ This module adds functionality for organizing travel orders, both for passenger 
 #              'data/vehicle_gear_data.xml',
 #              'data/vehicle_cost_type_data.xml',
         'security/ir.model.access.csv',
+        'security/fleet_security_rules.xml',
     ],
 
     "installable": True,

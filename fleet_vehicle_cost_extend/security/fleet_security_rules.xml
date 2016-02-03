@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<openerp>
+
+    <data>
+
+        <record id="fleet_user_other_costs_visibility" model="ir.rule">
+            <field name="name">User can only see his/her other costs</field>
+            <field name="model_id" ref="model_fleet_vehicle_log_other_cost"/>
+            <field name="groups" eval="[(4, ref('fleet.group_fleet_user'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+            <field name="domain_force">[('cost_id.vehicle_id.driver_id','=',user.partner_id.id)]</field>
+        </record>
+
+
+    </data>
+
+</openerp>

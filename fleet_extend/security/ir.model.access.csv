@@ -3,3 +3,5 @@ fleet.fleet_vehicle_access_right_user,fleet.vehicle.category.user,fleet.model_fl
 fleet.access_fleet_vehicle_cost_user,access_fleet_vehicle_cost,fleet.model_fleet_vehicle_cost,fleet.group_fleet_user,1,0,0,0
 fleet.fleet_vehicle_log_fuel_access_right,fleet_vehicle_log_fuel_access_right,fleet.model_fleet_vehicle_log_fuel,fleet.group_fleet_user,1,0,0,0
 fleet.fleet_vehicle_odometer_access_right,fleet_vehicle_odometer_access_right,fleet.model_fleet_vehicle_odometer,fleet.group_fleet_user,1,0,0,0
+fleet_vehicle_type_access_right_user,fleet.vehicle.type.category.user,model_fleet_vehicle_type,fleet.group_fleet_user,1,0,0,0
+fleet_vehicle_type_access_right_manager,fleet.vehicle.type.category.manager,model_fleet_vehicle_type,fleet.group_fleet_manager,1,1,1,1

@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<openerp>
+
+    <data>
+
+        <record id="fleet.fleet_user_vehicle_visibility" model="ir.rule">
+            <field name="name">User can see all vehicles</field>
+            <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+            <field name="groups" eval="[(4, ref('fleet.group_fleet_user'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+            <field name="domain_force">[]</field>
+        </record>
+
+    </data>
+
+</openerp>
