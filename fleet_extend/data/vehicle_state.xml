@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <record model="fleet.vehicle.state" id="state_1">
+            <field name="name">Incoming</field>
+            <field name="sequence" eval="10" />
+        </record>
+
+        <record model="fleet.vehicle.state" id="state_2">
+            <field name="name">Active</field>
+            <field name="sequence" eval="20" />
+        </record>
+
+        <record model="fleet.vehicle.state" id="state_3">
+            <field name="name">On repair</field>
+            <field name="sequence" eval="30" />
+        </record>
+
+        <record model="fleet.vehicle.state" id="state_4">
+            <field name="name">For sale</field>
+            <field name="sequence" eval="40" />
+        </record>
+
+        <record model="fleet.vehicle.state" id="state_5">
+            <field name="name">Sold</field>
+            <field name="sequence" eval="50" />
+        </record>
+    </data>
+</openerp>

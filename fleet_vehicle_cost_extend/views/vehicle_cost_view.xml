@@ -47,11 +47,28 @@
 
         <!-- #### ACTION #### -->
 
+        <record model='ir.actions.act_window' id='fleet.fleet_vehicle_costs_act'>
+                    <field name="name">Vehicle Costs</field>
+                    <field name="res_model">fleet.vehicle.cost</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree</field>
+                    <field name="context">{"search_default_parent_false" : True, "search_default_groupby_vehicle_id" : True,}</field>
+                    <field name="help" type="html">
+                      <p class="oe_view_nocontent_create">
+                        Click to create a new cost.
+                      </p><p>
+                        Odoo helps you managing the costs for your different
+                        vehicles. Costs are created automatically from services,
+                        contracts (fixed or recurring) and fuel logs.
+                      </p>
+                    </field>
+                </record>
+
         <record model='ir.actions.act_window' id='fleet_vehicle_costs_detail_act'>
             <field name="name">Indicative costs</field>
             <field name="res_model">fleet.vehicle.cost</field>
             <field name="view_type">form</field>
-            <field name="view_mode">tree,form,graph</field>
+            <field name="view_mode">tree</field>
             <field name="domain"></field>
             <field name="context">{"search_default_parent_true" : True, "search_default_groupby_vehicle_id" : True,}</field>
             <field name="help" type="html">
