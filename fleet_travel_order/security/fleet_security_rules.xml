@@ -19,8 +19,8 @@
             <field name="model_id" ref="fleet.model_fleet_vehicle_cost"/>
             <field name="groups" eval="[(4, ref('fleet.group_fleet_user'))]"/>
             <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="True"/>
-            <field name="perm_create" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
             <field name="perm_unlink" eval="False"/>
             <field name="domain_force">['|', '|', ('travel_order_id.driver1_id.user_id.id', '=', user.id), ('travel_order_id.driver2_id.user_id.id', '=', user.id), ('vehicle_id.driver_id','=',user.partner_id.id)]</field>
         </record>

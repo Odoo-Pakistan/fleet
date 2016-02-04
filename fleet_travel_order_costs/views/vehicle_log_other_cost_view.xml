@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+
+
+	<record model="ir.ui.view" id="view_vehicle_other_cost_tree_inherit">
+	    <field name="name">vehicle.other.cost.tree</field>
+	    <field name="model">fleet.vehicle.log.other.cost</field>
+        <field name="inherit_id" ref="fleet_vehicle_cost_extend.view_vehicle_other_cost_tree" />
+	    <field name="arch" type="xml">
+            <data>
+                <xpath expr="//field[@name='date']" position="after">
+                    <field name="travel_order_id" />
+                </xpath>
+            </data>
+	    </field>
+	</record>
+
+
+
+	<record model="ir.ui.view" id="view_vehicle_other_cost_form_inherit">
+	    <field name="name">vehicle.other.cost.form</field>
+	    <field name="model">fleet.vehicle.log.other.cost</field>
+        <field name="inherit_id" ref="fleet_vehicle_cost_extend.view_vehicle_other_cost_form" />
+        <field name="arch" type="xml">
+	    	<data>
+                <xpath expr="//field[@name='date']" position="after">
+                    <field name="travel_order_id"/>
+                </xpath>
+            </data>
+		</field>
+	</record>
+
+	</data>
+</openerp>

@@ -18,6 +18,9 @@ This module makes relationship between travel orders and vehicle costs
     'data':[
         'views/vehicle_cost_view.xml',
         'views/vehicle_travel_order_view.xml',
+        'views/vehicle_log_other_cost_view.xml',
+        'views/vehicle_log_services_view.xml',
+        'security/fleet_security_rules.xml',
     ],
 
     "installable": True,

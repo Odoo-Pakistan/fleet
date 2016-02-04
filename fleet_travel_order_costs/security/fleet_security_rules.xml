@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<openerp>
+
+    <data>
+
+        <record id="fleet.fleet_user_service_visibility" model="ir.rule">
+            <field name="name">User can only see his/her vehicle's services</field>
+            <field name="model_id" ref="fleet.model_fleet_vehicle_log_services"/>
+            <field name="groups" eval="[(4, ref('fleet.group_fleet_user'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+            <field name="domain_force">['|', '|', ('cost_id.travel_order_id.driver1_id.user_id.id', '=', user.id), ('cost_id.travel_order_id.driver2_id.user_id.id', '=', user.id), ('cost_id.vehicle_id.driver_id','=',user.partner_id.id)]</field>
+        </record>
+
+        <record id="fleet_vehicle_cost_extend.fleet_user_other_costs_visibility" model="ir.rule">
+            <field name="name">User can only see his/her other costs</field>
+            <field name="model_id" ref="fleet_vehicle_cost_extend.model_fleet_vehicle_log_other_cost"/>
+            <field name="groups" eval="[(4, ref('fleet.group_fleet_user'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+            <field name="domain_force">['|', '|', ('cost_id.travel_order_id.driver1_id.user_id.id', '=', user.id), ('cost_id.travel_order_id.driver2_id.user_id.id', '=', user.id), ('cost_id.vehicle_id.driver_id','=',user.partner_id.id)]</field>
+        </record>
+
+    </data>
+
+</openerp>
