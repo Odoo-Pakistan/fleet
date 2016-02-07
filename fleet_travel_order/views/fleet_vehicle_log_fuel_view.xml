@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
-	<data>		
-	
-	
-	     <!-- #### FORM VIEW #### -->   
-   
+	<data>
+
+
+	     <!-- #### FORM VIEW #### -->
+
  		<record model='ir.ui.view' id='fleet_vehicle_log_fuel_form_inherit'>
         	<field name="name">fleet.vehicle.log.fuel.form.inherit</field>
             <field name="model">fleet.vehicle.log.fuel</field>
             <field name="inherit_id" ref="fleet.fleet_vehicle_log_fuel_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='odometer']/.." position="after">
-                        <field name="travel_order_id" domain="[('vehicle_id','=',vehicle_id)]" readonly="0"/>
-                </xpath>             
-            </field>           
+                        <field name="travel_order_id" domain="[('vehicle_id','=',vehicle_id)]" readonly="0" required="1"/>
+                </xpath>
+            </field>
         </record>
-        
-        
+
+
         <!-- #### SEARCH VIEW #### -->
-        
+
         <record model="ir.ui.view" id="view_fuel_log_search_inherit">
 			<field name="name">view.vehicle.fuel.log.search.inherit</field>
 			<field name="model">fleet.vehicle.log.fuel</field>
@@ -33,9 +33,9 @@
 						<filter name="groupby_supplier" context="{'group_by' : 'vendor_id'}" string="Supplier"/>
 					</xpath>
 				</data>
-			</field>		
+			</field>
 		</record>
-		
-		
+
+
 	</data>
 </openerp>

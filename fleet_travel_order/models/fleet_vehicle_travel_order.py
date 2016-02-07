@@ -36,7 +36,7 @@ class fleet_vehicle_travel_order(models.Model):
     place = fields.Char('Place',size=64,default='Banja Luka')
     date = fields.Date('Date',required = True,default=fields.datetime.now())
     num = fields.Char('Number',size=64,required = True)
-    type = fields.Selection([('cargo','PN3'),('passenger','PN4')],'Type',default='cargo')
+    type = fields.Selection([('cargo','Cargo'),('passenger','Passenger')],'Type',default='cargo')
     driver1_id = fields.Many2one('hr.employee','1st Driver',required=True)
     driver2_id = fields.Many2one('hr.employee','2nd Driver')
     codriver1_id = fields.Many2one('hr.employee','1st Co-Driver')
